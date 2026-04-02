@@ -1,5 +1,13 @@
 [gd_scene format=3 uid="uid://1ips1634u4wj"]
 
+[ext_resource type="Texture2D" uid="uid://dpaqc3hbhry8h" path="res://Sprites/ScreenTemplate.png" id="1_i04dx"]
+
 [node name="Root" type="Node2D" unique_id=1014854693]
 
 [node name="Player" type="Node2D" parent="." unique_id=97924618]
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1524720331]
+
+[node name="ScreenTemplate" type="Sprite2D" parent="." unique_id=1204207731]
+texture_filter = 1
+texture = ExtResource("1_i04dx")
