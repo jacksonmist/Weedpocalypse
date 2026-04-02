@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://cl0ynomap58vy" path="res://Scripts/player_controller.gd" id="1_8pvmw"]
 [ext_resource type="Texture2D" uid="uid://dpaqc3hbhry8h" path="res://Sprites/ScreenTemplate.png" id="1_i04dx"]
 [ext_resource type="Script" uid="uid://dr3p83w7xi033" path="res://Scripts/tool_manager.gd" id="2_vnucn"]
+[ext_resource type="Script" uid="uid://bu5tv0124e1ly" path="res://Scenes/mouse_controller.gd" id="3_qtxxq"]
 [ext_resource type="Texture2D" uid="uid://c3qrx56nve36c" path="res://Sprites/GridLines.png" id="4_4g5cr"]
 [ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://Scenes/grid_manager.gd" id="4_c3mwy"]
-[ext_resource type="Texture2D" uid="uid://bmtqp8pqv6tsb" path="res://Sprites/DandelionWeed.png" id="6_ckhy6"]
-[ext_resource type="Script" uid="uid://bf65nmgyn8kta" path="res://Scripts/weed.gd" id="6_dun2r"]
-[ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="7_r3lo5"]
+[ext_resource type="Script" uid="uid://cq0vcixxeirbg" path="res://Scenes/weed_manager.gd" id="6_r3lo5"]
+[ext_resource type="PackedScene" uid="uid://dfxcw512y58mt" path="res://Scenes/Weeds/Dandelion_Weed.tscn" id="7_dun2r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
+radius = 8.0
 
 [node name="Root" type="Node2D" unique_id=1014854693]
 
@@ -16,6 +19,12 @@ script = ExtResource("1_8pvmw")
 
 [node name="ToolManager" type="Node" parent="Player" unique_id=1192835480]
 script = ExtResource("2_vnucn")
+
+[node name="MouseController" type="Area2D" parent="Player" unique_id=737281661]
+script = ExtResource("3_qtxxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MouseController" unique_id=1036269496]
+shape = SubResource("CircleShape2D_8fnbn")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1524720331]
 position = Vector2(80, -115)
@@ -29,18 +38,15 @@ texture = ExtResource("1_i04dx")
 texture = ExtResource("4_4g5cr")
 
 [node name="GridManager" type="Node" parent="." unique_id=483008534]
+unique_name_in_owner = true
 script = ExtResource("4_c3mwy")
 tile_size = 16
 grid_width = 10
 grid_height = 15
 
-[node name="Weed" type="Node2D" parent="." unique_id=1428564073]
-position = Vector2(8, -120)
-script = ExtResource("6_dun2r")
+[node name="WeedManager" type="Node" parent="." unique_id=1047289638]
+script = ExtResource("6_r3lo5")
+one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r")])
 
-[node name="WeedMask" type="Sprite2D" parent="Weed" unique_id=980901739]
-clip_children = 1
-texture = ExtResource("7_r3lo5")
-
-[node name="WeedSprite" type="Sprite2D" parent="Weed/WeedMask" unique_id=1169837577]
-texture = ExtResource("6_ckhy6")
+[node name="SpawnTimer" type="Timer" parent="WeedManager" unique_id=1202271330]
+wait_time = 5.0
