@@ -8,10 +8,6 @@ var weedkiller_tool: Tool = WeedkillerTool.new()
 func _ready() -> void:
 	pass
 
-
-func _process(delta: float) -> void:
-	pass
-
 func switch_tool(tool_type: Game_Enums.Tool):
 	match tool_type:
 		Game_Enums.Tool.HAND:

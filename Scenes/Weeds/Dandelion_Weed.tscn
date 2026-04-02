@@ -7,20 +7,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
 size = Vector2(16, 240)
 
-[node name="DandelionPivot" type="Node2D" unique_id=1336183014]
-
-[node name="Weed" type="Node2D" parent="." unique_id=2007246088]
-position = Vector2(0, -120)
+[node name="Dandelion" type="Node2D" unique_id=1336183014]
 script = ExtResource("1_ebb8y")
 sprite_array = Array[Texture]([ExtResource("2_hl2pi")])
 
-[node name="WeedMask" type="Sprite2D" parent="Weed" unique_id=25107849]
+[node name="WeedMask" type="Sprite2D" parent="." unique_id=25107849]
 clip_children = 1
+position = Vector2(0, -120)
 texture = ExtResource("1_tpb20")
 
-[node name="WeedSprite" type="Sprite2D" parent="Weed/WeedMask" unique_id=515589144]
+[node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=515589144]
+texture = ExtResource("2_hl2pi")
 
-[node name="Area2D" type="Area2D" parent="Weed" unique_id=942955904]
+[node name="Area2D" type="Area2D" parent="." unique_id=942955904]
+position = Vector2(0, -120)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Weed/Area2D" unique_id=1574559941]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1574559941]
 shape = SubResource("RectangleShape2D_r3lo5")

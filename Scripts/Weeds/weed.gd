@@ -1,4 +1,4 @@
-@abstract
+
 class_name Weed extends Node2D
 
 @export var sprite_array: Array[Texture]
@@ -22,7 +22,6 @@ var stretch_threshold: float = 100
 @onready var weed_sprite: Sprite2D = $WeedMask/WeedSprite
 @onready var area_2d: Area2D = $Area2D
 @onready var collision_shape: CollisionShape2D = $Area2D/CollisionShape2D
-@onready var pivot: Node2D = get_parent()
 
 
 func _ready() -> void:
@@ -40,12 +39,12 @@ func _process(delta: float) -> void:
 		collision_shape.position = offset
 	elif(is_grabbing):
 		var mouse_pos = get_global_mouse_position()
-		var to_mouse = mouse_pos - pivot.position
+		var to_mouse = mouse_pos - position
 		var distance_from_grab = (mouse_pos - grab_point).length()
 		grow_rate_additive += (delta * grow_rate * 0.2)
-		pivot.look_at(get_global_mouse_position())
-		pivot.rotation += PI/2
-		pivot.scale.y = to_mouse.length() / (base_length - weed_mask.offset.y)
+		look_at(get_global_mouse_position())
+		rotation += PI/2
+		scale.y = to_mouse.length() / (base_length - weed_mask.offset.y)
 		if(distance_from_grab > stretch_threshold):
 			fully_stretched()
 		
@@ -54,8 +53,8 @@ func return_to_normal():
 	tween.set_parallel()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(pivot, "scale", Vector2(1, 1), scale_time)
-	tween.tween_property(pivot, "rotation", 0, rotation_time)
+	tween.tween_property(self, "scale", Vector2(1, 1), scale_time)
+	tween.tween_property(self, "rotation", 0, rotation_time)
 	
 func grab(grabbing: bool):
 	is_grabbing = grabbing

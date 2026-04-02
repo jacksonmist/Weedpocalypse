@@ -47,3 +47,6 @@ grid_height = 15
 [node name="WeedManager" type="Node" parent="." unique_id=1047289638]
 script = ExtResource("6_r3lo5")
 one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r")])
+
+[node name="SpawnTimer" type="Timer" parent="WeedManager" unique_id=1202271330]
+wait_time = 5.0

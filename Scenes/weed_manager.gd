@@ -1,7 +1,10 @@
 class_name WeedManager extends Node
 
+@onready var spawn_timer: Timer = $SpawnTimer
+
+
 var time: float = 0.0
-var difficulty: float
+var difficulty: float = 1
 
 @export var one_width_weeds: Array[PackedScene]
 @export var two_width_weeds: Array[PackedScene]
@@ -11,14 +14,32 @@ var difficulty: float
 @export var two_width_chance: float = 30
 @export var three_width_chance: float = 20
 
+var e: float
+var max_difficulty: float = 2.0
+var L: float
+var difficulty_slope: float = 0.1
+var difficulty_midpoint: float = 30
+
+var max_time_between_spawn: float = 5
+var min_time_between_spawn: float = 1
+var L2: float
+var time_decrease_slope: float = 0.1
+var spawn_time_midpoint: float = 30
+
 func _ready() -> void:
+	e = exp(1)
+	L = max_difficulty - difficulty
+	L2 = max_time_between_spawn - min_time_between_spawn
+	spawn_timer.wait_time = max_time_between_spawn
+	spawn_timer.timeout.connect(spawn_weed)
 	spawn_weed()
 	
 func _process(delta: float) -> void:
 	time += delta
+	calculate_difficulty()
 
 func spawn_weed():
-	var random_num = randi_range(1, 100)
+	var random_num = 50 #randi_range(1, 100)
 	var width: int = 1
 	var weed: PackedScene
 	if(random_num >= one_width_chance):
@@ -34,8 +55,22 @@ func spawn_weed():
 	if(weed == null):
 		weed = one_width_weeds.pick_random()
 	var spawn_pos = %GridManager.get_free_point(width)
+	if(spawn_pos == null):
+		spawn_wait()
+		return
 	var weed_instance = weed.instantiate()
 	add_child(weed_instance)
-	print(typeof(weed_instance))
 	weed_instance.set_difficulty(difficulty)
 	weed_instance.position = spawn_pos
+	spawn_wait()
+
+func calculate_difficulty():
+	difficulty = (L / (1 + pow(e, -difficulty_slope * (time - difficulty_midpoint)))) + 1
+
+func spawn_wait():
+	var wait_time = -(L2 / (1 + pow(e, -time_decrease_slope * (time - spawn_time_midpoint)))) + 5
+	spawn_timer.wait_time = wait_time
+	spawn_timer.start()
+
+func remove_weed(weed: Weed):
+	pass
