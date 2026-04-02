@@ -1,3 +1,4 @@
+@abstract
 class_name Weed extends Node2D
 
 @export var sprite_array: Array[Texture]
@@ -9,7 +10,7 @@ var growth: float = 0
 @onready var weed_sprite: Sprite2D = $WeedMask/WeedSprite
 
 func _ready() -> void:
-	weed_sprite = sprite_array.pick_random()
+	weed_sprite.texture = sprite_array.pick_random()
 	weed_mask.offset = INITIAL_OFFSET
 
 func _process(delta: float) -> void:

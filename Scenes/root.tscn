@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3qrx56nve36c" path="res://Sprites/GridLines.png" id="4_4g5cr"]
 [ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://Scenes/grid_manager.gd" id="4_c3mwy"]
 [ext_resource type="Texture2D" uid="uid://bmtqp8pqv6tsb" path="res://Sprites/DandelionWeed.png" id="6_ckhy6"]
-[ext_resource type="Script" uid="uid://bf65nmgyn8kta" path="res://Scripts/weed.gd" id="6_dun2r"]
+[ext_resource type="Script" uid="uid://bfxbjn1bmdu54" path="res://Scripts/Weeds/dandelion_weed.gd" id="6_r3lo5"]
 [ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="7_r3lo5"]
 
 [node name="Root" type="Node2D" unique_id=1014854693]
@@ -36,7 +36,8 @@ grid_height = 15
 
 [node name="Weed" type="Node2D" parent="." unique_id=1428564073]
 position = Vector2(8, -120)
-script = ExtResource("6_dun2r")
+script = ExtResource("6_r3lo5")
+sprite_array = Array[Texture]([ExtResource("6_ckhy6")])
 
 [node name="WeedMask" type="Sprite2D" parent="Weed" unique_id=980901739]
 clip_children = 1
