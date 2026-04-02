@@ -4,6 +4,8 @@ class_name Weed extends Node2D
 @export var sprite_array: Array[Texture]
 const INITIAL_OFFSET: Vector2 = Vector2(0, 235)
 
+signal stretched(weed: Weed)
+
 @export var grow_rate: float = 50.0
 var base_length = 240
 var grow_rate_additive: float = 0.0
@@ -67,9 +69,13 @@ func grab(grabbing: bool):
 		return_to_normal()
 func fully_stretched():
 	grab(false)
-
+	stretched.emit(self)
+	
 func cut():
 	print("cutting")
 	
 func weedkiller():
 	print("weed killering")
+
+func set_difficulty(difficulty: float):
+	grow_rate *= difficulty

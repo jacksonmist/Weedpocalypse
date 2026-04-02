@@ -39,5 +39,11 @@ func use_tool(area: Area2D):
 func add_grabbed_weed(weed: Weed):
 	if(!grabbed_weeds.has(weed)):
 		grabbed_weeds.append(weed)
+		#weed.stretched.connect(remove_weed)
 		return true
 	return false
+
+#func remove_weed(weed: Weed):
+	#if(grabbed_weeds.has(weed)):
+		#print("removed")
+		#grabbed_weeds.erase(weed)

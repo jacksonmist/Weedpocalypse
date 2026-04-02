@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bu5tv0124e1ly" path="res://Scenes/mouse_controller.gd" id="3_qtxxq"]
 [ext_resource type="Texture2D" uid="uid://c3qrx56nve36c" path="res://Sprites/GridLines.png" id="4_4g5cr"]
 [ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://Scenes/grid_manager.gd" id="4_c3mwy"]
+[ext_resource type="Script" uid="uid://cq0vcixxeirbg" path="res://Scenes/weed_manager.gd" id="6_r3lo5"]
 [ext_resource type="PackedScene" uid="uid://dfxcw512y58mt" path="res://Scenes/Weeds/Dandelion_Weed.tscn" id="7_dun2r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
@@ -37,16 +38,12 @@ texture = ExtResource("1_i04dx")
 texture = ExtResource("4_4g5cr")
 
 [node name="GridManager" type="Node" parent="." unique_id=483008534]
+unique_name_in_owner = true
 script = ExtResource("4_c3mwy")
 tile_size = 16
 grid_width = 10
 grid_height = 15
 
-[node name="DandelionPivot" parent="." unique_id=1336183014 instance=ExtResource("7_dun2r")]
-position = Vector2(8, 0)
-
-[node name="DandelionPivot2" parent="." unique_id=559165376 instance=ExtResource("7_dun2r")]
-position = Vector2(72, 0)
-
-[node name="DandelionPivot3" parent="." unique_id=1757794253 instance=ExtResource("7_dun2r")]
-position = Vector2(152, 0)
+[node name="WeedManager" type="Node" parent="." unique_id=1047289638]
+script = ExtResource("6_r3lo5")
+one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r")])
