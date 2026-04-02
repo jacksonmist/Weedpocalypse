@@ -1,3 +1,5 @@
 [gd_scene format=3 uid="uid://1ips1634u4wj"]
 
 [node name="Root" type="Node2D" unique_id=1014854693]
+
+[node name="Player" type="Node2D" parent="." unique_id=97924618]
