@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dfxcw512y58mt"]
+
+[ext_resource type="Script" uid="uid://bfxbjn1bmdu54" path="res://Scripts/Weeds/dandelion_weed.gd" id="1_ebb8y"]
+[ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="1_tpb20"]
+[ext_resource type="Texture2D" uid="uid://bmtqp8pqv6tsb" path="res://Sprites/DandelionWeed.png" id="2_hl2pi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
+size = Vector2(16, 240)
+
+[node name="DandelionPivot" type="Node2D" unique_id=1336183014]
+
+[node name="Weed" type="Node2D" parent="." unique_id=2007246088]
+position = Vector2(0, -120)
+script = ExtResource("1_ebb8y")
+sprite_array = Array[Texture]([ExtResource("2_hl2pi")])
+
+[node name="WeedMask" type="Sprite2D" parent="Weed" unique_id=25107849]
+clip_children = 1
+texture = ExtResource("1_tpb20")
+
+[node name="WeedSprite" type="Sprite2D" parent="Weed/WeedMask" unique_id=515589144]
+
+[node name="Area2D" type="Area2D" parent="Weed" unique_id=942955904]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weed/Area2D" unique_id=1574559941]
+shape = SubResource("RectangleShape2D_r3lo5")
