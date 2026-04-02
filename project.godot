@@ -11,8 +11,18 @@ config_version=5
 [application]
 
 config/name="Weedpocalypse"
+run/main_scene="uid://1ips1634u4wj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=960
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+window/stretch/scale=4.0
+window/stretch/scale_mode="integer"
 
 [input]
 
@@ -38,4 +48,5 @@ Weekiller={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
