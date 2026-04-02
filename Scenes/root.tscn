@@ -1,13 +1,32 @@
 [gd_scene format=3 uid="uid://1ips1634u4wj"]
 
+[ext_resource type="Script" uid="uid://cl0ynomap58vy" path="res://Scripts/player_controller.gd" id="1_8pvmw"]
 [ext_resource type="Texture2D" uid="uid://dpaqc3hbhry8h" path="res://Sprites/ScreenTemplate.png" id="1_i04dx"]
+[ext_resource type="Script" uid="uid://dr3p83w7xi033" path="res://Scripts/tool_manager.gd" id="2_vnucn"]
+[ext_resource type="Texture2D" uid="uid://c3qrx56nve36c" path="res://Sprites/GridLines.png" id="4_4g5cr"]
+[ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://Scenes/grid_manager.gd" id="4_c3mwy"]
 
 [node name="Root" type="Node2D" unique_id=1014854693]
 
 [node name="Player" type="Node2D" parent="." unique_id=97924618]
+script = ExtResource("1_8pvmw")
+
+[node name="ToolManager" type="Node" parent="Player" unique_id=1192835480]
+script = ExtResource("2_vnucn")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1524720331]
+position = Vector2(80, -115)
 
 [node name="ScreenTemplate" type="Sprite2D" parent="." unique_id=1204207731]
 texture_filter = 1
+position = Vector2(80, -115)
 texture = ExtResource("1_i04dx")
+
+[node name="GridLines" type="Sprite2D" parent="ScreenTemplate" unique_id=210329844]
+texture = ExtResource("4_4g5cr")
+
+[node name="GridManager" type="Node" parent="." unique_id=483008534]
+script = ExtResource("4_c3mwy")
+tile_size = 16
+grid_width = 10
+grid_height = 15
