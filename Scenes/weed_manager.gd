@@ -51,9 +51,8 @@ func spawn_weed():
 	else:
 		width = 3
 		weed = three_width_weeds.pick_random()
-		
 	if(weed == null):
-		weed = one_width_weeds.pick_random()
+		weed = one_width_weeds.pick_random()	
 	var spawn_pos = %GridManager.get_free_point(width)
 	if(spawn_pos == null):
 		spawn_wait()
