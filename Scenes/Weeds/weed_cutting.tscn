@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bcvo6d2u34fq3"]
+
+[ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="1_8qtg1"]
+[ext_resource type="Script" uid="uid://wydptvtiro6k" path="res://Scenes/weed_cutting.gd" id="2_00mx3"]
+[ext_resource type="Texture2D" uid="uid://bmtqp8pqv6tsb" path="res://Sprites/DandelionWeed.png" id="3_mfkch"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=160490206]
+script = ExtResource("2_00mx3")
+
+[node name="WeedMask" type="Sprite2D" parent="." unique_id=424873742]
+clip_children = 1
+scale = Vector2(1, 0.21)
+texture = ExtResource("1_8qtg1")
+
+[node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=549591508]
+scale = Vector2(1, 4.76)
+texture = ExtResource("3_mfkch")
+
+[node name="KillTimer" type="Timer" parent="." unique_id=536894827]
+wait_time = 3.0

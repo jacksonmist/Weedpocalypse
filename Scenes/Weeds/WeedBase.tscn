@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://cxkiisbym1w0g"]
 
 [ext_resource type="Script" uid="uid://bf65nmgyn8kta" path="res://Scripts/Weeds/weed.gd" id="1_k147j"]
+[ext_resource type="PackedScene" uid="uid://bcvo6d2u34fq3" path="res://Scenes/Weeds/weed_cutting.tscn" id="2_cod8g"]
 [ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="3_dhnwh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
 size = Vector2(16, 240)
 
-[node name="WeedPivot" type="Node2D" unique_id=1336183014]
+[node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
+top_level = true
 script = ExtResource("1_k147j")
+cutting = ExtResource("2_cod8g")
 
 [node name="WeedMask" type="Sprite2D" parent="." unique_id=25107849]
 clip_children = 1

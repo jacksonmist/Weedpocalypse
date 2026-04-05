@@ -1,6 +1,9 @@
 
-class_name Weed extends Node2D
-
+class_name Weed extends CharacterBody2D
+const GRAVITY = 980
+var random_vector
+var rotation_speed
+var is_dead: bool = false
 @export var sprite_array: Array[Texture]
 const INITIAL_OFFSET: Vector2 = Vector2(0, 235)
 
@@ -23,6 +26,7 @@ var stretch_threshold: float = 100
 @onready var area_2d: Area2D = $Area2D
 @onready var collision_shape: CollisionShape2D = $Area2D/CollisionShape2D
 
+@export var cutting: PackedScene
 
 func _ready() -> void:
 	initial_position = position
@@ -30,8 +34,9 @@ func _ready() -> void:
 	weed_sprite.texture = sprite_array.pick_random()
 	weed_mask.offset = INITIAL_OFFSET
 	collision_shape.position = INITIAL_OFFSET
+	set_kill_velocity()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if(weed_mask.offset.y > 0 and is_growing):
 		growth += delta * grow_rate
 		var offset = Vector2(0, INITIAL_OFFSET.y - growth)
@@ -47,6 +52,10 @@ func _process(delta: float) -> void:
 		scale.y = to_mouse.length() / (base_length - weed_mask.offset.y)
 		if(distance_from_grab > stretch_threshold):
 			fully_stretched()
+	if(is_dead):
+		rotation += rotation_speed * delta
+		velocity.y += GRAVITY * delta
+		move_and_slide()
 		
 func return_to_normal():
 	var tween = create_tween()
@@ -66,15 +75,45 @@ func grab(grabbing: bool):
 		grow_rate += grow_rate_additive
 		grow_rate_additive = 0
 		return_to_normal()
+
 func fully_stretched():
 	grab(false)
 	stretched.emit(self)
-	
+
 func cut():
-	print("cutting")
+	var cutting_instance = cutting.instantiate()
+	call_deferred("add_child", cutting_instance)
+	var mouse_pos = get_global_mouse_position()
+	var offset = Vector2(0, INITIAL_OFFSET.y - growth)
+	cutting_instance.init(weed_sprite, -mouse_pos.y, growth)
+	
+	growth = -mouse_pos.y
+	
+	weed_mask.offset = offset
 	
 func weedkiller():
 	print("weed killering")
 
 func set_difficulty(difficulty: float):
 	grow_rate *= difficulty
+
+func check_kill(is_met: bool):
+	if(is_met):
+		kill()
+	else:
+		punishment(10)
+
+func kill():
+	set_kill_velocity()
+	is_dead = true
+	is_growing = false
+
+func punishment(grow_rate_add: float):
+	grow_rate += grow_rate_add
+
+func set_kill_velocity():
+	var random_angle = randf_range(0, PI)
+	random_vector = Vector2(cos(random_angle), -sin(random_angle))
+	var speed = randf_range(0, 250)
+	velocity += random_vector * speed
+	rotation_speed = randf_range(-10, 10)
