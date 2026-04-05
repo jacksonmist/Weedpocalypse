@@ -25,15 +25,17 @@ func get_free_point(width: int):
 	for i in range(spawn_points.size() - width + 1):
 		if(sum == 0):
 			free_spots.append(i)
+		if(i == spawn_points.size() - width):
+			break
 		sum -= spawn_points[i]
-		sum += spawn_points[width + i - 1]
+		sum += spawn_points[width + i]
+		
 	if(free_spots.size() == 0):
 		return null
 	var chosen_spot = free_spots.pick_random()
 	for i in range(chosen_spot, width + chosen_spot):
 		spawn_points[i] = 1
 	var world_pos: Vector2 = _grid_to_world(Vector2i(chosen_spot, 0))
-	print(spawn_points)
 	match width:
 		1:
 			return world_pos
