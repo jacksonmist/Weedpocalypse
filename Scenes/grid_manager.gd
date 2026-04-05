@@ -50,3 +50,6 @@ func _grid_to_world(grid_pos: Vector2i):
 	var world_pos = (grid_pos * 16)
 	world_pos.x += 8
 	return world_pos
+
+func set_free_position(pos: int):
+	spawn_points[pos] = 0

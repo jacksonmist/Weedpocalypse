@@ -1,5 +1,12 @@
 
 class_name Weed extends CharacterBody2D
+
+@onready var kill_timer: Timer = $KillTimer
+
+@export var base_score: float
+var spawn_pos: Vector2
+var width: int
+var manager: WeedManager
 const GRAVITY = 980
 var random_vector
 var rotation_speed
@@ -34,6 +41,7 @@ func _ready() -> void:
 	weed_sprite.texture = sprite_array.pick_random()
 	weed_mask.offset = INITIAL_OFFSET
 	collision_shape.position = INITIAL_OFFSET
+	kill_timer.timeout.connect(remove_from_scene)
 	set_kill_velocity()
 
 func _physics_process(delta: float) -> void:
@@ -94,8 +102,11 @@ func cut():
 func weedkiller():
 	print("weed killering")
 
-func set_difficulty(difficulty: float):
+func init(manager_ref: WeedManager, difficulty: float, spawn_position: Vector2, width_value: int):
+	manager = manager_ref
 	grow_rate *= difficulty
+	spawn_pos = spawn_position
+	width = width_value
 
 func check_kill(is_met: bool):
 	if(is_met):
@@ -107,6 +118,11 @@ func kill():
 	set_kill_velocity()
 	is_dead = true
 	is_growing = false
+	manager.update_score(base_score)
+	kill_timer.start()
+	
+func remove_from_scene():
+	manager.remove_weed(self)
 
 func punishment(grow_rate_add: float):
 	grow_rate += grow_rate_add

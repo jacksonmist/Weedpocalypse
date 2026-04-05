@@ -1,5 +1,5 @@
 class_name ScytheTool extends Tool
-
+var type: = Game_Enums.Tool.SCYTHE
 func _init():
 	name = "Scythe"
 

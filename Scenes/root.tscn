@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://Scenes/grid_manager.gd" id="4_c3mwy"]
 [ext_resource type="Script" uid="uid://cq0vcixxeirbg" path="res://Scenes/weed_manager.gd" id="6_r3lo5"]
 [ext_resource type="PackedScene" uid="uid://dfxcw512y58mt" path="res://Scenes/Weeds/Dandelion_Weed.tscn" id="7_dun2r"]
+[ext_resource type="Script" uid="uid://bujpxapqvr5nj" path="res://Scenes/score_manager.gd" id="9_qtxxq"]
+[ext_resource type="Script" uid="uid://dco3lrc7lyjdp" path="res://Scenes/ui_manager.gd" id="10_8fnbn"]
+[ext_resource type="Texture2D" uid="uid://cpv4mpdywenjo" path="res://Sprites/HandUI.png" id="11_a6f85"]
+[ext_resource type="Texture2D" uid="uid://y80toy4mgi78" path="res://Sprites/ScytheUI.png" id="12_fu36u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
 radius = 8.0
@@ -50,3 +54,65 @@ one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r")])
 
 [node name="SpawnTimer" type="Timer" parent="WeedManager" unique_id=1202271330]
 wait_time = 5.0
+
+[node name="ScoreManager" type="Node" parent="." unique_id=564564763]
+unique_name_in_owner = true
+script = ExtResource("9_qtxxq")
+
+[node name="UIManager" type="CanvasLayer" parent="." unique_id=1546841438]
+unique_name_in_owner = true
+script = ExtResource("10_8fnbn")
+
+[node name="HandToolButton" type="TextureButton" parent="UIManager" unique_id=886130207]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -45.0
+offset_right = 41.0
+offset_bottom = -29.0
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture_normal = ExtResource("11_a6f85")
+stretch_mode = 4
+
+[node name="Outline" type="ColorRect" parent="UIManager/HandToolButton" unique_id=327874655]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 17.0
+offset_bottom = 17.0
+pivot_offset = Vector2(9, 34)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScytheToolButton" type="TextureButton" parent="UIManager" unique_id=189474391]
+z_index = 4
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 41.0
+offset_bottom = 21.0
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture_normal = ExtResource("12_fu36u")
+stretch_mode = 4
+
+[node name="Outline" type="ColorRect" parent="UIManager/ScytheToolButton" unique_id=1517005566]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 17.0
+offset_bottom = 17.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(9, -16)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScoreText" type="RichTextLabel" parent="UIManager" unique_id=850819361]
+offset_right = 40.0
+offset_bottom = 40.0

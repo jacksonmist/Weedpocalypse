@@ -1,4 +1,4 @@
-extends Area2D
+class_name MouseController extends Area2D
 
 var mouse_position: Vector2
 var current_tool: Game_Enums.Tool
@@ -14,7 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	position = get_global_mouse_position()
-
+	
 func set_tool(tool: Game_Enums.Tool):
 	current_tool = tool
 

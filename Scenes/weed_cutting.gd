@@ -9,10 +9,10 @@ func init(sprite: Sprite2D, bottom: float, top: float) -> void:
 	kill_timer.call_deferred("start")
 	var weed_sprite: Sprite2D = $WeedMask/WeedSprite
 	weed_sprite.texture = sprite.texture
-	var range = top - bottom
-	if(range < 0):
-		range = 0.1
-	weed_mask.scale.y = range/240
+	var pixel_range = top - bottom
+	if(pixel_range < 0):
+		pixel_range = 0.1
+	weed_mask.scale.y = pixel_range/240
 	weed_sprite.scale.y = 1/weed_mask.scale.y
 	
 	position.y = -(top + bottom) / 2

@@ -1,7 +1,8 @@
 class_name WeedManager extends Node
 
 @onready var spawn_timer: Timer = $SpawnTimer
-
+@onready var grid_manager: GridManager = %GridManager
+@onready var score_manager: ScoreManager = %ScoreManager
 
 var time: float = 0.0
 var difficulty: float = 1
@@ -53,13 +54,13 @@ func spawn_weed():
 		weed = three_width_weeds.pick_random()
 	if(weed == null):
 		weed = one_width_weeds.pick_random()	
-	var spawn_pos = %GridManager.get_free_point(width)
+	var spawn_pos = grid_manager.get_free_point(width)
 	if(spawn_pos == null):
 		spawn_wait()
 		return
 	var weed_instance = weed.instantiate()
 	add_child(weed_instance)
-	weed_instance.set_difficulty(difficulty)
+	weed_instance.init(self, difficulty, spawn_pos, width)
 	weed_instance.position = spawn_pos
 	spawn_wait()
 
@@ -72,4 +73,9 @@ func spawn_wait():
 	spawn_timer.start()
 
 func remove_weed(weed: Weed):
-	pass
+	var free_pos = int((weed.spawn_pos.x - 8) / 16)
+	grid_manager.set_free_position(free_pos)
+	weed.queue_free()
+
+func update_score(base_score: float):
+	score_manager.add_score(base_score)
