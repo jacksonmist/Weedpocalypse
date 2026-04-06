@@ -79,3 +79,7 @@ func remove_weed(weed: Weed):
 
 func update_score(base_score: float):
 	score_manager.add_score(base_score)
+
+func game_over():
+	score_manager.game_over()
+	

@@ -15,6 +15,10 @@ run/main_scene="uid://1ips1634u4wj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SilentWolf="*uid://v1u5aujj6ltn"
+
 [display]
 
 window/size/viewport_width=1280

@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://bujpxapqvr5nj" path="res://Scenes/score_manager.gd" id="9_qtxxq"]
 [ext_resource type="Script" uid="uid://dco3lrc7lyjdp" path="res://Scenes/ui_manager.gd" id="10_8fnbn"]
 [ext_resource type="Texture2D" uid="uid://cpv4mpdywenjo" path="res://Sprites/HandUI.png" id="11_a6f85"]
+[ext_resource type="FontFile" uid="uid://dxdj2o17lv4f" path="res://Fonts/KiwiSoda.ttf" id="11_lwnbm"]
 [ext_resource type="Texture2D" uid="uid://y80toy4mgi78" path="res://Sprites/ScytheUI.png" id="12_fu36u"]
+[ext_resource type="Texture2D" uid="uid://bqvljg6d0si63" path="res://Sprites/HotbarUI.png" id="14_20eh2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
 radius = 8.0
@@ -62,6 +64,79 @@ script = ExtResource("9_qtxxq")
 [node name="UIManager" type="CanvasLayer" parent="." unique_id=1546841438]
 unique_name_in_owner = true
 script = ExtResource("10_8fnbn")
+font = ExtResource("11_lwnbm")
+
+[node name="RetryBackground" type="NinePatchRect" parent="UIManager" unique_id=926895992]
+visible = false
+z_index = 6
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = 29.25
+offset_right = 77.0
+offset_bottom = 69.25037
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_20eh2")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 2
+patch_margin_top = 4
+patch_margin_right = 2
+patch_margin_bottom = 2
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+
+[node name="RetryButton" type="Button" parent="UIManager/RetryBackground" unique_id=1881354541]
+layout_mode = 0
+offset_right = 154.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.872, 0.68, 1, 1)
+theme_override_colors/font_outline_color = Color(0.55838996, 0.2394, 0.63, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("11_lwnbm")
+theme_override_font_sizes/font_size = 32
+text = "Retry"
+flat = true
+
+[node name="ExitBackground" type="NinePatchRect" parent="UIManager" unique_id=133106678]
+visible = false
+z_index = 6
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = 72.91998
+offset_right = 77.0
+offset_bottom = 112.92029
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_20eh2")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 2
+patch_margin_top = 4
+patch_margin_right = 2
+patch_margin_bottom = 2
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+
+[node name="ExitButton" type="Button" parent="UIManager/ExitBackground" unique_id=253986930]
+layout_mode = 0
+offset_right = 154.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.872, 0.68, 1, 1)
+theme_override_colors/font_outline_color = Color(0.55838996, 0.2394, 0.63, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("11_lwnbm")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+flat = true
 
 [node name="HandToolButton" type="TextureButton" parent="UIManager" unique_id=886130207]
 anchors_preset = 4
@@ -114,5 +189,31 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ScoreText" type="RichTextLabel" parent="UIManager" unique_id=850819361]
-offset_right = 40.0
-offset_bottom = 40.0
+texture_filter = 1
+clip_contents = false
+offset_right = 134.38298
+offset_bottom = 118.0
+scale = Vector2(0.5, 0.5)
+bbcode_enabled = true
+text = "[font=res://Fonts/KiwiSoda.ttf][left][font_size=48]
+[color=#e29bfa][outline_color=#4e278c][outline_size=16]Score[/outline_size][/outline_color][/color][/font_size][/left][/font]"
+
+[node name="GameOverText" type="RichTextLabel" parent="UIManager" unique_id=1333910176]
+visible = false
+clip_contents = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -143.0
+offset_right = 289.0
+offset_bottom = 279.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=64]
+[color=#ca7ef2][outline_color=#4e278c][outline_size=16][wave amp=25.0 freq=5.0 connected=1]Game Over![/wave][/outline_size][/outline_color][/color][/font_size][/center][/font]"

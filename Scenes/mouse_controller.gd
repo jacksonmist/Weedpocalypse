@@ -1,5 +1,11 @@
 class_name MouseController extends Area2D
 
+@export var hand_cursor: Texture
+@export var hand_pressed_cursor: Texture
+@export var scythe_cursor: Texture
+@export var scythe_pressed_cursor: Texture
+@export var scythe_cut_animation: AnimatedSprite2D
+
 var mouse_position: Vector2
 var current_tool: Game_Enums.Tool
 
@@ -17,6 +23,11 @@ func _process(_delta: float) -> void:
 	
 func set_tool(tool: Game_Enums.Tool):
 	current_tool = tool
+	match current_tool:
+		Game_Enums.Tool.HAND:
+			Input.set_custom_mouse_cursor(hand_cursor)
+		Game_Enums.Tool.SCYTHE:
+			Input.set_custom_mouse_cursor(scythe_cursor)
 
 func set_active(is_active: bool):
 	monitoring = is_active
@@ -24,6 +35,11 @@ func set_active(is_active: bool):
 		for weed in grabbed_weeds:
 			weed.grab(false)
 		grabbed_weeds = []
+	match current_tool:
+		Game_Enums.Tool.HAND:
+			Input.set_custom_mouse_cursor(hand_pressed_cursor)
+		Game_Enums.Tool.SCYTHE:
+			Input.set_custom_mouse_cursor(scythe_pressed_cursor)
 	
 func use_tool(area: Area2D):
 	var weed = area.get_parent()

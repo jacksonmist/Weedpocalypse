@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfxbjn1bmdu54" path="res://Scripts/Weeds/dandelion_weed.gd" id="1_ebb8y"]
 [ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="1_tpb20"]
+[ext_resource type="Texture2D" uid="uid://v6bdqmb2okd8" path="res://Sprites/Flower.png" id="2_6ctd5"]
 [ext_resource type="PackedScene" uid="uid://bcvo6d2u34fq3" path="res://Scenes/Weeds/weed_cutting.tscn" id="3_hl2pi"]
 [ext_resource type="Texture2D" uid="uid://hrvm78dn5tce" path="res://Sprites/DandelionWeed2.png" id="5_6ctd5"]
 
@@ -9,10 +10,16 @@
 size = Vector2(16, 240)
 
 [node name="Dandelion" type="CharacterBody2D" unique_id=1216507540]
+z_index = 5
 script = ExtResource("1_ebb8y")
 base_score = 10.0
+flower_texture = ExtResource("2_6ctd5")
 sprite_array = Array[Texture]([ExtResource("5_6ctd5")])
 cutting = ExtResource("3_hl2pi")
+
+[node name="Flower" type="Sprite2D" parent="." unique_id=107252077]
+z_index = 5
+texture = ExtResource("2_6ctd5")
 
 [node name="WeedMask" type="Sprite2D" parent="." unique_id=25107849]
 clip_children = 1

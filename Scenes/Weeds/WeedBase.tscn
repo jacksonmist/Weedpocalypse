@@ -12,6 +12,9 @@ top_level = true
 script = ExtResource("1_k147j")
 cutting = ExtResource("2_cod8g")
 
+[node name="Flower" type="Sprite2D" parent="." unique_id=500254823]
+z_index = 1
+
 [node name="WeedMask" type="Sprite2D" parent="." unique_id=25107849]
 clip_children = 1
 position = Vector2(0, -120)

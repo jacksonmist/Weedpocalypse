@@ -9,8 +9,10 @@ var width: int
 var manager: WeedManager
 const GRAVITY = 980
 var random_vector
+var random_offset
 var rotation_speed
 var is_dead: bool = false
+@export var flower_texture: Texture
 @export var sprite_array: Array[Texture]
 const INITIAL_OFFSET: Vector2 = Vector2(0, 235)
 
@@ -32,6 +34,8 @@ var stretch_threshold: float = 100
 @onready var weed_sprite: Sprite2D = $WeedMask/WeedSprite
 @onready var area_2d: Area2D = $Area2D
 @onready var collision_shape: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var flower: Sprite2D = $Flower
+
 
 @export var cutting: PackedScene
 
@@ -40,13 +44,17 @@ func _ready() -> void:
 	collision_shape.shape = collision_shape.shape.duplicate()
 	weed_sprite.texture = sprite_array.pick_random()
 	weed_mask.offset = INITIAL_OFFSET
+	flower.texture = flower_texture
 	collision_shape.position = INITIAL_OFFSET
 	kill_timer.timeout.connect(remove_from_scene)
 	set_kill_velocity()
+	random_offset = randf()
 
 func _physics_process(delta: float) -> void:
-	if(weed_mask.offset.y > 0 and is_growing):
+	if(weed_mask.offset.y > 0 and is_growing and !is_dead):
 		growth += delta * grow_rate
+		flower.position.y = -growth -3
+		flower.rotation = sin((growth + random_offset) / 10) / 2
 		var offset = Vector2(0, INITIAL_OFFSET.y - growth)
 		weed_mask.offset = offset
 		collision_shape.position = offset
@@ -64,6 +72,8 @@ func _physics_process(delta: float) -> void:
 		rotation += rotation_speed * delta
 		velocity.y += GRAVITY * delta
 		move_and_slide()
+	if(weed_mask.offset.y <= 0):
+		manager.game_over()
 		
 func return_to_normal():
 	var tween = create_tween()
