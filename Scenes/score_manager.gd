@@ -6,10 +6,11 @@ var displayed_score: int
 var score: float
 var high_score: float
 var time: float
-
+var is_game_over: bool
 func _ready():
 	load_data()
 	ui.load_high_score(high_score)
+	is_game_over = false
 
 func _process(delta: float) -> void:
 	time += delta
@@ -24,6 +25,9 @@ func add_score(base_value: float):
 	update_score()
 
 func game_over():
+	if(is_game_over):
+		return
+	is_game_over = true
 	if(score > high_score):
 		high_score = score
 		save()

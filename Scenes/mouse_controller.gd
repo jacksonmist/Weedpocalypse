@@ -33,7 +33,8 @@ func set_active(is_active: bool):
 	monitoring = is_active
 	if(!is_active):
 		for weed in grabbed_weeds:
-			weed.grab(false)
+			if weed != null:
+				weed.grab(false)
 		grabbed_weeds = []
 	match current_tool:
 		Game_Enums.Tool.HAND:
