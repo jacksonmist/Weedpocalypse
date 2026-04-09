@@ -19,6 +19,13 @@ var high_score_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=48]
 var high_score_postfix = "[/rainbow][/wave][/outline_size][/outline_color][/color][/font_size][/center][/font]"
 var text_freq: float
 var text_amplitude: float
+
+@onready var combo_text: RichTextLabel = $ComboText
+var combo_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=16]
+[color=#ca7ef2][outline_color=#4e278c][outline_size=8][wave amp=25.0 freq=5.0 connected=1]"
+var combo_postfix = "[/wave][/outline_size][/outline_color][/color][/font_size][/center][/font]"
+var shake_rate: float
+
 @onready var hand_tool_button: TextureButton = $HandToolButton
 @onready var hand_outline: ColorRect = $HandToolButton/Outline
 @onready var scythe_tool_button: TextureButton = $ScytheToolButton
@@ -47,19 +54,31 @@ func _ready() -> void:
 	
 func update_score(new_score: int):
 	var tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
-	tween.tween_method(_set_displayed_value.bind(score_text), score, new_score, 1)
+	tween.tween_method(_set_displayed_score.bind(score_text), score, new_score, 1)
 	score = new_score
 
 func load_high_score(value: float):
 	previous_high_score = value
 	
-func _set_displayed_value(new_score: int, _label: RichTextLabel):
+func _set_displayed_score(new_score: int, _label: RichTextLabel):
 	text_freq = clamp(score / 100, 0, 20)
 	text_amplitude =clamp(score / 50, 0, 200)
 	score_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=48]
 [color=#ca7ef2][outline_color=#4e278c][outline_size=16][wave amp=" + str(text_amplitude) +  "freq=" + str(text_freq) + "connected=0]"
 	score_text.text = score_prefix + str(new_score) + score_postfix
+
+func update_combo(value: int):
+	shake_rate = value * 2
+	combo_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=32]
+[color=#ca7ef2][outline_color=#4e278c][outline_size=16][shake rate=" + str(shake_rate) + " level=5 connected=1]"
+	combo_postfix = "[/shake][/outline_size][/outline_color][/color][/font_size][/center][/font]"
+	if(value >= 10):
+		combo_prefix += "[rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]"
+		combo_postfix = "[/rainbow]" + combo_postfix
+	combo_text.text = combo_prefix + str(value) + "X" + combo_postfix
 	
+func _set_displayed_combo():
+	pass
 func set_tool_manager(ref: ToolManager):
 	tool_manager = ref
 	

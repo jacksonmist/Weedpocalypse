@@ -15,8 +15,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		tool_manager.switch_tool(Game_Enums.Tool.HAND)
 	if(event.is_action_pressed("Scythe")):
 		tool_manager.switch_tool(Game_Enums.Tool.SCYTHE)
-	if(event.is_action_pressed("Weekiller")):
-		tool_manager.switch_tool(Game_Enums.Tool.WEEDKILLER)
 	if(event is InputEventMouseButton):
 		tool_manager.set_tool_active(event.pressed)
 		mouse_controller.set_active(event.pressed)

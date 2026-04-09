@@ -37,10 +37,11 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	time += delta
-	calculate_difficulty()
+	
 
 func spawn_weed():
-	var random_num = 50 #randi_range(1, 100)
+	calculate_difficulty()
+	var random_num = randi_range(30, 100)
 	var width: int = 1
 	var weed: PackedScene
 	if(random_num >= one_width_chance):
@@ -83,3 +84,5 @@ func update_score(base_score: float):
 func game_over():
 	score_manager.game_over()
 	
+func weed_punishment():
+	score_manager.reset_combo()

@@ -1,14 +1,18 @@
-[gd_scene format=3 uid="uid://cxkiisbym1w0g"]
+[gd_scene format=3 uid="uid://e4v3mjrplbwd"]
 
-[ext_resource type="Script" uid="uid://bf65nmgyn8kta" path="res://Scripts/Weeds/weed.gd" id="1_k147j"]
-[ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="3_dhnwh"]
+[ext_resource type="Script" uid="uid://cyknrfohqxulq" path="res://Scripts/Weeds/tree_weed.gd" id="1_qqu7v"]
+[ext_resource type="Texture2D" uid="uid://danxnxntecb6m" path="res://Sprites/tree_weed_test.png" id="2_gsdtx"]
+[ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="3_gsdtx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
 size = Vector2(16, 240)
 
 [node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
 top_level = true
-script = ExtResource("1_k147j")
+script = ExtResource("1_qqu7v")
+base_score = 40.0
+sprite_array = Array[Texture]([ExtResource("2_gsdtx")])
+grow_rate = 10.0
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=500254823]
 z_index = 1
@@ -16,7 +20,7 @@ z_index = 1
 [node name="WeedMask" type="Sprite2D" parent="." unique_id=25107849]
 clip_children = 1
 position = Vector2(0, -120)
-texture = ExtResource("3_dhnwh")
+texture = ExtResource("3_gsdtx")
 
 [node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=515589144]
 

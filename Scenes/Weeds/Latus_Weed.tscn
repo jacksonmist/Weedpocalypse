@@ -1,24 +1,32 @@
-[gd_scene format=3 uid="uid://cxkiisbym1w0g"]
+[gd_scene format=3 uid="uid://dtc52d044b462"]
 
-[ext_resource type="Script" uid="uid://bf65nmgyn8kta" path="res://Scripts/Weeds/weed.gd" id="1_k147j"]
-[ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="3_dhnwh"]
+[ext_resource type="Script" uid="uid://darnqt3pj16b3" path="res://Scripts/Weeds/latus_weed.gd" id="1_rxxiy"]
+[ext_resource type="Texture2D" uid="uid://2qls3cm87q6w" path="res://Sprites/latus_weed_flower_test.png" id="1_tbp71"]
+[ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="3_l1m8q"]
+[ext_resource type="Texture2D" uid="uid://bmtqp8pqv6tsb" path="res://Sprites/DandelionWeed.png" id="3_rxxiy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
 size = Vector2(16, 240)
 
 [node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
 top_level = true
-script = ExtResource("1_k147j")
+script = ExtResource("1_rxxiy")
+base_score = 20.0
+flower_texture = ExtResource("1_tbp71")
+sprite_array = Array[Texture]([ExtResource("3_rxxiy")])
+grow_rate = 30.0
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=500254823]
 z_index = 1
+texture = ExtResource("1_tbp71")
 
 [node name="WeedMask" type="Sprite2D" parent="." unique_id=25107849]
 clip_children = 1
 position = Vector2(0, -120)
-texture = ExtResource("3_dhnwh")
+texture = ExtResource("3_l1m8q")
 
 [node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=515589144]
+texture = ExtResource("3_rxxiy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=942955904]
 position = Vector2(0, -120)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcvo6d2u34fq3"]
 
 [ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="1_8qtg1"]
-[ext_resource type="Script" uid="uid://wydptvtiro6k" path="res://Scenes/weed_cutting.gd" id="2_00mx3"]
+[ext_resource type="Script" uid="uid://wydptvtiro6k" path="res://weed_cutting.gd" id="2_00mx3"]
 [ext_resource type="Texture2D" uid="uid://bmtqp8pqv6tsb" path="res://Sprites/DandelionWeed.png" id="3_mfkch"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=160490206]

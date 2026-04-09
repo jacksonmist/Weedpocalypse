@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://7xy0hmdpk3m6"]
+
+[ext_resource type="Script" uid="uid://dt75i6yan6ehh" path="res://Scripts/Weeds/thistle_weed.gd" id="1_tsbbd"]
+[ext_resource type="Texture2D" uid="uid://bhvn4sr7ryles" path="res://Sprites/ThistleStalk.png" id="2_8fq16"]
+[ext_resource type="PackedScene" uid="uid://bcvo6d2u34fq3" path="res://Scenes/Weeds/weed_cutting.tscn" id="2_gnymo"]
+[ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="3_ra0g8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
+size = Vector2(16, 240)
+
+[node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
+top_level = true
+script = ExtResource("1_tsbbd")
+base_score = 10.0
+sprite_array = Array[Texture]([ExtResource("2_8fq16")])
+cutting = ExtResource("2_gnymo")
+
+[node name="Flower" type="Sprite2D" parent="." unique_id=771238174]
+z_index = 1
+
+[node name="WeedMask" type="Sprite2D" parent="." unique_id=25107849]
+clip_children = 1
+position = Vector2(0, -120)
+texture = ExtResource("3_ra0g8")
+
+[node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=515589144]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=942955904]
+position = Vector2(0, -120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1574559941]
+shape = SubResource("RectangleShape2D_r3lo5")
+
+[node name="KillTimer" type="Timer" parent="." unique_id=1976692784]
+wait_time = 3.0

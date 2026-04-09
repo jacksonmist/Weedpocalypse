@@ -1,5 +1,7 @@
 class_name MouseController extends Area2D
 
+@onready var mouse_cursor: Sprite2D = $MouseCursor
+var cursors: Dictionary = {}
 @export var hand_cursor: Texture
 @export var hand_pressed_cursor: Texture
 @export var scythe_cursor: Texture
@@ -15,19 +17,21 @@ func _ready() -> void:
 	current_tool = Game_Enums.Tool.HAND
 	area_entered.connect(use_tool)
 	monitoring = false
+	#mouse_cursor.texture = hand_cursor
+	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	
+	cursors[Game_Enums.Tool.HAND] = preload("res://Sprites/OpenHand.png")
+	cursors[Game_Enums.Tool.SCYTHE] = preload("res://Sprites/Scythe.png")
+	cursors[2] = preload("res://Sprites/ClosedHand.png")
+	cursors[3] = preload("res://Sprites/ScythePressed.png")
+	Input.set_custom_mouse_cursor(cursors[Game_Enums.Tool.HAND], Input.CURSOR_ARROW, Vector2.ZERO)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _physics_process(delta: float):
 	position = get_global_mouse_position()
 	
 func set_tool(tool: Game_Enums.Tool):
 	current_tool = tool
-	match current_tool:
-		Game_Enums.Tool.HAND:
-			Input.set_custom_mouse_cursor(hand_cursor)
-		Game_Enums.Tool.SCYTHE:
-			Input.set_custom_mouse_cursor(scythe_cursor)
+	Input.set_custom_mouse_cursor(cursors[tool])
 
 func set_active(is_active: bool):
 	monitoring = is_active
@@ -36,11 +40,9 @@ func set_active(is_active: bool):
 			if weed != null:
 				weed.grab(false)
 		grabbed_weeds = []
-	match current_tool:
-		Game_Enums.Tool.HAND:
-			Input.set_custom_mouse_cursor(hand_pressed_cursor)
-		Game_Enums.Tool.SCYTHE:
-			Input.set_custom_mouse_cursor(scythe_pressed_cursor)
+		Input.set_custom_mouse_cursor(cursors[current_tool])
+	else:
+		Input.set_custom_mouse_cursor(cursors[current_tool + 2])
 	
 func use_tool(area: Area2D):
 	var weed = area.get_parent()

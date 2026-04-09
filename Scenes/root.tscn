@@ -3,17 +3,25 @@
 [ext_resource type="Script" uid="uid://cl0ynomap58vy" path="res://Scripts/player_controller.gd" id="1_8pvmw"]
 [ext_resource type="Texture2D" uid="uid://dpaqc3hbhry8h" path="res://Sprites/ScreenTemplate.png" id="1_i04dx"]
 [ext_resource type="Script" uid="uid://dr3p83w7xi033" path="res://Scripts/tool_manager.gd" id="2_vnucn"]
-[ext_resource type="Script" uid="uid://bu5tv0124e1ly" path="res://Scenes/mouse_controller.gd" id="3_qtxxq"]
+[ext_resource type="Script" uid="uid://bu5tv0124e1ly" path="res://mouse_controller.gd" id="3_qtxxq"]
 [ext_resource type="Texture2D" uid="uid://c3qrx56nve36c" path="res://Sprites/GridLines.png" id="4_4g5cr"]
-[ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://Scenes/grid_manager.gd" id="4_c3mwy"]
-[ext_resource type="Script" uid="uid://cq0vcixxeirbg" path="res://Scenes/weed_manager.gd" id="6_r3lo5"]
+[ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://grid_manager.gd" id="4_c3mwy"]
+[ext_resource type="Texture2D" uid="uid://cens03678fkw6" path="res://Sprites/OpenHand.png" id="4_ogk07"]
+[ext_resource type="Texture2D" uid="uid://c1vv47gtm515n" path="res://Sprites/ClosedHand.png" id="5_j8vvb"]
+[ext_resource type="Texture2D" uid="uid://chmoa5vxgaah8" path="res://Sprites/Scythe.png" id="6_2mc6k"]
+[ext_resource type="Script" uid="uid://cq0vcixxeirbg" path="res://weed_manager.gd" id="6_r3lo5"]
 [ext_resource type="PackedScene" uid="uid://dfxcw512y58mt" path="res://Scenes/Weeds/Dandelion_Weed.tscn" id="7_dun2r"]
-[ext_resource type="Script" uid="uid://bujpxapqvr5nj" path="res://Scenes/score_manager.gd" id="9_qtxxq"]
-[ext_resource type="Script" uid="uid://dco3lrc7lyjdp" path="res://Scenes/ui_manager.gd" id="10_8fnbn"]
+[ext_resource type="Texture2D" uid="uid://b56xutysxwx5s" path="res://Sprites/ScythePressed.png" id="7_qoxdu"]
+[ext_resource type="Script" uid="uid://bujpxapqvr5nj" path="res://score_manager.gd" id="9_qtxxq"]
+[ext_resource type="Script" uid="uid://dco3lrc7lyjdp" path="res://ui_manager.gd" id="10_8fnbn"]
 [ext_resource type="Texture2D" uid="uid://cpv4mpdywenjo" path="res://Sprites/HandUI.png" id="11_a6f85"]
 [ext_resource type="FontFile" uid="uid://dxdj2o17lv4f" path="res://Fonts/KiwiSoda.ttf" id="11_lwnbm"]
 [ext_resource type="Texture2D" uid="uid://y80toy4mgi78" path="res://Sprites/ScytheUI.png" id="12_fu36u"]
+[ext_resource type="PackedScene" uid="uid://7xy0hmdpk3m6" path="res://Scenes/Weeds/Thistle_Weed.tscn" id="13_j8vvb"]
+[ext_resource type="PackedScene" uid="uid://e4v3mjrplbwd" path="res://Scenes/Weeds/Tree_Weed.tscn" id="14_2mc6k"]
 [ext_resource type="Texture2D" uid="uid://bqvljg6d0si63" path="res://Sprites/HotbarUI.png" id="14_20eh2"]
+[ext_resource type="PackedScene" uid="uid://dtc52d044b462" path="res://Scenes/Weeds/Latus_Weed.tscn" id="14_qoxdu"]
+[ext_resource type="PackedScene" uid="uid://c2ijn065p3jxr" path="res://Scenes/Weeds/Corn_Weed.tscn" id="15_teq3f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
 radius = 8.0
@@ -28,9 +36,16 @@ script = ExtResource("2_vnucn")
 
 [node name="MouseController" type="Area2D" parent="Player" unique_id=737281661]
 script = ExtResource("3_qtxxq")
+hand_cursor = ExtResource("4_ogk07")
+hand_pressed_cursor = ExtResource("5_j8vvb")
+scythe_cursor = ExtResource("6_2mc6k")
+scythe_pressed_cursor = ExtResource("7_qoxdu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MouseController" unique_id=1036269496]
 shape = SubResource("CircleShape2D_8fnbn")
+
+[node name="MouseCursor" type="Sprite2D" parent="Player/MouseController" unique_id=1322305492]
+z_index = 4096
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1524720331]
 position = Vector2(80, -115)
@@ -52,7 +67,8 @@ grid_height = 15
 
 [node name="WeedManager" type="Node" parent="." unique_id=1047289638]
 script = ExtResource("6_r3lo5")
-one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r")])
+one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r"), ExtResource("13_j8vvb"), ExtResource("14_qoxdu"), ExtResource("15_teq3f")])
+two_width_weeds = Array[PackedScene]([ExtResource("14_2mc6k")])
 
 [node name="SpawnTimer" type="Timer" parent="WeedManager" unique_id=1202271330]
 wait_time = 5.0
@@ -143,9 +159,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 25.0
-offset_top = -45.0
+offset_top = 28.0
 offset_right = 41.0
-offset_bottom = -29.0
+offset_bottom = 44.0
 grow_vertical = 2
 scale = Vector2(2, 2)
 texture_normal = ExtResource("11_a6f85")
@@ -168,9 +184,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 25.0
-offset_top = 5.0
+offset_top = 78.0
 offset_right = 41.0
-offset_bottom = 21.0
+offset_bottom = 94.0
 grow_vertical = 2
 scale = Vector2(2, 2)
 texture_normal = ExtResource("12_fu36u")
@@ -217,3 +233,20 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=64]
 [color=#ca7ef2][outline_color=#4e278c][outline_size=16][wave amp=25.0 freq=5.0 connected=1]Game Over![/wave][/outline_size][/outline_color][/color][/font_size][/center][/font]"
+
+[node name="ComboText" type="RichTextLabel" parent="UIManager" unique_id=1228577783]
+clip_contents = false
+anchors_preset = -1
+anchor_left = 0.009000001
+anchor_top = 0.095000006
+anchor_right = 0.041
+anchor_bottom = 0.128
+offset_left = 0.47999954
+offset_top = 24.799995
+offset_right = 79.52
+offset_bottom = 34.119995
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(21, 21)
+bbcode_enabled = true
+text = "10"
+fit_content = true

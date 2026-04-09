@@ -17,7 +17,7 @@ var is_dead: bool = false
 const INITIAL_OFFSET: Vector2 = Vector2(0, 235)
 
 signal stretched(weed: Weed)
-
+var stretched_vector: Vector2
 @export var grow_rate: float = 50.0
 var base_length = 240
 var grow_rate_additive: float = 0.0
@@ -37,31 +37,36 @@ var stretch_threshold: float = 100
 @onready var flower: Sprite2D = $Flower
 
 
-@export var cutting: PackedScene
+@export var cutting: PackedScene = preload("res://Scenes/Weeds/weed_cutting.tscn")
 
 func _ready() -> void:
 	initial_position = position
 	collision_shape.shape = collision_shape.shape.duplicate()
 	weed_sprite.texture = sprite_array.pick_random()
 	weed_mask.offset = INITIAL_OFFSET
-	flower.texture = flower_texture
+	if(flower_texture):
+		flower.texture = flower_texture
 	collision_shape.position = INITIAL_OFFSET
 	kill_timer.timeout.connect(remove_from_scene)
 	set_kill_velocity()
 	random_offset = randf()
+	if(randf_range(0, 100) > 50):
+		weed_sprite.flip_h = true
 
 func _physics_process(delta: float) -> void:
 	if(weed_mask.offset.y > 0 and is_growing and !is_dead):
 		growth += delta * grow_rate
-		flower.position.y = -growth -3
-		flower.rotation = sin((growth + random_offset) / 10) / 2
+		if(flower.texture):
+			flower.position.y = -growth -3
+			flower.rotation = sin((growth + random_offset) / 10) / 2
 		var offset = Vector2(0, INITIAL_OFFSET.y - growth)
 		weed_mask.offset = offset
 		collision_shape.position = offset
 	elif(is_grabbing):
 		var mouse_pos = get_global_mouse_position()
 		var to_mouse = mouse_pos - position
-		var distance_from_grab = (mouse_pos - grab_point).length()
+		stretched_vector = mouse_pos - grab_point
+		var distance_from_grab = stretched_vector.length()
 		grow_rate_additive += (delta * grow_rate * 0.2)
 		look_at(get_global_mouse_position())
 		rotation += PI/2
@@ -136,6 +141,7 @@ func remove_from_scene():
 
 func punishment(grow_rate_add: float):
 	grow_rate += grow_rate_add
+	manager.weed_punishment()
 
 func set_kill_velocity():
 	var random_angle = randf_range(0, PI)
