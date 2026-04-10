@@ -10,7 +10,8 @@ size = Vector2(16, 240)
 [node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
 top_level = true
 script = ExtResource("1_qqu7v")
-base_score = 40.0
+cuts_needed = 15
+base_score = 35.0
 sprite_array = Array[Texture]([ExtResource("2_gsdtx")])
 grow_rate = 10.0
 

@@ -37,7 +37,7 @@ var stretch_threshold: float = 100
 @onready var flower: Sprite2D = $Flower
 
 
-@export var cutting: PackedScene = preload("res://Scenes/Weeds/weed_cutting.tscn")
+@export var cutting: PackedScene = load("res://Scenes/Weeds/weed_cutting.tscn")
 
 func _ready() -> void:
 	initial_position = position

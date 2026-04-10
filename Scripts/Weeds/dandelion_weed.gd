@@ -1,5 +1,7 @@
 class_name Dandelion extends Weed
 
+var type := Game_Enums.Weeds.DANDELION
+
 func cut():
 	super()
 	check_kill(false)

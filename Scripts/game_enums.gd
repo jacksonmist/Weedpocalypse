@@ -5,3 +5,11 @@ enum Tool {
 	SCYTHE,
 	WEEDKILLER
 }
+
+enum Weeds {
+	DANDELION,
+	THISTLE,
+	LATUS,
+	TREE,
+	CORN
+}

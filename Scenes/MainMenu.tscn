@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c4xl7tgvfo3e8"]
+
+[ext_resource type="Script" uid="uid://cqhn0fvobre84" path="res://Scenes/main_menu_ui.gd" id="1_tt5f1"]
+[ext_resource type="FontFile" uid="uid://dxdj2o17lv4f" path="res://Fonts/KiwiSoda.ttf" id="2_853f1"]
+[ext_resource type="PackedScene" uid="uid://can5y4tan7x2j" path="res://Scenes/menu_button.tscn" id="3_8saeu"]
+[ext_resource type="Texture2D" uid="uid://bqvljg6d0si63" path="res://Sprites/HotbarUI.png" id="4_ghw46"]
+
+[node name="MainMenu" type="Node2D" unique_id=1555747398]
+
+[node name="MainMenuUI" type="CanvasLayer" parent="." unique_id=2086457357]
+script = ExtResource("1_tt5f1")
+font = ExtResource("2_853f1")
+
+[node name="PlayButton" parent="MainMenuUI" unique_id=738821461 instance=ExtResource("3_8saeu")]
+normal_text = "Play"
+is_positive = true
+
+[node name="QuitButton" parent="MainMenuUI" unique_id=526750011 instance=ExtResource("3_8saeu")]
+offset_top = 35.0
+offset_bottom = 67.0
+normal_text = "Quit"
+
+[node name="TutButton" type="TextureButton" parent="MainMenuUI" unique_id=1934257179]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_ghw46")
+stretch_mode = 4

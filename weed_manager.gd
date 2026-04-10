@@ -3,6 +3,8 @@ class_name WeedManager extends Node
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var grid_manager: GridManager = %GridManager
 @onready var score_manager: ScoreManager = %ScoreManager
+@onready var ui: UIManager = %UIManager
+var is_gameover: bool = false
 
 var time: float = 0.0
 var difficulty: float = 1
@@ -14,6 +16,12 @@ var difficulty: float = 1
 @export var one_width_chance: float = 50
 @export var two_width_chance: float = 30
 @export var three_width_chance: float = 20
+
+@onready var seen_weeds: Dictionary = {Game_Enums.Weeds.DANDELION: false,
+								Game_Enums.Weeds.THISTLE: false,
+								Game_Enums.Weeds.LATUS: false,
+								Game_Enums.Weeds.TREE: false,
+								Game_Enums.Weeds.CORN: false}
 
 var e: float
 var max_difficulty: float = 2.0
@@ -33,12 +41,32 @@ func _ready() -> void:
 	L2 = max_time_between_spawn - min_time_between_spawn
 	spawn_timer.wait_time = max_time_between_spawn
 	spawn_timer.timeout.connect(spawn_weed)
-	spawn_weed()
+	set_process(false)
+	load_data()
+	await get_tree().process_frame
+	for weed in seen_weeds.keys():
+		if(seen_weeds[weed]):
+			await ui.reveal_identifier(weed)
 	
 func _process(delta: float) -> void:
 	time += delta
-	
 
+func save_data():
+	SaveManager.data["seen_weeds"] = seen_weeds
+	SaveManager.save_data()
+	
+func load_data():
+	if(SaveManager.data["seen_weeds"].is_empty()):
+		save_data()
+		return
+	var temp = SaveManager.data["seen_weeds"]
+	for key in temp.keys():
+		seen_weeds[int(key)] = temp[key]
+
+func enable_spawning():
+	set_process(true)
+	spawn_weed()
+	
 func spawn_weed():
 	calculate_difficulty()
 	var random_num = randi_range(30, 100)
@@ -60,10 +88,19 @@ func spawn_weed():
 		spawn_wait()
 		return
 	var weed_instance = weed.instantiate()
+	if(!is_gameover):
+		check_seen(weed_instance.type)
 	add_child(weed_instance)
 	weed_instance.init(self, difficulty, spawn_pos, width)
 	weed_instance.position = spawn_pos
 	spawn_wait()
+
+func check_seen(weed_type: Game_Enums.Weeds):
+	if(seen_weeds[weed_type]):
+		return
+	seen_weeds[weed_type] = true
+	save_data()
+	await ui.reveal_identifier(weed_type)
 
 func calculate_difficulty():
 	difficulty = (L / (1 + pow(e, -difficulty_slope * (time - difficulty_midpoint)))) + 1
@@ -82,6 +119,7 @@ func update_score(base_score: float):
 	score_manager.add_score(base_score)
 
 func game_over():
+	is_gameover = true
 	score_manager.game_over()
 	
 func weed_punishment():

@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Weedpocalypse"
-run/main_scene="uid://1ips1634u4wj"
+run/main_scene="uid://c4xl7tgvfo3e8"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SilentWolf="*uid://v1u5aujj6ltn"
+SceneLoader="*uid://cj7cgxcsibq1p"
+SaveManager="*uid://brt3a2c7ucbd6"
 
 [display]
 

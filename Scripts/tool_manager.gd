@@ -26,7 +26,6 @@ func switch_tool(tool_type: Game_Enums.Tool):
 		Game_Enums.Tool.WEEDKILLER:
 			current_tool = weedkiller_tool
 			mouse_controller.set_tool(Game_Enums.Tool.WEEDKILLER)
-	print(current_tool.name)
 	
 func set_tool_active(state: bool):
 	if(current_tool):

@@ -22,9 +22,27 @@
 [ext_resource type="Texture2D" uid="uid://bqvljg6d0si63" path="res://Sprites/HotbarUI.png" id="14_20eh2"]
 [ext_resource type="PackedScene" uid="uid://dtc52d044b462" path="res://Scenes/Weeds/Latus_Weed.tscn" id="14_qoxdu"]
 [ext_resource type="PackedScene" uid="uid://c2ijn065p3jxr" path="res://Scenes/Weeds/Corn_Weed.tscn" id="15_teq3f"]
+[ext_resource type="Script" uid="uid://4hrbh5cu5arr" path="res://Scenes/tutorial_manager.gd" id="23_capts"]
+[ext_resource type="Script" uid="uid://bv4s1g1ojqsm7" path="res://Scenes/Identifier.gd" id="23_dw4fd"]
+[ext_resource type="PackedScene" uid="uid://can5y4tan7x2j" path="res://Scenes/menu_button.tscn" id="24_s4qac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
 radius = 8.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4qac"]
+font = ExtResource("11_lwnbm")
+outline_size = 4
+outline_color = Color(0.21750002, 0.75, 0.474875, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dw4fd"]
+font = ExtResource("11_lwnbm")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_642p6"]
+font = ExtResource("11_lwnbm")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Root" type="Node2D" unique_id=1014854693]
 
@@ -66,6 +84,7 @@ grid_width = 10
 grid_height = 15
 
 [node name="WeedManager" type="Node" parent="." unique_id=1047289638]
+unique_name_in_owner = true
 script = ExtResource("6_r3lo5")
 one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r"), ExtResource("13_j8vvb"), ExtResource("14_qoxdu"), ExtResource("15_teq3f")])
 two_width_weeds = Array[PackedScene]([ExtResource("14_2mc6k")])
@@ -111,8 +130,8 @@ layout_mode = 0
 offset_right = 154.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(0.872, 0.68, 1, 1)
-theme_override_colors/font_outline_color = Color(0.55838996, 0.2394, 0.63, 1)
-theme_override_constants/outline_size = 7
+theme_override_colors/font_outline_color = Color(0.30588236, 0.15294118, 0.54901963, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("11_lwnbm")
 theme_override_font_sizes/font_size = 32
 text = "Retry"
@@ -147,7 +166,7 @@ layout_mode = 0
 offset_right = 154.0
 offset_bottom = 40.0
 theme_override_colors/font_color = Color(0.872, 0.68, 1, 1)
-theme_override_colors/font_outline_color = Color(0.55838996, 0.2394, 0.63, 1)
+theme_override_colors/font_outline_color = Color(0.30588236, 0.15294118, 0.54901963, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("11_lwnbm")
 theme_override_font_sizes/font_size = 32
@@ -250,3 +269,260 @@ pivot_offset = Vector2(21, 21)
 bbcode_enabled = true
 text = "10"
 fit_content = true
+
+[node name="Identifiers" type="Control" parent="UIManager" unique_id=837029160]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="Dandelion" type="TextureRect" parent="UIManager/Identifiers" unique_id=1168182025]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 2.0
+offset_right = -3.0
+offset_bottom = 30.0
+grow_horizontal = 0
+texture = ExtResource("14_20eh2")
+script = ExtResource("23_dw4fd")
+
+[node name="WeedName" type="Label" parent="UIManager/Identifiers/Dandelion" unique_id=1079081045]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99000007
+anchor_bottom = 1.0
+offset_right = 0.6899948
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Dandelion"
+label_settings = SubResource("LabelSettings_s4qac")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="ColorRect" parent="UIManager/Identifiers/Dandelion" unique_id=872506120]
+clip_children = 1
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+mouse_filter = 2
+
+[node name="Hand" type="TextureRect" parent="UIManager/Identifiers/Dandelion/Hint" unique_id=877944681]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+texture = ExtResource("4_ogk07")
+stretch_mode = 3
+
+[node name="Thistle" type="TextureRect" parent="UIManager/Identifiers" unique_id=856797199]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 32.0
+offset_right = -3.0
+offset_bottom = 60.0
+grow_horizontal = 0
+texture = ExtResource("14_20eh2")
+script = ExtResource("23_dw4fd")
+
+[node name="WeedName" type="Label" parent="UIManager/Identifiers/Thistle" unique_id=398454826]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99000007
+anchor_bottom = 1.0
+offset_right = 0.6899948
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Thistle"
+label_settings = SubResource("LabelSettings_s4qac")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="ColorRect" parent="UIManager/Identifiers/Thistle" unique_id=376646200]
+clip_children = 1
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+mouse_filter = 2
+
+[node name="Scythe" type="TextureRect" parent="UIManager/Identifiers/Thistle/Hint" unique_id=112934582]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+texture = ExtResource("6_2mc6k")
+stretch_mode = 3
+
+[node name="Latus" type="TextureRect" parent="UIManager/Identifiers" unique_id=398613735]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 62.0
+offset_right = -3.0
+offset_bottom = 90.0
+grow_horizontal = 0
+texture = ExtResource("14_20eh2")
+script = ExtResource("23_dw4fd")
+
+[node name="WeedName" type="Label" parent="UIManager/Identifiers/Latus" unique_id=1839652400]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99000007
+anchor_bottom = 1.0
+offset_right = 0.6899948
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Latus"
+label_settings = SubResource("LabelSettings_s4qac")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="ColorRect" parent="UIManager/Identifiers/Latus" unique_id=854946827]
+clip_children = 1
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+mouse_filter = 2
+
+[node name="Hand" type="TextureRect" parent="UIManager/Identifiers/Latus/Hint" unique_id=1480946497]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+texture = ExtResource("4_ogk07")
+stretch_mode = 3
+
+[node name="Arrows" type="Label" parent="UIManager/Identifiers/Latus/Hint" unique_id=881920802]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+text = "<~   ~>"
+label_settings = SubResource("LabelSettings_dw4fd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tree" type="TextureRect" parent="UIManager/Identifiers" unique_id=1709202030]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 92.0
+offset_right = -3.0
+offset_bottom = 120.0
+grow_horizontal = 0
+texture = ExtResource("14_20eh2")
+script = ExtResource("23_dw4fd")
+
+[node name="WeedName" type="Label" parent="UIManager/Identifiers/Tree" unique_id=354895074]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99000007
+anchor_bottom = 1.0
+offset_right = 0.6899948
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Tree"
+label_settings = SubResource("LabelSettings_s4qac")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="ColorRect" parent="UIManager/Identifiers/Tree" unique_id=227804670]
+clip_children = 1
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+mouse_filter = 2
+
+[node name="Scythe" type="TextureRect" parent="UIManager/Identifiers/Tree/Hint" unique_id=1707149676]
+layout_mode = 0
+offset_left = -22.0
+offset_top = -7.0
+offset_right = 92.0
+offset_bottom = 43.0
+mouse_filter = 2
+texture = ExtResource("6_2mc6k")
+stretch_mode = 1
+
+[node name="Corn" type="TextureRect" parent="UIManager/Identifiers" unique_id=2086222311]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 122.0
+offset_right = -3.0
+offset_bottom = 150.0
+grow_horizontal = 0
+texture = ExtResource("14_20eh2")
+script = ExtResource("23_dw4fd")
+
+[node name="WeedName" type="Label" parent="UIManager/Identifiers/Corn" unique_id=1123847412]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99000007
+anchor_bottom = 1.0
+offset_right = 0.6899948
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Corn"
+label_settings = SubResource("LabelSettings_s4qac")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="ColorRect" parent="UIManager/Identifiers/Corn" unique_id=1988226135]
+clip_children = 1
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+mouse_filter = 2
+
+[node name="Hand" type="TextureRect" parent="UIManager/Identifiers/Corn/Hint" unique_id=336489384]
+layout_mode = 0
+offset_right = 46.0
+offset_bottom = 28.0
+texture = ExtResource("4_ogk07")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="UIManager/Identifiers/Corn/Hint" unique_id=1467916978]
+layout_mode = 0
+offset_left = 69.01575
+offset_right = 99.119026
+offset_bottom = 72.007324
+rotation = 1.5707964
+text = "->"
+label_settings = SubResource("LabelSettings_642p6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scythe" type="TextureRect" parent="UIManager/Identifiers/Corn/Hint" unique_id=436927951]
+layout_mode = 0
+offset_left = 23.0
+offset_right = 69.0
+offset_bottom = 28.0
+texture = ExtResource("6_2mc6k")
+stretch_mode = 3
+
+[node name="TutorialManager" type="CanvasLayer" parent="." unique_id=263966681]
+visible = false
+script = ExtResource("23_capts")
+
+[node name="SkipButton" parent="TutorialManager" unique_id=738821461 instance=ExtResource("24_s4qac")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1.0
+offset_top = 0.0
+offset_right = 161.0
+offset_bottom = 32.0
+grow_horizontal = 1
+grow_vertical = 1
+normal_text = "Skip"
+is_positive = true

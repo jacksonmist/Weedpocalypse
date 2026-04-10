@@ -1,5 +1,6 @@
 class_name CornWeed extends Weed
 
+var type := Game_Enums.Weeds.CORN
 @export var inner_sprite: Texture
 var is_shucked: bool
 

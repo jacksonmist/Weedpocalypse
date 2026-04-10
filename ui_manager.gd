@@ -37,6 +37,19 @@ var outline_scale
 @onready var exit_background: NinePatchRect = $ExitBackground
 @onready var exit_button: Button = $ExitBackground/ExitButton
 
+@onready var dandelion_id: TextureRect = $Identifiers/Dandelion
+@onready var thistle_id: TextureRect = $Identifiers/Thistle
+@onready var latus_id: TextureRect = $Identifiers/Latus
+@onready var tree_id: TextureRect = $Identifiers/Tree
+@onready var corn_id: TextureRect = $Identifiers/Corn
+@onready var identifiers: Dictionary = {Game_Enums.Weeds.DANDELION: dandelion_id,
+								Game_Enums.Weeds.THISTLE: thistle_id,
+								Game_Enums.Weeds.LATUS: latus_id,
+								Game_Enums.Weeds.TREE: tree_id,
+								Game_Enums.Weeds.CORN: corn_id}
+@onready var white: Color = Color(1, 1, 1, 1)
+@onready var transparent: Color = Color(1, 1, 1, 0)
+
 
 var tween_time: float = 0.4
 
@@ -51,7 +64,6 @@ func _ready() -> void:
 	exit_button.pressed.connect(quit_game)
 	retry_button.pressed.connect(retry_game)
 	update_score(0)
-	
 func update_score(new_score: int):
 	var tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.tween_method(_set_displayed_score.bind(score_text), score, new_score, 1)
@@ -105,6 +117,12 @@ func make_tween() -> Tween:
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	return tween
 
+func reveal_identifier(weed: Game_Enums.Weeds) -> bool:
+	var tween = create_tween()
+	tween.tween_property(identifiers[weed], "modulate", white, tween_time)
+	await tween.finished
+	return true
+
 func display_game_over():
 	if(score > previous_high_score):
 		game_over_text = game_over_prefix + "Game Over!" + game_over_postfix + high_score_prefix + "
@@ -118,7 +136,7 @@ func display_game_over():
 	
 	retry_background.visible = true
 	exit_background.visible = true
-	
+
 func retry_game():
 	get_tree().reload_current_scene()
 func quit_game():

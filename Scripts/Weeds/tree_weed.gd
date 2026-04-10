@@ -1,5 +1,7 @@
 class_name TreeWeed extends Weed
 
+var type := Game_Enums.Weeds.TREE
+
 @export var cuts_needed: int = 30
 var current_cuts: int = 0
 

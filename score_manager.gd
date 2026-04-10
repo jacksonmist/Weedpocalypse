@@ -1,7 +1,6 @@
 class_name ScoreManager extends Node
 
 @onready var ui: UIManager = %UIManager
-var save_path = "user://highscore.save"
 var displayed_score: int
 var score: float
 var combo: int = 1
@@ -55,13 +54,10 @@ func game_over():
 		high_score = score
 		save()
 	ui.display_game_over()
+	
 func save():
-	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var(high_score)
+	SaveManager.data["highscore"] = high_score
+	SaveManager.save_data()
 
 func load_data():
-	if(FileAccess.file_exists(save_path)):
-		var file = FileAccess.open(save_path,FileAccess.READ)
-		high_score = file.get_var(high_score)
-	else:
-		high_score = 0
+	high_score = SaveManager.data["highscore"]
