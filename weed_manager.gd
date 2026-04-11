@@ -24,6 +24,7 @@ var difficulty: float = 1
 								Game_Enums.Weeds.CORN: false}
 
 var active_weeds = []
+@onready var grow_particle: CPUParticles2D = $GrowParticle
 
 var e: float
 var max_difficulty: float = 2.0
@@ -98,6 +99,9 @@ func spawn_weed():
 	active_weeds.append(weed_instance)
 	weed_instance.init(self, difficulty, spawn_pos, width)
 	weed_instance.position = spawn_pos
+	grow_particle.position = spawn_pos
+	grow_particle.position.y += 8
+	grow_particle.emitting = true
 	spawn_wait()
 
 func weed_grow(is_growing: bool):
@@ -114,6 +118,9 @@ func spawn_tutorial_weed():
 	active_weeds.append(weed_instance)
 	weed_instance.init(self, 1, Vector2(72, 0), 1)
 	weed_instance.position = Vector2(72, 0)
+	grow_particle.position = Vector2(72, 0)
+	grow_particle.emitting = true
+	
 	return weed_instance
 
 func check_seen(weed_type: Game_Enums.Weeds):

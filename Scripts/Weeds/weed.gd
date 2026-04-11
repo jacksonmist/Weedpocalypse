@@ -35,7 +35,8 @@ var stretch_threshold: float = 100
 @onready var area_2d: Area2D = $Area2D
 @onready var collision_shape: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var flower: Sprite2D = $Flower
-
+@onready var cut_particle: CPUParticles2D = $CutParticle
+@onready var grab_particle: CPUParticles2D = $GrabParticle
 
 @export var cutting: PackedScene = load("res://Scenes/Weeds/weed_cutting.tscn")
 
@@ -53,7 +54,8 @@ func _ready() -> void:
 	random_offset = randf()
 	if(randf_range(0, 100) > 50):
 		weed_sprite.flip_h = true
-
+	grab_particle.emitting = false
+	
 func _physics_process(delta: float) -> void:
 	if(weed_mask.offset.y > 0 and is_growing and !is_dead):
 		growth += delta * grow_rate
@@ -74,6 +76,12 @@ func _physics_process(delta: float) -> void:
 		scale.y = to_mouse.length() / (base_length - weed_mask.offset.y)
 		if(distance_from_grab > stretch_threshold):
 			fully_stretched()
+		var stretch_ratio = distance_from_grab / stretch_threshold
+		grab_particle.global_position = mouse_pos
+		grab_particle.color = grab_particle.gradient.gradient.sample(stretch_ratio)
+		grab_particle.scale_amount_max = 1 + (2 * (stretch_ratio))
+		grab_particle.speed_scale = 1 + stretch_ratio
+		
 	if(is_dead):
 		rotation += rotation_speed * delta
 		velocity.y += GRAVITY * delta
@@ -94,11 +102,13 @@ func grab(grabbing: bool):
 	if(is_grabbing):
 		is_growing = false
 		grab_point = get_global_mouse_position()
+		grab_particle.emitting = true
 	else:
 		is_growing = true
 		grow_rate += grow_rate_additive
 		grow_rate_additive = 0
 		return_to_normal()
+		grab_particle.emitting = false
 
 func fully_stretched():
 	grab(false)
@@ -110,7 +120,9 @@ func cut():
 	var mouse_pos = get_global_mouse_position()
 	var offset = Vector2(0, INITIAL_OFFSET.y - growth)
 	cutting_instance.init(weed_sprite, -mouse_pos.y, growth)
-	
+	cut_particle.position = Vector2(0, mouse_pos.y)
+	cut_particle.amount = growth / 4
+	cut_particle.emitting = true
 	growth = -mouse_pos.y
 	
 	weed_mask.offset = offset

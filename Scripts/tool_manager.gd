@@ -10,7 +10,7 @@ var weedkiller_tool: Tool = WeedkillerTool.new()
 
 func _ready() -> void:
 	ui.set_tool_manager(self)
-	current_tool = scythe_tool
+	current_tool = hand_tool
 	
 func switch_tool(tool_type: Game_Enums.Tool):
 	if(tool_type == current_tool.type):

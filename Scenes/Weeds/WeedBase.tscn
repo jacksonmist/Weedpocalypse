@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cxkiisbym1w0g"]
 
 [ext_resource type="Script" uid="uid://bf65nmgyn8kta" path="res://Scripts/Weeds/weed.gd" id="1_k147j"]
+[ext_resource type="PackedScene" uid="uid://yuamtnxa0oek" path="res://Scenes/ParticleEffects/cut_particle.tscn" id="3_cod8g"]
 [ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="3_dhnwh"]
+[ext_resource type="PackedScene" uid="uid://c3im616by8cs5" path="res://Scenes/ParticleEffects/grab_particle.tscn" id="4_45vg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
 size = Vector2(16, 240)
@@ -27,3 +29,10 @@ position = Vector2(0, -120)
 shape = SubResource("RectangleShape2D_r3lo5")
 
 [node name="KillTimer" type="Timer" parent="." unique_id=1976692784]
+
+[node name="CutParticle" parent="." unique_id=337591722 instance=ExtResource("3_cod8g")]
+lifetime = 0.3
+speed_scale = 0.6
+
+[node name="GrabParticle" parent="." unique_id=1089378811 instance=ExtResource("4_45vg8")]
+emitting = false

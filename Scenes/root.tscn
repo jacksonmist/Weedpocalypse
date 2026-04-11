@@ -30,6 +30,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
 radius = 8.0
 
+[sub_resource type="Gradient" id="Gradient_642p6"]
+colors = PackedColorArray(1, 1, 1, 0.4862745, 1, 1, 1, 0)
+
 [sub_resource type="LabelSettings" id="LabelSettings_s4qac"]
 font = ExtResource("11_lwnbm")
 outline_size = 4
@@ -79,6 +82,7 @@ z_index = 4096
 position = Vector2(80, -115)
 
 [node name="ScreenTemplate" type="Sprite2D" parent="." unique_id=1204207731]
+z_index = 2
 texture_filter = 1
 position = Vector2(80, -115)
 texture = ExtResource("1_i04dx")
@@ -101,6 +105,24 @@ two_width_weeds = Array[PackedScene]([ExtResource("14_2mc6k")])
 
 [node name="SpawnTimer" type="Timer" parent="WeedManager" unique_id=1202271330]
 wait_time = 5.0
+
+[node name="GrowParticle" type="CPUParticles2D" parent="WeedManager" unique_id=1838648601]
+z_index = 1
+position = Vector2(72, -53)
+emitting = false
+amount = 20
+lifetime = 0.28
+one_shot = true
+speed_scale = 0.4
+explosiveness = 1.0
+randomness = 1.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 43.9
+initial_velocity_max = 93.97
+scale_amount_max = 4.0
+color = Color(0.48000002, 1, 0.48866665, 1)
+color_ramp = SubResource("Gradient_642p6")
 
 [node name="ScoreManager" type="Node" parent="." unique_id=564564763]
 unique_name_in_owner = true

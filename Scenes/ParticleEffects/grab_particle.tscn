@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c3im616by8cs5"]
+
+[ext_resource type="Script" uid="uid://d0hujq4hi28fg" path="res://Scenes/grab_particle.gd" id="1_hui15"]
+
+[sub_resource type="Gradient" id="Gradient_18fmr"]
+colors = PackedColorArray(0.116666794, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lb85r"]
+gradient = SubResource("Gradient_18fmr")
+width = 100
+
+[node name="GrabParticle" type="CPUParticles2D" unique_id=1089378811]
+lifetime = 0.09999999999999999
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 253.66
+initial_velocity_max = 253.66
+scale_amount_max = 4.0
+script = ExtResource("1_hui15")
+gradient = SubResource("GradientTexture1D_lb85r")

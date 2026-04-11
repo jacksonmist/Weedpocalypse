@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://v6bdqmb2okd8" path="res://Sprites/Flower.png" id="2_6ctd5"]
 [ext_resource type="PackedScene" uid="uid://bcvo6d2u34fq3" path="res://Scenes/Weeds/weed_cutting.tscn" id="3_hl2pi"]
 [ext_resource type="Texture2D" uid="uid://hrvm78dn5tce" path="res://Sprites/DandelionWeed2.png" id="5_6ctd5"]
+[ext_resource type="PackedScene" uid="uid://yuamtnxa0oek" path="res://Scenes/ParticleEffects/cut_particle.tscn" id="6_r0kqo"]
+[ext_resource type="PackedScene" uid="uid://c3im616by8cs5" path="res://Scenes/ParticleEffects/grab_particle.tscn" id="7_urgve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
 size = Vector2(16, 240)
@@ -36,3 +38,9 @@ position = Vector2(0, -120)
 shape = SubResource("RectangleShape2D_r3lo5")
 
 [node name="KillTimer" type="Timer" parent="." unique_id=40376758]
+
+[node name="CutParticle" parent="." unique_id=337591722 instance=ExtResource("6_r0kqo")]
+lifetime = 0.3
+speed_scale = 0.6
+
+[node name="GrabParticle" parent="." unique_id=1089378811 instance=ExtResource("7_urgve")]

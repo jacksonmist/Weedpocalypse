@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://yuamtnxa0oek"]
+
+[sub_resource type="Gradient" id="Gradient_aup4o"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="CutParticle" type="CPUParticles2D" unique_id=337591722]
+emitting = false
+lifetime = 0.09999999999999999
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 165.86
+initial_velocity_max = 336.59
+color = Color(0.48899996, 1, 0.26999998, 1)
+color_ramp = SubResource("Gradient_aup4o")
