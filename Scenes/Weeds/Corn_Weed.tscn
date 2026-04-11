@@ -12,8 +12,8 @@ size = Vector2(16, 240)
 top_level = true
 script = ExtResource("1_qcigs")
 inner_sprite = ExtResource("2_f3aw7")
+outer_sprite = ExtResource("2_lhxtk")
 base_score = 35.0
-sprite_array = Array[Texture]([ExtResource("2_lhxtk"), ExtResource("2_lhxtk")])
 grow_rate = 25.0
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=500254823]
@@ -24,7 +24,13 @@ clip_children = 1
 position = Vector2(0, -120)
 texture = ExtResource("2_6dm6a")
 
-[node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=515589144]
+[node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=1043033575]
+position = Vector2(0, 120)
+texture = ExtResource("2_f3aw7")
+offset = Vector2(0, -120)
+
+[node name="WeedSpriteOuter" type="Sprite2D" parent="WeedMask" unique_id=515589144]
+texture = ExtResource("2_lhxtk")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=942955904]
 position = Vector2(0, -120)

@@ -42,7 +42,8 @@ var stretch_threshold: float = 100
 func _ready() -> void:
 	initial_position = position
 	collision_shape.shape = collision_shape.shape.duplicate()
-	weed_sprite.texture = sprite_array.pick_random()
+	if(!sprite_array.is_empty()):
+		weed_sprite.texture = sprite_array.pick_random()
 	weed_mask.offset = INITIAL_OFFSET
 	if(flower_texture):
 		flower.texture = flower_texture

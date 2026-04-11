@@ -119,7 +119,7 @@ func make_tween() -> Tween:
 
 func reveal_identifier(weed: Game_Enums.Weeds) -> bool:
 	var tween = create_tween()
-	tween.tween_property(identifiers[weed], "modulate", white, tween_time)
+	tween.tween_property(identifiers[weed], "modulate", white, 0.25)
 	await tween.finished
 	return true
 

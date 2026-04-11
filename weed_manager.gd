@@ -87,6 +87,7 @@ func spawn_weed():
 	if(spawn_pos == null):
 		spawn_wait()
 		return
+	weed = one_width_weeds[3]
 	var weed_instance = weed.instantiate()
 	if(!is_gameover):
 		check_seen(weed_instance.type)
