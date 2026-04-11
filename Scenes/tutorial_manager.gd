@@ -77,10 +77,10 @@ func spotlight_controller():
 				func(value): spotlight.material.set_shader_parameter("circle_position", value),
 				Vector2(0.125, 0.68), Vector2(0.5, 0.5), 1
 			)
+			continue_button.visible = false
 			await tween.finished
 			weed_instance.set_physics_process(true)
 			%WeedManager.weed_grow(false)
-			continue_button.visible = false
 		5:
 			var tween = create_tween().set_trans(Tween.TRANS_ELASTIC)
 			tween.tween_method(

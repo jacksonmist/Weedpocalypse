@@ -33,6 +33,11 @@ radius = 8.0
 [sub_resource type="Gradient" id="Gradient_642p6"]
 colors = PackedColorArray(1, 1, 1, 0.4862745, 1, 1, 1, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_18fmr"]
+font = ExtResource("11_lwnbm")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_s4qac"]
 font = ExtResource("11_lwnbm")
 outline_size = 4
@@ -100,7 +105,8 @@ grid_height = 15
 [node name="WeedManager" type="Node" parent="." unique_id=1047289638]
 unique_name_in_owner = true
 script = ExtResource("6_r3lo5")
-one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r"), ExtResource("13_j8vvb"), ExtResource("14_qoxdu"), ExtResource("15_teq3f")])
+one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r"), ExtResource("13_j8vvb"), ExtResource("14_qoxdu")])
+two_width_weeds = Array[PackedScene]([ExtResource("15_teq3f")])
 three_width_weeds = Array[PackedScene]([ExtResource("14_2mc6k")])
 
 [node name="SpawnTimer" type="Timer" parent="WeedManager" unique_id=1202271330]
@@ -229,6 +235,14 @@ pivot_offset = Vector2(9, 34)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Label" type="Label" parent="UIManager/HandToolButton" unique_id=1041819034]
+layout_mode = 0
+offset_left = -8.5
+offset_right = 31.5
+offset_bottom = 23.0
+text = "1"
+label_settings = SubResource("LabelSettings_18fmr")
+
 [node name="ScytheToolButton" type="TextureButton" parent="UIManager" unique_id=189474391]
 z_index = 4
 anchors_preset = 4
@@ -254,6 +268,14 @@ scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(9, -16)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="UIManager/ScytheToolButton" unique_id=1941441425]
+layout_mode = 0
+offset_left = -8.5
+offset_right = 31.5
+offset_bottom = 23.0
+text = "2"
+label_settings = SubResource("LabelSettings_18fmr")
 
 [node name="ScoreText" type="RichTextLabel" parent="UIManager" unique_id=850819361]
 texture_filter = 1
@@ -542,6 +564,7 @@ stretch_mode = 3
 
 [node name="TutorialManager" type="CanvasLayer" parent="." unique_id=263966681]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("23_capts")
 
 [node name="TutorialText" type="RichTextLabel" parent="TutorialManager" unique_id=91038590]

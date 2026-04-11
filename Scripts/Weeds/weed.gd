@@ -5,7 +5,7 @@ class_name Weed extends CharacterBody2D
 
 @export var base_score: float
 var spawn_pos: Vector2
-var width: int
+@export var width: int
 var manager: WeedManager
 const GRAVITY = 980
 var random_vector

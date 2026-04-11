@@ -17,6 +17,7 @@ func initialize_grid():
 			grid.append(Vector2i(x, y))
 			
 func get_free_point(width: int):
+	print(spawn_points)
 	var free_spots = []
 	var window = spawn_points.slice(0, width)
 	var sum = 0
@@ -51,5 +52,10 @@ func _grid_to_world(grid_pos: Vector2i):
 	world_pos.x += 8
 	return world_pos
 
-func set_free_position(pos: int):
-	spawn_points[pos] = 0
+func set_free_position(pos: float, width):
+	var free_pos = int((pos - 8) / 16)
+	if(width == 3):
+		free_pos -= 1
+	for i in width:
+		spawn_points[free_pos + i] = 0
+	

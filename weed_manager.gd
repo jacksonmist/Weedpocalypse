@@ -27,13 +27,13 @@ var active_weeds = []
 @onready var grow_particle: CPUParticles2D = $GrowParticle
 
 var e: float
-var max_difficulty: float = 2.0
+var max_difficulty: float = 1.1
 var L: float
 var difficulty_slope: float = 0.1
 var difficulty_midpoint: float = 30
 
 var max_time_between_spawn: float = 5
-var min_time_between_spawn: float = 1
+var min_time_between_spawn: float = 0.8
 var L2: float
 var time_decrease_slope: float = 0.1
 var spawn_time_midpoint: float = 30
@@ -77,31 +77,37 @@ func spawn_weed():
 	var random_num = randi_range(1, 100)
 	var width: int = 1
 	var weed: PackedScene
-	if(random_num >= one_width_chance):
-		width = 1
-		weed = one_width_weeds.pick_random()
-	elif(random_num < one_width_chance and random_num >= two_width_chance):
-		width = 2
-		weed = two_width_weeds.pick_random()
-	else:
-		width = 3
-		weed = three_width_weeds.pick_random()
-	if(weed == null):
-		weed = one_width_weeds.pick_random()	
-	var spawn_pos = grid_manager.get_free_point(width)
-	if(spawn_pos == null):
-		spawn_wait()
-		return
-	var weed_instance = weed.instantiate()
-	if(!is_gameover):
-		check_seen(weed_instance.type)
-	add_child(weed_instance)
-	active_weeds.append(weed_instance)
-	weed_instance.init(self, difficulty, spawn_pos, width)
-	weed_instance.position = spawn_pos
-	grow_particle.position = spawn_pos
-	grow_particle.position.y += 8
-	grow_particle.emitting = true
+	var spawn_amount: int = 1
+	while(randf_range(1, 100) < 30):
+		spawn_amount += 1
+	for i in spawn_amount:
+		if(random_num >= one_width_chance):
+			width = 1
+			weed = one_width_weeds.pick_random()
+		elif(random_num < one_width_chance and random_num >= two_width_chance):
+			width = 2
+			weed = two_width_weeds.pick_random()
+		else:
+			width = 3
+			weed = three_width_weeds.pick_random()
+		if(weed == null):
+			#width = 1
+			weed = one_width_weeds.pick_random()	
+		var spawn_pos = grid_manager.get_free_point(width)
+		if(spawn_pos == null):
+			print(weed)
+			spawn_wait()
+			return
+		var weed_instance = weed.instantiate()
+		if(!is_gameover):
+			check_seen(weed_instance.type)
+		add_child(weed_instance)
+		active_weeds.append(weed_instance)
+		weed_instance.init(self, difficulty, spawn_pos, width)
+		weed_instance.position = spawn_pos
+		grow_particle.position = spawn_pos
+		grow_particle.position.y += 8
+		grow_particle.emitting = true
 	spawn_wait()
 
 func weed_grow(is_growing: bool):
@@ -139,13 +145,11 @@ func spawn_wait():
 	spawn_timer.start()
 
 func remove_weed(weed: Weed):
-	var free_pos = int((weed.spawn_pos.x - 8) / 16)
-	grid_manager.set_free_position(free_pos)
+	grid_manager.set_free_position(weed.spawn_pos.x, weed.width)
 	if(weed in active_weeds):
 		active_weeds.erase(weed)
 	weed.queue_free()
 	if(tutorial_enabled):
-		print("here")
 		tutorial_enabled = false
 		%TutorialManager.advance_tutorial()
 

@@ -14,6 +14,7 @@ size = Vector2(16, 240)
 top_level = true
 script = ExtResource("1_rxxiy")
 base_score = 20.0
+width = 1
 flower_texture = ExtResource("1_tbp71")
 sprite_array = Array[Texture]([ExtResource("3_rxxiy")])
 grow_rate = 30.0
