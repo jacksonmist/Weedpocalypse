@@ -26,7 +26,7 @@ func _ready() -> void:
 	cursors[3] = preload("res://Sprites/ScythePressed.png")
 	Input.set_custom_mouse_cursor(cursors[Game_Enums.Tool.HAND], Input.CURSOR_ARROW, Vector2.ZERO)
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	position = get_global_mouse_position()
 	
 func set_tool(tool: Game_Enums.Tool):

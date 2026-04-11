@@ -11,9 +11,9 @@ var game_over_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=64]
 var game_over_postfix = "[/tornado][/outline_size][/outline_color][/color][/font_size][/center][/font]"
 
 @onready var score_text: RichTextLabel = $ScoreText
-var score_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=48]
+var score_prefix = "[font=res://Fonts/KiwiSoda.ttf][left][font_size=48]
 [color=#ca7ef2][outline_color=#4e278c][outline_size=16][wave amp=25.0 freq=5.0 connected=1]"
-var score_postfix = "[/wave][/outline_size][/outline_color][/color][/font_size][/center][/font]"
+var score_postfix = "[/wave][/outline_size][/outline_color][/color][/font_size][/left][/font]"
 var high_score_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=48]
 [color=#ca7ef2][outline_color=#4e278c][outline_size=16][wave amp=50.0 freq=10.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8 speed=1.0]"
 var high_score_postfix = "[/rainbow][/wave][/outline_size][/outline_color][/color][/font_size][/center][/font]"
@@ -66,7 +66,7 @@ func _ready() -> void:
 	update_score(0)
 	
 func update_score(new_score: int):
-	var tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	tween.tween_method(_set_displayed_score.bind(score_text), score, new_score, 1)
 	score = new_score
 
@@ -76,7 +76,7 @@ func load_high_score(value: float):
 func _set_displayed_score(new_score: int, _label: RichTextLabel):
 	text_freq = clamp(score / 100, 0, 20)
 	text_amplitude =clamp(score / 50, 0, 200)
-	score_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=48]
+	score_prefix = "[font=res://Fonts/KiwiSoda.ttf][left][font_size=48]
 [color=#ca7ef2][outline_color=#4e278c][outline_size=16][wave amp=" + str(text_amplitude) +  "freq=" + str(text_freq) + "connected=0]"
 	score_text.text = score_prefix + str(new_score) + score_postfix
 
@@ -124,14 +124,23 @@ func reveal_identifier(weed: Game_Enums.Weeds) -> bool:
 	await tween.finished
 	return true
 
+func hide_ui():
+	var tween = create_tween().set_parallel()
+	for weed in identifiers.keys():
+		tween.tween_property(identifiers[weed], "modulate", transparent, 0.25)
+	tween.tween_property(score_text, "modulate", transparent, 0.25)
+	tween.tween_property(combo_text, "modulate", transparent, 0.25)
+
 func display_game_over():
 	if(score > previous_high_score):
 		game_over_text = game_over_prefix + "Game Over!" + game_over_postfix + high_score_prefix + "
-		\nHigh Score: " + str(score) + high_score_postfix
+		\nHigh Score: " + str(score)
 	else:
-		game_over_text = game_over_prefix + "Game Over!" + game_over_postfix + score_prefix + "
-		\nScore: " + str(score) + score_prefix
-	
+		game_over_text = game_over_prefix + "Game Over!" + game_over_postfix + combo_prefix + "
+		Score: " + str(score) + "
+		High Score: " + str(previous_high_score)
+		
+	hide_ui()
 	game_over_label.text = game_over_text
 	game_over_label.visible = true
 	

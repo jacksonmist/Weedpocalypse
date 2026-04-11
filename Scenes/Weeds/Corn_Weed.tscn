@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c2ijn065p3jxr"]
 
 [ext_resource type="Script" uid="uid://ue2b5ls8jc0e" path="res://Scripts/Weeds/corn_weed.gd" id="1_qcigs"]
-[ext_resource type="Texture2D" uid="uid://dgt20tc0io4yl" path="res://Sprites/Corn_weed_inner_test.png" id="2_f3aw7"]
-[ext_resource type="Texture2D" uid="uid://oarpgiu0ce3q" path="res://Sprites/Corn_weed_outer_test.png" id="2_lhxtk"]
+[ext_resource type="Texture2D" uid="uid://7ayaq7ir3h7k" path="res://Sprites/ShuckedCorn.png" id="2_iotib"]
+[ext_resource type="Texture2D" uid="uid://br2bffrhfl72k" path="res://Sprites/CornStalk.png" id="3_t1sdp"]
 [ext_resource type="Texture2D" uid="uid://dxxbvf7of83t3" path="res://Sprites/weed_mask_48.png" id="4_hij7e"]
 [ext_resource type="PackedScene" uid="uid://yuamtnxa0oek" path="res://Scenes/ParticleEffects/cut_particle.tscn" id="5_f3aw7"]
 [ext_resource type="PackedScene" uid="uid://c3im616by8cs5" path="res://Scenes/ParticleEffects/grab_particle.tscn" id="6_hij7e"]
@@ -13,11 +13,11 @@ size = Vector2(16, 240)
 [node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
 top_level = true
 script = ExtResource("1_qcigs")
-inner_sprite = ExtResource("2_f3aw7")
-outer_sprite = ExtResource("2_lhxtk")
-base_score = 35.0
+inner_sprite = ExtResource("2_iotib")
+outer_sprite = ExtResource("3_t1sdp")
+base_score = 15.0
 width = 2
-grow_rate = 25.0
+grow_rate = 17.0
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=500254823]
 z_index = 1
@@ -29,11 +29,11 @@ texture = ExtResource("4_hij7e")
 
 [node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=1043033575]
 position = Vector2(0, 120)
-texture = ExtResource("2_f3aw7")
+texture = ExtResource("2_iotib")
 offset = Vector2(0, -120)
 
 [node name="WeedSpriteOuter" type="Sprite2D" parent="WeedMask" unique_id=515589144]
-texture = ExtResource("2_lhxtk")
+texture = ExtResource("3_t1sdp")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=942955904]
 position = Vector2(0, -120)

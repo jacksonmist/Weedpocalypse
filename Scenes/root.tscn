@@ -93,6 +93,8 @@ position = Vector2(80, -115)
 texture = ExtResource("1_i04dx")
 
 [node name="GridLines" type="Sprite2D" parent="ScreenTemplate" unique_id=210329844]
+z_index = -4
+z_as_relative = false
 texture = ExtResource("4_4g5cr")
 
 [node name="GridManager" type="Node" parent="." unique_id=483008534]
@@ -114,7 +116,6 @@ wait_time = 5.0
 
 [node name="GrowParticle" type="CPUParticles2D" parent="WeedManager" unique_id=1838648601]
 z_index = 1
-position = Vector2(72, -53)
 emitting = false
 amount = 20
 lifetime = 0.28
@@ -280,12 +281,15 @@ label_settings = SubResource("LabelSettings_18fmr")
 [node name="ScoreText" type="RichTextLabel" parent="UIManager" unique_id=850819361]
 texture_filter = 1
 clip_contents = false
-offset_right = 134.38298
-offset_bottom = 118.0
+offset_left = 6.0
+offset_right = 846.0
+offset_bottom = 194.0
 scale = Vector2(0.5, 0.5)
+mouse_filter = 2
 bbcode_enabled = true
 text = "[font=res://Fonts/KiwiSoda.ttf][left][font_size=48]
-[color=#e29bfa][outline_color=#4e278c][outline_size=16]Score[/outline_size][/outline_color][/color][/font_size][/left][/font]"
+[color=#e29bfa][outline_color=#4e278c][outline_size=16]999999999999999999999999[/outline_size][/outline_color][/color][/font_size][/left][/font]"
+fit_content = true
 
 [node name="GameOverText" type="RichTextLabel" parent="UIManager" unique_id=1333910176]
 visible = false
@@ -295,17 +299,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -99.0
-offset_top = -143.0
-offset_right = 289.0
-offset_bottom = 279.0
+offset_left = -168.78494
+offset_top = -147.0
+offset_right = 168.78491
+offset_bottom = 9.639923
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 bbcode_enabled = true
 text = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=64]
 [color=#ca7ef2][outline_color=#4e278c][outline_size=16][wave amp=25.0 freq=5.0 connected=1]Game Over![/wave][/outline_size][/outline_color][/color][/font_size][/center][/font]"
+fit_content = true
 
 [node name="ComboText" type="RichTextLabel" parent="UIManager" unique_id=1228577783]
 clip_contents = false

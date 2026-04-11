@@ -127,7 +127,7 @@ func cut():
 	var offset = Vector2(0, INITIAL_OFFSET.y - growth)
 	cutting_instance.init(weed_sprite, -mouse_pos.y, growth)
 	cut_particle.position = Vector2(0, mouse_pos.y)
-	cut_particle.amount = growth / 4
+	cut_particle.amount = clamp(growth / 4, 1, 100)
 	cut_particle.emitting = true
 	growth = -mouse_pos.y
 	

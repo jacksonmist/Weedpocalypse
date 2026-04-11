@@ -2,8 +2,8 @@ extends Node
 
 @onready var button: TextureButton = get_parent()
 
-@export var trans: Tween.TransitionType
-@export var ease: Tween.EaseType
+@export var trans_var: Tween.TransitionType
+@export var ease_var: Tween.EaseType
 
 @export var rotation: float = 3.0
 @export var scale: float = 1.1
@@ -28,4 +28,4 @@ func set_tween():
 	if(tween):
 		tween.kill()
 	tween = create_tween()
-	tween.set_ease(ease).set_trans(trans).set_parallel()
+	tween.set_ease(ease_var).set_trans(trans_var).set_parallel()

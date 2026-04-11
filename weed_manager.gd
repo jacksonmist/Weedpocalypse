@@ -27,7 +27,7 @@ var active_weeds = []
 @onready var grow_particle: CPUParticles2D = $GrowParticle
 
 var e: float
-var max_difficulty: float = 1.1
+var max_difficulty: float = 1.5
 var L: float
 var difficulty_slope: float = 0.1
 var difficulty_midpoint: float = 30

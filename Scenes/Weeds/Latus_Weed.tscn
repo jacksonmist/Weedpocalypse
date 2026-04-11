@@ -13,11 +13,11 @@ size = Vector2(16, 240)
 [node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
 top_level = true
 script = ExtResource("1_rxxiy")
-base_score = 20.0
+base_score = 12.0
 width = 1
 flower_texture = ExtResource("1_tbp71")
 sprite_array = Array[Texture]([ExtResource("3_rxxiy")])
-grow_rate = 30.0
+grow_rate = 22.0
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=500254823]
 z_index = 1

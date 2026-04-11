@@ -16,7 +16,7 @@ script = ExtResource("1_tsbbd")
 base_score = 10.0
 width = 1
 sprite_array = Array[Texture]([ExtResource("2_8fq16")])
-grow_rate = 40.0
+grow_rate = 30.0
 cutting = ExtResource("2_gnymo")
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=771238174]
