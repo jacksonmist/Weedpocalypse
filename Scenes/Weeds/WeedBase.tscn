@@ -27,4 +27,3 @@ position = Vector2(0, -120)
 shape = SubResource("RectangleShape2D_r3lo5")
 
 [node name="KillTimer" type="Timer" parent="." unique_id=1976692784]
-wait_time = 3.0

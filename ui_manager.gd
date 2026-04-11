@@ -64,6 +64,7 @@ func _ready() -> void:
 	exit_button.pressed.connect(quit_game)
 	retry_button.pressed.connect(retry_game)
 	update_score(0)
+	
 func update_score(new_score: int):
 	var tween = create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.tween_method(_set_displayed_score.bind(score_text), score, new_score, 1)

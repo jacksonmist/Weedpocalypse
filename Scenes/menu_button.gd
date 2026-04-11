@@ -10,3 +10,8 @@ func _ready() -> void:
 	button_label.text = normal_text
 	button_label.normal_text = normal_text
 	button_label.is_positive = is_positive
+
+func change_text(new_text: String):
+	normal_text = new_text
+	button_label.normal_text = normal_text
+	button_label.text = normal_text

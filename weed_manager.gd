@@ -23,6 +23,8 @@ var difficulty: float = 1
 								Game_Enums.Weeds.TREE: false,
 								Game_Enums.Weeds.CORN: false}
 
+var active_weeds = []
+
 var e: float
 var max_difficulty: float = 2.0
 var L: float
@@ -34,6 +36,8 @@ var min_time_between_spawn: float = 1
 var L2: float
 var time_decrease_slope: float = 0.1
 var spawn_time_midpoint: float = 30
+
+var tutorial_enabled: bool
 
 func _ready() -> void:
 	e = exp(1)
@@ -87,14 +91,30 @@ func spawn_weed():
 	if(spawn_pos == null):
 		spawn_wait()
 		return
-	weed = one_width_weeds[3]
 	var weed_instance = weed.instantiate()
 	if(!is_gameover):
 		check_seen(weed_instance.type)
 	add_child(weed_instance)
+	active_weeds.append(weed_instance)
 	weed_instance.init(self, difficulty, spawn_pos, width)
 	weed_instance.position = spawn_pos
 	spawn_wait()
+
+func weed_grow(is_growing: bool):
+	for weed in active_weeds:
+		if weed:
+			weed.is_growing = false
+
+func spawn_tutorial_weed():
+	tutorial_enabled = true
+	var weed = one_width_weeds[0]
+	var weed_instance = weed.instantiate()
+	add_child(weed_instance)
+	check_seen(weed_instance.type)
+	active_weeds.append(weed_instance)
+	weed_instance.init(self, 1, Vector2(72, 0), 1)
+	weed_instance.position = Vector2(72, 0)
+	return weed_instance
 
 func check_seen(weed_type: Game_Enums.Weeds):
 	if(seen_weeds[weed_type]):
@@ -114,7 +134,17 @@ func spawn_wait():
 func remove_weed(weed: Weed):
 	var free_pos = int((weed.spawn_pos.x - 8) / 16)
 	grid_manager.set_free_position(free_pos)
+	if(weed in active_weeds):
+		active_weeds.erase(weed)
 	weed.queue_free()
+	if(tutorial_enabled):
+		print("here")
+		tutorial_enabled = false
+		%TutorialManager.advance_tutorial()
+
+func clear_all_weeds():
+	for weed in active_weeds:
+		weed.kill()
 
 func update_score(base_score: float):
 	score_manager.add_score(base_score)

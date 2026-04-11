@@ -14,7 +14,6 @@ func save_data():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
 	file.close()
-	print(data)
 	
 func _load_data():
 	if !FileAccess.file_exists(save_path):
