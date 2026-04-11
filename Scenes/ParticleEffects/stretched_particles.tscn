@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bipcgtc6p0p3w"]
+
+[sub_resource type="Gradient" id="Gradient_rxp2t"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="StretchedParticles" type="CPUParticles2D" unique_id=926955351]
+emitting = false
+amount = 15
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+orbit_velocity_min = -4.0
+orbit_velocity_max = 4.0
+scale_amount_max = 4.0
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_rxp2t")

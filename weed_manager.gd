@@ -74,7 +74,7 @@ func enable_spawning():
 	
 func spawn_weed():
 	calculate_difficulty()
-	var random_num = randi_range(30, 100)
+	var random_num = randi_range(1, 100)
 	var width: int = 1
 	var weed: PackedScene
 	if(random_num >= one_width_chance):

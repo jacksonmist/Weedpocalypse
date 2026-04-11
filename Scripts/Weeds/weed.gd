@@ -37,6 +37,8 @@ var stretch_threshold: float = 100
 @onready var flower: Sprite2D = $Flower
 @onready var cut_particle: CPUParticles2D = $CutParticle
 @onready var grab_particle: CPUParticles2D = $GrabParticle
+@onready var stretched_particle: PackedScene = load("res://Scenes/ParticleEffects/stretched_particles.tscn")
+var stretch_particle_instance: CPUParticles2D
 
 @export var cutting: PackedScene = load("res://Scenes/Weeds/weed_cutting.tscn")
 
@@ -55,6 +57,8 @@ func _ready() -> void:
 	if(randf_range(0, 100) > 50):
 		weed_sprite.flip_h = true
 	grab_particle.emitting = false
+	stretch_particle_instance = stretched_particle.instantiate()
+	add_child(stretch_particle_instance)
 	
 func _physics_process(delta: float) -> void:
 	if(weed_mask.offset.y > 0 and is_growing and !is_dead):
@@ -113,6 +117,8 @@ func grab(grabbing: bool):
 func fully_stretched():
 	grab(false)
 	stretched.emit(self)
+	stretch_particle_instance.global_position = get_global_mouse_position()
+	stretch_particle_instance.emitting = true
 
 func cut():
 	var cutting_instance = cutting.instantiate()

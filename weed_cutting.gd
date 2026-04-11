@@ -1,7 +1,7 @@
 extends CharacterBody2D
 const GRAVITY = 980
-var random_vector
-var rotation_speed
+var random_vector = Vector2.ZERO
+var rotation_speed = 0
 func init(sprite: Sprite2D, bottom: float, top: float) -> void:
 	var weed_mask: Sprite2D = $WeedMask
 	var kill_timer: Timer = $KillTimer

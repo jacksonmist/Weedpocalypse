@@ -101,7 +101,7 @@ grid_height = 15
 unique_name_in_owner = true
 script = ExtResource("6_r3lo5")
 one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r"), ExtResource("13_j8vvb"), ExtResource("14_qoxdu"), ExtResource("15_teq3f")])
-two_width_weeds = Array[PackedScene]([ExtResource("14_2mc6k")])
+three_width_weeds = Array[PackedScene]([ExtResource("14_2mc6k")])
 
 [node name="SpawnTimer" type="Timer" parent="WeedManager" unique_id=1202271330]
 wait_time = 5.0

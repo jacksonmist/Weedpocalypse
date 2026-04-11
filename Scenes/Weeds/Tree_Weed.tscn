@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://e4v3mjrplbwd"]
 
 [ext_resource type="Script" uid="uid://cyknrfohqxulq" path="res://Scripts/Weeds/tree_weed.gd" id="1_qqu7v"]
-[ext_resource type="Texture2D" uid="uid://danxnxntecb6m" path="res://Sprites/tree_weed_test.png" id="2_gsdtx"]
-[ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="3_gsdtx"]
+[ext_resource type="Texture2D" uid="uid://ec5s32cpfcjy" path="res://Sprites/TreeStalk.png" id="2_gsdtx"]
+[ext_resource type="Texture2D" uid="uid://dxxbvf7of83t3" path="res://Sprites/weed_mask_48.png" id="3_gsdtx"]
 [ext_resource type="PackedScene" uid="uid://yuamtnxa0oek" path="res://Scenes/ParticleEffects/cut_particle.tscn" id="4_8i3kn"]
 [ext_resource type="PackedScene" uid="uid://c3im616by8cs5" path="res://Scenes/ParticleEffects/grab_particle.tscn" id="5_gsdtx"]
 
@@ -26,9 +26,11 @@ position = Vector2(0, -120)
 texture = ExtResource("3_gsdtx")
 
 [node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=515589144]
+texture = ExtResource("2_gsdtx")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=942955904]
 position = Vector2(0, -120)
+scale = Vector2(2.7, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1574559941]
 shape = SubResource("RectangleShape2D_r3lo5")
@@ -40,3 +42,4 @@ lifetime = 0.3
 speed_scale = 0.6
 
 [node name="GrabParticle" parent="." unique_id=1089378811 instance=ExtResource("5_gsdtx")]
+emitting = false
