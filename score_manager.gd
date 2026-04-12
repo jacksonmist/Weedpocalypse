@@ -50,6 +50,8 @@ func game_over():
 	if(is_game_over):
 		return
 	is_game_over = true
+	if(LeaderboardManager.check_score(score)):
+		ui.submit_highscore(score)
 	if(score > high_score):
 		high_score = score
 		save()

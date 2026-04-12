@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://can5y4tan7x2j"]
 
-[ext_resource type="Texture2D" uid="uid://bqvljg6d0si63" path="res://Sprites/HotbarUI.png" id="1_5uo3s"]
+[ext_resource type="Texture2D" uid="uid://86fjyuqshfe" path="res://Sprites/ButtonMainMenu.png" id="1_y72qc"]
 [ext_resource type="Script" uid="uid://ctowlqotqx76m" path="res://Scenes/menu_button.gd" id="2_rb1po"]
 [ext_resource type="FontFile" uid="uid://dxdj2o17lv4f" path="res://Fonts/KiwiSoda.ttf" id="2_y72qc"]
 [ext_resource type="Script" uid="uid://dpxmpfdyupjow" path="res://Scenes/button_label_effect.gd" id="3_rb1po"]
@@ -18,7 +18,7 @@ offset_right = -11.0
 offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("1_5uo3s")
+texture_normal = ExtResource("1_y72qc")
 stretch_mode = 0
 script = ExtResource("2_rb1po")
 
@@ -48,5 +48,3 @@ normal_text = "Continue"
 
 [node name="ButtonEffect" type="Node" parent="." unique_id=327863177]
 script = ExtResource("4_kg4rv")
-trans = 1
-ease = 2

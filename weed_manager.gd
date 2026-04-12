@@ -27,7 +27,7 @@ var active_weeds = []
 @onready var grow_particle: CPUParticles2D = $GrowParticle
 
 var e: float
-var max_difficulty: float = 1.5
+var max_difficulty: float = 1.6
 var L: float
 var difficulty_slope: float = 0.1
 var difficulty_midpoint: float = 30
@@ -95,7 +95,6 @@ func spawn_weed():
 			weed = one_width_weeds.pick_random()	
 		var spawn_pos = grid_manager.get_free_point(width)
 		if(spawn_pos == null):
-			print(weed)
 			spawn_wait()
 			return
 		var weed_instance = weed.instantiate()

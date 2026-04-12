@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SilentWolf="*uid://v1u5aujj6ltn"
 SceneLoader="*uid://cj7cgxcsibq1p"
 SaveManager="*uid://brt3a2c7ucbd6"
+LeaderboardManager="*uid://bf5c0wya5nfyk"
 
 [display]
 

@@ -15,13 +15,11 @@
 [ext_resource type="Script" uid="uid://bujpxapqvr5nj" path="res://score_manager.gd" id="9_qtxxq"]
 [ext_resource type="Script" uid="uid://dco3lrc7lyjdp" path="res://ui_manager.gd" id="10_8fnbn"]
 [ext_resource type="Shader" uid="uid://bodk7iw7a4jtk" path="res://Scenes/scan_line.gdshader" id="10_c7unf"]
-[ext_resource type="Shader" uid="uid://cr3qflwssmfma" path="res://Scenes/crt.gdshader" id="11_64fwa"]
 [ext_resource type="Texture2D" uid="uid://cpv4mpdywenjo" path="res://Sprites/HandUI.png" id="11_a6f85"]
 [ext_resource type="FontFile" uid="uid://dxdj2o17lv4f" path="res://Fonts/KiwiSoda.ttf" id="11_lwnbm"]
 [ext_resource type="Texture2D" uid="uid://y80toy4mgi78" path="res://Sprites/ScytheUI.png" id="12_fu36u"]
 [ext_resource type="PackedScene" uid="uid://7xy0hmdpk3m6" path="res://Scenes/Weeds/Thistle_Weed.tscn" id="13_j8vvb"]
 [ext_resource type="PackedScene" uid="uid://e4v3mjrplbwd" path="res://Scenes/Weeds/Tree_Weed.tscn" id="14_2mc6k"]
-[ext_resource type="Texture2D" uid="uid://bqvljg6d0si63" path="res://Sprites/HotbarUI.png" id="14_20eh2"]
 [ext_resource type="PackedScene" uid="uid://dtc52d044b462" path="res://Scenes/Weeds/Latus_Weed.tscn" id="14_qoxdu"]
 [ext_resource type="PackedScene" uid="uid://c2ijn065p3jxr" path="res://Scenes/Weeds/Corn_Weed.tscn" id="15_teq3f"]
 [ext_resource type="Texture2D" uid="uid://ba4cxxldubblx" path="res://Sprites/ButtonDandelion.png" id="23_18fmr"]
@@ -33,22 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://mmwk4xrfbjkn" path="res://Sprites/ButtonLatus.png" id="26_vdqvo"]
 [ext_resource type="Texture2D" uid="uid://w3o4hfa3v2m4" path="res://Sprites/ButtonTree.png" id="27_c7unf"]
 [ext_resource type="Texture2D" uid="uid://c5cc1kb22ahpg" path="res://Sprites/ButtonCorn.png" id="28_vdqvo"]
+[ext_resource type="Texture2D" uid="uid://wabmu5p5plqx" path="res://icon.svg" id="30_c7unf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
 radius = 8.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_51qfo"]
-shader = ExtResource("11_64fwa")
-shader_parameter/tex = ExtResource("1_i04dx")
-shader_parameter/mask_type = 1
-shader_parameter/curve = 0.10000000475
-shader_parameter/sharpness = 0.5
-shader_parameter/color_offset = -0.5
-shader_parameter/mask_brightness = 1.0
-shader_parameter/scanline_brightness = 1.0
-shader_parameter/min_scanline_thickness = 0.54600001406
-shader_parameter/aspect = 0.75
-shader_parameter/wobble_strength = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_64fwa"]
 shader = ExtResource("10_c7unf")
@@ -109,16 +95,6 @@ z_index = 4096
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1524720331]
 position = Vector2(80, -115)
-
-[node name="CRT" type="ColorRect" parent="." unique_id=721336455]
-visible = false
-z_index = -1
-material = SubResource("ShaderMaterial_51qfo")
-offset_left = -78.0
-offset_top = -234.0
-offset_right = 239.0
-offset_bottom = 5.0
-mouse_filter = 2
 
 [node name="ScreenTemplate" type="Sprite2D" parent="." unique_id=1204207731]
 z_index = 2
@@ -182,78 +158,6 @@ script = ExtResource("9_qtxxq")
 unique_name_in_owner = true
 script = ExtResource("10_8fnbn")
 font = ExtResource("11_lwnbm")
-
-[node name="RetryBackground" type="NinePatchRect" parent="UIManager" unique_id=926895992]
-visible = false
-z_index = 6
-clip_contents = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -77.0
-offset_top = 29.25
-offset_right = 77.0
-offset_bottom = 69.25037
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("14_20eh2")
-region_rect = Rect2(0, 0, 16, 16)
-patch_margin_left = 2
-patch_margin_top = 4
-patch_margin_right = 2
-patch_margin_bottom = 2
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 2
-
-[node name="RetryButton" type="Button" parent="UIManager/RetryBackground" unique_id=1881354541]
-layout_mode = 0
-offset_right = 154.0
-offset_bottom = 40.0
-theme_override_colors/font_color = Color(0.872, 0.68, 1, 1)
-theme_override_colors/font_outline_color = Color(0.30588236, 0.15294118, 0.54901963, 1)
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("11_lwnbm")
-theme_override_font_sizes/font_size = 32
-text = "Retry"
-flat = true
-
-[node name="ExitBackground" type="NinePatchRect" parent="UIManager" unique_id=133106678]
-visible = false
-z_index = 6
-clip_contents = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -77.0
-offset_top = 72.91998
-offset_right = 77.0
-offset_bottom = 112.92029
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("14_20eh2")
-region_rect = Rect2(0, 0, 16, 16)
-patch_margin_left = 2
-patch_margin_top = 4
-patch_margin_right = 2
-patch_margin_bottom = 2
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 2
-
-[node name="ExitButton" type="Button" parent="UIManager/ExitBackground" unique_id=253986930]
-layout_mode = 0
-offset_right = 154.0
-offset_bottom = 40.0
-theme_override_colors/font_color = Color(0.872, 0.68, 1, 1)
-theme_override_colors/font_outline_color = Color(0.30588236, 0.15294118, 0.54901963, 1)
-theme_override_constants/outline_size = 7
-theme_override_fonts/font = ExtResource("11_lwnbm")
-theme_override_font_sizes/font_size = 32
-text = "Quit"
-flat = true
 
 [node name="HandToolButton" type="TextureButton" parent="UIManager" unique_id=886130207]
 anchors_preset = 4
@@ -335,7 +239,6 @@ text = "[font=res://Fonts/KiwiSoda.ttf][left][font_size=48]
 fit_content = true
 
 [node name="GameOverText" type="RichTextLabel" parent="UIManager" unique_id=1333910176]
-visible = false
 clip_contents = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -348,7 +251,7 @@ offset_right = 168.78491
 offset_bottom = 9.639923
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 bbcode_enabled = true
@@ -381,7 +284,6 @@ anchor_right = 1.0
 grow_horizontal = 0
 
 [node name="Dandelion" type="TextureRect" parent="UIManager/Identifiers" unique_id=1168182025]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -391,6 +293,7 @@ offset_top = 2.0
 offset_right = -3.0
 offset_bottom = 30.0
 grow_horizontal = 0
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("23_18fmr")
 script = ExtResource("23_dw4fd")
 
@@ -421,7 +324,6 @@ texture = ExtResource("4_ogk07")
 stretch_mode = 3
 
 [node name="Thistle" type="TextureRect" parent="UIManager/Identifiers" unique_id=856797199]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -431,6 +333,7 @@ offset_top = 32.0
 offset_right = -3.0
 offset_bottom = 60.0
 grow_horizontal = 0
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("25_8p807")
 script = ExtResource("23_dw4fd")
 
@@ -461,7 +364,6 @@ texture = ExtResource("6_2mc6k")
 stretch_mode = 3
 
 [node name="Latus" type="TextureRect" parent="UIManager/Identifiers" unique_id=398613735]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -471,6 +373,7 @@ offset_top = 62.0
 offset_right = -3.0
 offset_bottom = 90.0
 grow_horizontal = 0
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("26_vdqvo")
 script = ExtResource("23_dw4fd")
 
@@ -510,7 +413,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tree" type="TextureRect" parent="UIManager/Identifiers" unique_id=1709202030]
-modulate = Color(1, 1, 1, 0)
 clip_children = 2
 layout_mode = 1
 anchors_preset = 1
@@ -521,6 +423,7 @@ offset_top = 92.0
 offset_right = -3.0
 offset_bottom = 120.0
 grow_horizontal = 0
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("27_c7unf")
 script = ExtResource("23_dw4fd")
 
@@ -557,7 +460,6 @@ texture = ExtResource("6_2mc6k")
 stretch_mode = 1
 
 [node name="Corn" type="TextureRect" parent="UIManager/Identifiers" unique_id=2086222311]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -567,6 +469,7 @@ offset_top = 122.0
 offset_right = -3.0
 offset_bottom = 150.0
 grow_horizontal = 0
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("28_vdqvo")
 script = ExtResource("23_dw4fd")
 
@@ -615,6 +518,80 @@ offset_bottom = 28.0
 texture = ExtResource("6_2mc6k")
 stretch_mode = 3
 
+[node name="RetryButton" parent="UIManager" unique_id=738821461 instance=ExtResource("24_s4qac")]
+offset_left = -34.5
+offset_top = 31.0
+offset_right = 34.5
+offset_bottom = 59.0
+scale = Vector2(1e-05, 1e-05)
+normal_text = "Retry"
+is_positive = true
+
+[node name="MenuButton" parent="UIManager" unique_id=1255779865 instance=ExtResource("24_s4qac")]
+offset_left = -34.5
+offset_top = 61.0
+offset_right = 34.5
+offset_bottom = 89.0
+scale = Vector2(1e-05, 1e-05)
+normal_text = "Menu"
+is_positive = true
+
+[node name="QuitButton" parent="UIManager" unique_id=176687850 instance=ExtResource("24_s4qac")]
+offset_left = -34.5
+offset_top = 91.0
+offset_right = 34.5
+offset_bottom = 119.0
+scale = Vector2(1e-05, 1e-05)
+normal_text = "Quit"
+
+[node name="LeaderboardScore" type="TextureRect" parent="UIManager" unique_id=453899857]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -98.5
+offset_right = 98.5
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("30_c7unf")
+stretch_mode = 4
+
+[node name="TagLine" type="LineEdit" parent="UIManager/LeaderboardScore" unique_id=1878758056]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -36.0
+offset_right = 76.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("11_lwnbm")
+theme_override_font_sizes/font_size = 64
+text = "aaa"
+alignment = 1
+max_length = 3
+
+[node name="EnterTagButton" parent="UIManager/LeaderboardScore" unique_id=1200287393 instance=ExtResource("24_s4qac")]
+layout_mode = 1
+offset_left = -34.5
+offset_top = 42.0
+offset_right = 34.5
+offset_bottom = 70.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+normal_text = "Enter"
+is_positive = true
+
 [node name="TutorialManager" type="CanvasLayer" parent="." unique_id=263966681]
 unique_name_in_owner = true
 visible = false
@@ -642,7 +619,7 @@ text = "Tutorial"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="SkipButton" parent="TutorialManager" unique_id=738821461 instance=ExtResource("24_s4qac")]
+[node name="SkipButton" parent="TutorialManager" unique_id=558562273 instance=ExtResource("24_s4qac")]
 anchors_preset = 5
 anchor_top = 0.0
 anchor_bottom = 0.0

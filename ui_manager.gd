@@ -32,10 +32,10 @@ var shake_rate: float
 @onready var scythe_outline: ColorRect = $ScytheToolButton/Outline
 var outline_scale
 
-@onready var retry_background: NinePatchRect = $RetryBackground
-@onready var retry_button: Button = $RetryBackground/RetryButton
-@onready var exit_background: NinePatchRect = $ExitBackground
-@onready var exit_button: Button = $ExitBackground/ExitButton
+@onready var retry_button: TextureButton = $RetryButton
+@onready var quit_button: TextureButton = $QuitButton
+@onready var menu_button: TextureButton = $MenuButton
+var menu_path: String = "uid://c4xl7tgvfo3e8"
 
 @onready var dandelion_id: TextureRect = $Identifiers/Dandelion
 @onready var thistle_id: TextureRect = $Identifiers/Thistle
@@ -50,6 +50,10 @@ var outline_scale
 @onready var white: Color = Color(1, 1, 1, 1)
 @onready var transparent: Color = Color(1, 1, 1, 0)
 
+@onready var leaderboard_score: TextureRect = $LeaderboardScore
+@onready var tag_line: LineEdit = $LeaderboardScore/TagLine
+@onready var enter_tag_button: TextureButton = $LeaderboardScore/EnterTagButton
+
 
 var tween_time: float = 0.4
 
@@ -61,8 +65,9 @@ func _ready() -> void:
 	scythe_tool_button.pressed.connect(set_scythe_tool)
 	outline_scale = hand_outline.scale
 	tool_manager.new_tool.connect(_on_tool_changed)
-	exit_button.pressed.connect(quit_game)
+	quit_button.pressed.connect(quit_game)
 	retry_button.pressed.connect(retry_game)
+	menu_button.pressed.connect(main_menu)
 	update_score(0)
 	
 func update_score(new_score: int):
@@ -119,8 +124,8 @@ func make_tween() -> Tween:
 	return tween
 
 func reveal_identifier(weed: Game_Enums.Weeds) -> bool:
-	var tween = create_tween()
-	tween.tween_property(identifiers[weed], "modulate", white, 0.25)
+	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(identifiers[weed], "scale", Vector2.ONE, 0.25)
 	await tween.finished
 	return true
 
@@ -141,13 +146,29 @@ func display_game_over():
 		High Score: " + str(previous_high_score)
 		
 	hide_ui()
+	var tween = make_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT).set_parallel()
 	game_over_label.text = game_over_text
-	game_over_label.visible = true
-	
-	retry_background.visible = true
-	exit_background.visible = true
+	tween.tween_property(game_over_label, "scale", Vector2(0.5, 0.5), 1)
+	tween.set_parallel(false)
+	tween.tween_property(retry_button, "scale", Vector2.ONE, 0.5)
+	tween.tween_property(menu_button, "scale", Vector2.ONE, 0.5)
+	tween.tween_property(quit_button, "scale", Vector2.ONE, 0.5)
 
+func submit_highscore(score_val: float):
+	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(leaderboard_score, "scale", Vector2.ONE, 1)
+	tag_line.text = ""
+	while(tag_line.text.is_empty()):
+		await enter_tag_button.pressed
+	var player_tag = tag_line.text
+	var submitted_score = floori(score_val)
+	LeaderboardManager.submit_score(player_tag, submitted_score)
+	tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(leaderboard_score, "scale", Vector2.ZERO, 1)
+	
 func retry_game():
 	get_tree().reload_current_scene()
+func main_menu():
+	SceneLoader.load_scene(menu_path)
 func quit_game():
 	get_tree().quit()
