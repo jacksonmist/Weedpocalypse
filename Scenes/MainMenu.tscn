@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dxdj2o17lv4f" path="res://Fonts/KiwiSoda.ttf" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://can5y4tan7x2j" path="res://Scenes/menu_button.tscn" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://bqvljg6d0si63" path="res://Sprites/HotbarUI.png" id="4_ghw46"]
+[ext_resource type="Texture2D" uid="uid://86fjyuqshfe" path="res://Sprites/ButtonMainMenu.png" id="5_8um5k"]
 [ext_resource type="Texture2D" uid="uid://dodmegev4k078" path="res://Sprites/MainMenu.png" id="5_df05h"]
 
 [node name="MainMenu" type="Node2D" unique_id=1555747398]
@@ -31,28 +32,73 @@ normal_text = "Quit"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -42.0
+offset_bottom = 42.0
 grow_horizontal = 0
 texture_normal = ExtResource("4_ghw46")
 stretch_mode = 4
 
+[node name="TutButtonTexture" type="NinePatchRect" parent="MainMenuUI/TutButton" unique_id=502726812]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("5_8um5k")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 5
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TutEnabledLabel" type="Label" parent="MainMenuUI/TutButton/TutButtonTexture" unique_id=622720263]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 42.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0.34117648, 0.6901961, 0.4117647, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 32
+text = "x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Leaderboard" type="RichTextLabel" parent="MainMenuUI" unique_id=2144068060]
+clip_contents = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -91.0
-offset_top = -40.0
+offset_top = -152.59003
+offset_right = -12.0
+offset_bottom = -17.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/outline_size = 8
 theme_override_fonts/normal_font = ExtResource("2_853f1")
-text = "BOBOBOB"
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="LeaderboardBackground" type="NinePatchRect" parent="MainMenuUI/Leaderboard" unique_id=1218158905]
+z_index = -1
+layout_mode = 0
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 82.0
+offset_bottom = 139.59003
+texture = ExtResource("5_8um5k")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="MenuScreen" type="Sprite2D" parent="." unique_id=2047968324]
-visible = false
 texture = ExtResource("5_df05h")
 
 [node name="MenuCamera" type="Camera2D" parent="." unique_id=849620933]

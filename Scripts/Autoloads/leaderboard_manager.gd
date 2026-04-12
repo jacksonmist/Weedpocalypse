@@ -1,14 +1,12 @@
 extends Node
 
-var highscore: float
 var top_scores: Dictionary
 signal scores_ready
 
-func _ready() -> void:
-	highscore = SaveManager.data["highscore"]
+func retrieve_scores():
 	top_scores = await SilentWolf.Scores.get_scores(5).sw_get_scores_complete
 	scores_ready.emit()
-	
+
 func check_score(score: float) -> bool:
 	var index_to_check = top_scores["scores"].size() - 1
 	if(score > top_scores["scores"][index_to_check]["score"] or top_scores["scores"].size() < 5):
