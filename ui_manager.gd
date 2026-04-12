@@ -160,7 +160,7 @@ func submit_highscore(score_val: float):
 	tag_line.text = ""
 	while(tag_line.text.is_empty()):
 		await enter_tag_button.pressed
-	var player_tag = tag_line.text
+	var player_tag = tag_line.text.to_upper()
 	var submitted_score = floori(score_val)
 	LeaderboardManager.submit_score(player_tag, submitted_score)
 	tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)

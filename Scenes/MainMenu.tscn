@@ -37,7 +37,22 @@ grow_horizontal = 0
 texture_normal = ExtResource("4_ghw46")
 stretch_mode = 4
 
+[node name="Leaderboard" type="RichTextLabel" parent="MainMenuUI" unique_id=2144068060]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("2_853f1")
+text = "BOBOBOB"
+
 [node name="MenuScreen" type="Sprite2D" parent="." unique_id=2047968324]
+visible = false
 texture = ExtResource("5_df05h")
 
 [node name="MenuCamera" type="Camera2D" parent="." unique_id=849620933]

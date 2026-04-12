@@ -8,12 +8,16 @@ extends CanvasLayer
 var game_path: String = "uid://1ips1634u4wj"
 var tut_enabled: bool
 
+var top_scores = []
+@onready var leaderboard: RichTextLabel = $Leaderbord
+
 func _ready() -> void:
 	play_button.pressed.connect(start_game)
 	quit_button.pressed.connect(quit_game)
 	tut_button.pressed.connect(_tutorial_button)
 	load_data()
-	print(tut_enabled)
+	await LeaderboardManager.scores_ready
+	top_scores = LeaderboardManager.get_scores()
 	
 func start_game():
 	SceneLoader.load_scene(game_path)
@@ -28,6 +32,11 @@ func _tutorial_button():
 		tut_enabled = true
 	save_data()
 	print(tut_enabled)
+
+func set_leaderboard():
+	return
+	for profile in top_scores:
+		leaderboard.text = profile[0]
 	
 func save_data():
 	SaveManager.data["tutorial_enabled"] = tut_enabled

@@ -2,11 +2,12 @@ extends Node
 
 var highscore: float
 var top_scores: Dictionary
+signal scores_ready
 
 func _ready() -> void:
 	highscore = SaveManager.data["highscore"]
-	
 	top_scores = await SilentWolf.Scores.get_scores(5).sw_get_scores_complete
+	scores_ready.emit()
 	
 func check_score(score: float) -> bool:
 	var index_to_check = top_scores["scores"].size() - 1
@@ -16,3 +17,10 @@ func check_score(score: float) -> bool:
 
 func submit_score(player_tag: String, score: float):
 	SilentWolf.Scores.save_score(player_tag, score)
+
+func get_scores() -> Array:
+	var scores_array = []
+	for i in top_scores["scores"].size():
+		var profile = {top_scores["scores"][i]["player_name"]: top_scores["scores"][i]["score"]}
+		scores_array.append(profile)
+	return scores_array
