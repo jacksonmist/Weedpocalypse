@@ -6,6 +6,7 @@ signal scores_ready
 func retrieve_scores():
 	top_scores = await SilentWolf.Scores.get_scores(5).sw_get_scores_complete
 	scores_ready.emit()
+	print("here")
 
 func check_score(score: float) -> bool:
 	var index_to_check = top_scores["scores"].size() - 1

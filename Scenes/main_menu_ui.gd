@@ -14,12 +14,16 @@ var highscore
 var top_scores = []
 @onready var leaderboard: RichTextLabel = $Leaderboard
 
+@onready var title: RichTextLabel = $Title
+
 func _ready() -> void:
 	play_button.pressed.connect(start_game)
 	quit_button.pressed.connect(quit_game)
 	tut_button.pressed.connect(_tutorial_button)
+	reveal_title()
 	load_data()
 	_tut_label()
+	await get_tree().process_frame
 	LeaderboardManager.retrieve_scores()
 	await LeaderboardManager.scores_ready
 	top_scores = LeaderboardManager.get_scores()
@@ -49,17 +53,23 @@ func set_leaderboard():
 		var key = profile.keys()[0]
 		leaderboard.text += key + ": " + str(int(profile[key])) + "\n"
 	leaderboard.text += '\n\n' + "You: " + str(int(highscore))
+	if(highscore == 0): leaderboard.text += " :("
 	reveal_leaderboard()
 
 func reveal_leaderboard():
 	var timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = 0.02
-	while(leaderboard.visible_ratio <= 1.0):
+	while(leaderboard.visible_ratio < 1.0):
 		leaderboard.visible_characters += 1
 		timer.start()
 		await timer.timeout
-	
+
+func reveal_title():
+	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT).set_parallel()
+	tween.tween_property(title, "scale", Vector2.ONE, 4)
+	tween.tween_property(title, "rotation", 4 * PI, 4)
+
 func save_data():
 	SaveManager.data["tutorial_enabled"] = tut_enabled
 	SaveManager.save_data()

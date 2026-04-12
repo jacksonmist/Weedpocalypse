@@ -71,10 +71,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -91.0
-offset_top = -152.59003
-offset_right = -12.0
-offset_bottom = -17.0
+offset_left = -106.0
+offset_top = -146.0
+offset_right = 95.0
+offset_bottom = -10.409973
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/outline_size = 8
@@ -83,13 +83,20 @@ fit_content = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="LeaderboardBackground" type="NinePatchRect" parent="MainMenuUI/Leaderboard" unique_id=1218158905]
+[node name="LeaderboardBackground" type="NinePatchRect" parent="MainMenuUI" unique_id=1218158905]
+modulate = Color(1, 1, 1, 0.5882353)
 z_index = -1
-layout_mode = 0
-offset_left = -9.0
-offset_top = -6.0
-offset_right = 82.0
-offset_bottom = 139.59003
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -153.0
+offset_right = -7.0
+offset_bottom = -7.409912
+grow_horizontal = 0
+grow_vertical = 0
 texture = ExtResource("5_8um5k")
 patch_margin_left = 5
 patch_margin_top = 5
@@ -97,6 +104,30 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[node name="Title" type="RichTextLabel" parent="MainMenuUI" unique_id=1252579474]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -101.0
+offset_right = 208.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0.34117648, 0.6901961, 0.4117647, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("2_853f1")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[rainbow freq=0.2 sat=0.4 val=1speed=1.0][wave amp=50.0 freq=5.0 connected=1]Weedpocalypse[/wave][/rainbow]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MenuScreen" type="Sprite2D" parent="." unique_id=2047968324]
 texture = ExtResource("5_df05h")
