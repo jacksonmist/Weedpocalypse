@@ -1,4 +1,3 @@
-
 class_name Weed extends CharacterBody2D
 
 @onready var kill_timer: Timer = $KillTimer

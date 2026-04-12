@@ -8,6 +8,10 @@ var cursors: Dictionary = {}
 @export var scythe_pressed_cursor: Texture
 @export var scythe_cut_animation: AnimatedSprite2D
 
+var first_active_frame: bool = false
+var active: bool = false
+var previous_position: Vector2
+@onready var ray_cast: RayCast2D = $RayCast2D
 var mouse_position: Vector2
 var current_tool: Game_Enums.Tool
 
@@ -28,12 +32,23 @@ func _ready() -> void:
 
 func _physics_process(_delta: float):
 	position = get_global_mouse_position()
+	#if(active):
+		#if first_active_frame:
+			#previous_position = position
+			#first_active_frame = false
+			#return
+		#var space_state = get_world_2d().direct_space_state
+		#var query = PhysicsRayQueryParameters2D.create(position, previous_position)
+		#var result = space_state.intersect_ray(query)
+		#print(result)
 	
 func set_tool(tool: Game_Enums.Tool):
 	current_tool = tool
 	Input.set_custom_mouse_cursor(cursors[tool])
 
 func set_active(is_active: bool):
+	first_active_frame = true
+	active = is_active
 	monitoring = is_active
 	if(!is_active):
 		for weed in grabbed_weeds:

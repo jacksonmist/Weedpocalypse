@@ -93,6 +93,8 @@ shape = SubResource("CircleShape2D_8fnbn")
 [node name="MouseCursor" type="Sprite2D" parent="Player/MouseController" unique_id=1322305492]
 z_index = 4096
 
+[node name="RayCast2D" type="RayCast2D" parent="Player/MouseController" unique_id=1735479914]
+
 [node name="Camera" type="Camera2D" parent="." unique_id=1524720331]
 position = Vector2(80, -115)
 
@@ -519,6 +521,7 @@ texture = ExtResource("6_2mc6k")
 stretch_mode = 3
 
 [node name="RetryButton" parent="UIManager" unique_id=738821461 instance=ExtResource("24_s4qac")]
+visible = false
 offset_left = -34.5
 offset_top = 31.0
 offset_right = 34.5
@@ -528,6 +531,7 @@ normal_text = "Retry"
 is_positive = true
 
 [node name="MenuButton" parent="UIManager" unique_id=1255779865 instance=ExtResource("24_s4qac")]
+visible = false
 offset_left = -34.5
 offset_top = 61.0
 offset_right = 34.5
@@ -537,6 +541,7 @@ normal_text = "Menu"
 is_positive = true
 
 [node name="QuitButton" parent="UIManager" unique_id=176687850 instance=ExtResource("24_s4qac")]
+visible = false
 offset_left = -34.5
 offset_top = 91.0
 offset_right = 34.5

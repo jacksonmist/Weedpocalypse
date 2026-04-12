@@ -54,6 +54,7 @@ var menu_path: String = "uid://c4xl7tgvfo3e8"
 @onready var tag_line: LineEdit = $LeaderboardScore/TagLine
 @onready var enter_tag_button: TextureButton = $LeaderboardScore/EnterTagButton
 
+var game_over_shown: bool = false
 
 var tween_time: float = 0.4
 
@@ -137,6 +138,8 @@ func hide_ui():
 	tween.tween_property(combo_text, "modulate", transparent, 0.25)
 
 func display_game_over():
+	if game_over_shown: return
+	game_over_shown = true
 	if(score > previous_high_score):
 		game_over_text = game_over_prefix + "Game Over!" + game_over_postfix + high_score_prefix + "
 		\nHigh Score: " + str(score)
@@ -146,6 +149,9 @@ func display_game_over():
 		High Score: " + str(previous_high_score)
 		
 	hide_ui()
+	retry_button.visible = true
+	menu_button.visible = true
+	quit_button.visible = true
 	var tween = make_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT).set_parallel()
 	game_over_label.text = game_over_text
 	tween.tween_property(game_over_label, "scale", Vector2(0.5, 0.5), 1)
