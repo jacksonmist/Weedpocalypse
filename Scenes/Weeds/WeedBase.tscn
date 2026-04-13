@@ -75,8 +75,10 @@ bus = &"SFX"
 
 [node name="GrabSound" type="AudioStreamPlayer" parent="." unique_id=1379856101]
 stream = SubResource("AudioStreamRandomizer_tn3xe")
+bus = &"SFX"
 
 [node name="BoingSound" type="AudioStreamPlayer" parent="." unique_id=1867720393]
 stream = SubResource("AudioStreamRandomizer_6l2a2")
 volume_db = -1.0
 max_polyphony = 5
+bus = &"SFX"

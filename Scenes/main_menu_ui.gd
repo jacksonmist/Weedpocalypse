@@ -13,8 +13,15 @@ var tut_enabled: bool
 var highscore
 var top_scores = []
 @onready var leaderboard: RichTextLabel = $Leaderboard
+@onready var leaderboard_background: NinePatchRect = $LeaderboardBackground
 
 @onready var title: RichTextLabel = $Title
+
+@onready var music_slider: HSlider = $MusicSlider
+var music_value: float
+@onready var sfx_slider: HSlider = $SFXSlider
+var sfx_value: float
+
 
 func _ready() -> void:
 	play_button.pressed.connect(start_game)
@@ -24,6 +31,7 @@ func _ready() -> void:
 	load_data()
 	_tut_label()
 	await get_tree().process_frame
+	set_sliders()
 	LeaderboardManager.retrieve_scores()
 	await LeaderboardManager.scores_ready
 	top_scores = LeaderboardManager.get_scores()
@@ -58,6 +66,8 @@ func set_leaderboard():
 
 func reveal_leaderboard():
 	var timer = Timer.new()
+	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(leaderboard_background, "scale", Vector2.ONE, 0.4)
 	add_child(timer)
 	timer.wait_time = 0.02
 	while(leaderboard.visible_ratio < 1.0):
@@ -70,9 +80,26 @@ func reveal_title():
 	tween.tween_property(title, "scale", Vector2.ONE, 4)
 	tween.tween_property(title, "rotation", 4 * PI, 4)
 
+func set_sliders():
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).set_parallel()
+	tween.tween_property(music_slider, "value", music_value, 0.5)
+	tween.tween_property(sfx_slider, "value", sfx_value, 0.5)
+	await tween.finished
+	music_slider.editable = true
+	sfx_slider.editable = true
+	music_slider.value_changed.connect(change_music)
+	sfx_slider.value_changed.connect(change_sfx)
+
+func change_music(value: float):
+	AudioManager.change_music_volume(value)
+func change_sfx(value: float):
+	AudioManager.change_sfx_volume(value)
+
 func save_data():
 	SaveManager.data["tutorial_enabled"] = tut_enabled
 	SaveManager.save_data()
 func load_data():
 	tut_enabled = SaveManager.data["tutorial_enabled"]
 	highscore = SaveManager.data["highscore"]
+	music_value = db_to_linear(SaveManager.data["music_volume"])
+	sfx_value = db_to_linear(SaveManager.data["sfx_volume"])

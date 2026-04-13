@@ -1,14 +1,17 @@
 extends Node
 @onready var save_path = "user://save.json"
-
+signal data_ready
 @onready var data: Dictionary = {
 	"tutorial_enabled": true,
 	"highscore": 0.0,
-	"seen_weeds": {}
+	"seen_weeds": {},
+	"music_volume": 0.0,
+	"sfx_volume": 0.0
 }
 
 func _ready() -> void:
 	_load_data()
+	
 	
 func save_data():
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
