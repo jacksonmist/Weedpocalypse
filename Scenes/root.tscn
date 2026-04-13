@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://mmwk4xrfbjkn" path="res://Sprites/ButtonLatus.png" id="26_vdqvo"]
 [ext_resource type="Texture2D" uid="uid://w3o4hfa3v2m4" path="res://Sprites/ButtonTree.png" id="27_c7unf"]
 [ext_resource type="Texture2D" uid="uid://c5cc1kb22ahpg" path="res://Sprites/ButtonCorn.png" id="28_vdqvo"]
-[ext_resource type="Texture2D" uid="uid://wabmu5p5plqx" path="res://icon.svg" id="30_c7unf"]
+[ext_resource type="Texture2D" uid="uid://xhy2n3xjiabd" path="res://Sprites/HotbarUI1.png" id="30_c7unf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
 radius = 8.0
@@ -549,22 +549,25 @@ offset_bottom = 119.0
 scale = Vector2(1e-05, 1e-05)
 normal_text = "Quit"
 
-[node name="LeaderboardScore" type="TextureRect" parent="UIManager" unique_id=453899857]
+[node name="LeaderboardScore" type="NinePatchRect" parent="UIManager" unique_id=1854154597]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.5
-offset_top = -98.5
-offset_right = 98.5
-offset_bottom = 98.5
+offset_left = -110.0
+offset_top = -100.0
+offset_right = 110.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("30_c7unf")
-stretch_mode = 4
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="TagLine" type="LineEdit" parent="UIManager/LeaderboardScore" unique_id=1878758056]
 layout_mode = 1
@@ -586,16 +589,43 @@ theme_override_font_sizes/font_size = 64
 text = "aaa"
 alignment = 1
 max_length = 3
+select_all_on_focus = true
 
 [node name="EnterTagButton" parent="UIManager/LeaderboardScore" unique_id=1200287393 instance=ExtResource("24_s4qac")]
 layout_mode = 1
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = -34.5
-offset_top = 42.0
+offset_top = -45.0
 offset_right = 34.5
-offset_bottom = 70.0
+offset_bottom = -17.0
+grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 normal_text = "Enter"
 is_positive = true
+
+[node name="Label" type="RichTextLabel" parent="UIManager/LeaderboardScore" unique_id=1880818179]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -107.0
+offset_top = 11.0
+offset_right = 107.0
+offset_bottom = 43.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0.34117648, 0.6901961, 0.4117647, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("11_lwnbm")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave amp=70.0 freq=10.0 connected=1]Enter Your Tag![/wave]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TutorialManager" type="CanvasLayer" parent="." unique_id=263966681]
 unique_name_in_owner = true
