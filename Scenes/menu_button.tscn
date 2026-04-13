@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dxdj2o17lv4f" path="res://Fonts/KiwiSoda.ttf" id="2_y72qc"]
 [ext_resource type="Script" uid="uid://dpxmpfdyupjow" path="res://Scenes/button_label_effect.gd" id="3_rb1po"]
 [ext_resource type="Script" uid="uid://qmpnjgvsucqs" path="res://Scenes/positive_button_effect.gd" id="4_kg4rv"]
+[ext_resource type="AudioStream" uid="uid://vkr53w0j2qa6" path="res://Sounds/buttonclick.wav" id="6_rb1po"]
 
 [node name="MenuButton" type="TextureButton" unique_id=738821461]
 anchors_preset = 8
@@ -48,3 +49,7 @@ normal_text = "Continue"
 
 [node name="ButtonEffect" type="Node" parent="." unique_id=327863177]
 script = ExtResource("4_kg4rv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2003372193]
+stream = ExtResource("6_rb1po")
+bus = &"SFX"

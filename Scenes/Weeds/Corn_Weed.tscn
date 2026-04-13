@@ -6,9 +6,40 @@
 [ext_resource type="Texture2D" uid="uid://dxxbvf7of83t3" path="res://Sprites/weed_mask_48.png" id="4_hij7e"]
 [ext_resource type="PackedScene" uid="uid://yuamtnxa0oek" path="res://Scenes/ParticleEffects/cut_particle.tscn" id="5_f3aw7"]
 [ext_resource type="PackedScene" uid="uid://c3im616by8cs5" path="res://Scenes/ParticleEffects/grab_particle.tscn" id="6_hij7e"]
+[ext_resource type="AudioStream" uid="uid://pm3qfsv805g8" path="res://Sounds/cut1.wav" id="7_wy7pi"]
+[ext_resource type="AudioStream" uid="uid://diiuijar3lnue" path="res://Sounds/stretch_sound.wav" id="8_iotib"]
+[ext_resource type="AudioStream" uid="uid://ck0rbjiyws73x" path="res://Sounds/boing1.wav" id="9_c3dcx"]
+[ext_resource type="AudioStream" uid="uid://cqu1n0tp46eue" path="res://Sounds/boing2.wav" id="10_5yjag"]
+[ext_resource type="AudioStream" uid="uid://bsgicu06n10xr" path="res://Sounds/boing3.wav" id="11_klcdd"]
+[ext_resource type="AudioStream" uid="uid://ct2gjy7fyil3u" path="res://Sounds/boing4.wav" id="12_iv6cx"]
+[ext_resource type="AudioStream" uid="uid://3sm4gc3a5em3" path="res://Sounds/boing5.wav" id="13_7fudt"]
+[ext_resource type="AudioStream" uid="uid://djbojykragex5" path="res://Sounds/boing6.wav" id="14_tere1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
 size = Vector2(16, 240)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iotib"]
+random_pitch = 1.0905077
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("7_wy7pi")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t1sdp"]
+random_pitch = 1.2599211
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("8_iotib")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_anbyr"]
+random_pitch = 1.1892071
+random_volume_offset_db = 3.0
+streams_count = 6
+stream_0/stream = ExtResource("9_c3dcx")
+stream_1/stream = ExtResource("10_5yjag")
+stream_2/stream = ExtResource("11_klcdd")
+stream_3/stream = ExtResource("12_iv6cx")
+stream_4/stream = ExtResource("13_7fudt")
+stream_5/stream = ExtResource("14_tere1")
 
 [node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
 top_level = true
@@ -49,3 +80,16 @@ lifetime = 0.3
 speed_scale = 0.6
 
 [node name="GrabParticle" parent="." unique_id=1089378811 instance=ExtResource("6_hij7e")]
+
+[node name="CutSound" type="AudioStreamPlayer" parent="." unique_id=490169446]
+stream = SubResource("AudioStreamRandomizer_iotib")
+max_polyphony = 10
+bus = &"SFX"
+
+[node name="GrabSound" type="AudioStreamPlayer" parent="." unique_id=4130750]
+stream = SubResource("AudioStreamRandomizer_t1sdp")
+
+[node name="BoingSound" type="AudioStreamPlayer" parent="." unique_id=293836281]
+stream = SubResource("AudioStreamRandomizer_anbyr")
+volume_db = -5.0
+max_polyphony = 5
