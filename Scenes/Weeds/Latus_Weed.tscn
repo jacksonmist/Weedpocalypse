@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://darnqt3pj16b3" path="res://Scripts/Weeds/latus_weed.gd" id="1_rxxiy"]
 [ext_resource type="Texture2D" uid="uid://2qls3cm87q6w" path="res://Sprites/latus_weed_flower_test.png" id="1_tbp71"]
+[ext_resource type="Texture2D" uid="uid://bxjhqnq28dnyn" path="res://Sprites/LatusWeedFlower.png" id="2_vru34"]
 [ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="3_l1m8q"]
 [ext_resource type="Texture2D" uid="uid://bmtqp8pqv6tsb" path="res://Sprites/DandelionWeed.png" id="3_rxxiy"]
 [ext_resource type="PackedScene" uid="uid://yuamtnxa0oek" path="res://Scenes/ParticleEffects/cut_particle.tscn" id="5_l1m8q"]
@@ -14,6 +15,9 @@
 [ext_resource type="AudioStream" uid="uid://ct2gjy7fyil3u" path="res://Sounds/boing4.wav" id="12_2le42"]
 [ext_resource type="AudioStream" uid="uid://3sm4gc3a5em3" path="res://Sounds/boing5.wav" id="13_yesem"]
 [ext_resource type="AudioStream" uid="uid://djbojykragex5" path="res://Sounds/boing6.wav" id="14_x8kwc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xd7j8"]
+load_path = "res://.godot/imported/LatusStalk.png-f2476e2c78c7d8e8e64643339c43d444.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
 size = Vector2(16, 240)
@@ -46,8 +50,8 @@ top_level = true
 script = ExtResource("1_rxxiy")
 base_score = 12.0
 width = 1
-flower_texture = ExtResource("1_tbp71")
-sprite_array = Array[Texture]([ExtResource("3_rxxiy")])
+flower_texture = ExtResource("2_vru34")
+sprite_array = Array[Texture]([SubResource("CompressedTexture2D_xd7j8")])
 grow_rate = 22.0
 
 [node name="Flower" type="Sprite2D" parent="." unique_id=500254823]

@@ -11,7 +11,7 @@ var game_over_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=64]
 var game_over_postfix = "[/tornado][/outline_size][/outline_color][/color][/font_size][/center][/font]"
 
 @onready var score_text: RichTextLabel = $ScoreText
-var score_prefix = "[font=res://Fonts/KiwiSoda.ttf][left][font_size=48]
+var score_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=48]
 [color=#ca7ef2][outline_color=#4e278c][outline_size=16][wave amp=25.0 freq=5.0 connected=1]"
 var score_postfix = "[/wave][/outline_size][/outline_color][/color][/font_size][/left][/font]"
 var high_score_prefix = "[font=res://Fonts/KiwiSoda.ttf][center][font_size=48]
@@ -144,9 +144,9 @@ func display_game_over():
 		game_over_text = game_over_prefix + "Game Over!" + game_over_postfix + high_score_prefix + "
 		\nHigh Score: " + str(score)
 	else:
-		game_over_text = game_over_prefix + "Game Over!" + game_over_postfix + combo_prefix + "
+		game_over_text = game_over_prefix + "Game Over!" + game_over_postfix + score_prefix + "
 		Score: " + str(score) + "
-		High Score: " + str(previous_high_score)
+		\nHigh Score: " + str(previous_high_score)
 		
 	hide_ui()
 	retry_button.visible = true

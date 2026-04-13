@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ec5s32cpfcjy" path="res://Sprites/TreeStalk.png" id="2_gsdtx"]
 [ext_resource type="Texture2D" uid="uid://dxxbvf7of83t3" path="res://Sprites/weed_mask_48.png" id="3_gsdtx"]
 [ext_resource type="PackedScene" uid="uid://yuamtnxa0oek" path="res://Scenes/ParticleEffects/cut_particle.tscn" id="4_8i3kn"]
+[ext_resource type="Texture2D" uid="uid://c0rc3qcnoky6n" path="res://Sprites/TreeCracks.png" id="4_ri6ag"]
 [ext_resource type="PackedScene" uid="uid://c3im616by8cs5" path="res://Scenes/ParticleEffects/grab_particle.tscn" id="5_gsdtx"]
 [ext_resource type="AudioStream" uid="uid://pm3qfsv805g8" path="res://Sounds/cut1.wav" id="6_xoa8i"]
 [ext_resource type="AudioStream" uid="uid://diiuijar3lnue" path="res://Sounds/stretch_sound.wav" id="7_hucey"]
@@ -76,6 +77,10 @@ texture = ExtResource("3_gsdtx")
 
 [node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=515589144]
 texture = ExtResource("2_gsdtx")
+
+[node name="TreeCracks" type="Sprite2D" parent="WeedMask" unique_id=1267617839]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("4_ri6ag")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=942955904]
 position = Vector2(0, -120)

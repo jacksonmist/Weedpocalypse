@@ -8,11 +8,13 @@ var current_cuts: int = 0
 var tween_time: float = 0.1
 var tilt: float = deg_to_rad(3)
 @onready var tree_trunk_sound: AudioStreamPlayer = $TreeTrunkSound
+@onready var tree_cracks: Sprite2D = $WeedMask/TreeCracks
 
 func cut():
 	current_cuts += 1
 	shake()
 	tree_trunk_sound.play()
+	tree_cracks.self_modulate.a = (float(current_cuts) / float(cuts_needed))
 	if(current_cuts >= cuts_needed):
 		super()
 		check_kill(true)
