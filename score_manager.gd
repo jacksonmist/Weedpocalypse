@@ -20,7 +20,7 @@ func _ready():
 
 func _process(delta: float) -> void:
 	time += delta
-	combo_raw -= (delta)# * combo)
+	combo_raw -= (delta * combo)
 	if(combo_raw < 0):
 		combo_raw = 0
 	calculate_combo()

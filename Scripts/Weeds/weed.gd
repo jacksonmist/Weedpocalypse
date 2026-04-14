@@ -41,6 +41,11 @@ var stretch_particle_instance: CPUParticles2D
 
 @export var cutting: PackedScene = load("res://Scenes/Weeds/weed_cutting.tscn")
 
+@onready var cut_sound: AudioStreamPlayer = $CutSound
+@onready var grab_sound: AudioStreamPlayer = $GrabSound
+@onready var boing_sound: AudioStreamPlayer = $BoingSound
+
+
 func _ready() -> void:
 	initial_position = position
 	collision_shape.shape = collision_shape.shape.duplicate()
@@ -84,6 +89,7 @@ func _physics_process(delta: float) -> void:
 		grab_particle.color = grab_particle.gradient.gradient.sample(stretch_ratio)
 		grab_particle.scale_amount_max = 1 + (2 * (stretch_ratio))
 		grab_particle.speed_scale = 1 + stretch_ratio
+		grab_sound.pitch_scale = 1 + ( 3 * stretch_ratio)
 		
 	if(is_dead):
 		rotation += rotation_speed * delta
@@ -106,18 +112,21 @@ func grab(grabbing: bool):
 		is_growing = false
 		grab_point = get_global_mouse_position()
 		grab_particle.emitting = true
+		grab_sound.play()
 	else:
 		is_growing = true
 		grow_rate += grow_rate_additive
 		grow_rate_additive = 0
 		return_to_normal()
 		grab_particle.emitting = false
+		grab_sound.stop()
 
 func fully_stretched():
 	grab(false)
 	stretched.emit(self)
 	stretch_particle_instance.global_position = get_global_mouse_position()
 	stretch_particle_instance.emitting = true
+	boing_sound.play()
 
 func cut():
 	var cutting_instance = cutting.instantiate()
@@ -129,8 +138,8 @@ func cut():
 	cut_particle.amount = clamp(growth / 4, 1, 100)
 	cut_particle.emitting = true
 	growth = -mouse_pos.y
-	
 	weed_mask.offset = offset
+	cut_sound.play()
 	
 func weedkiller():
 	print("weed killering")

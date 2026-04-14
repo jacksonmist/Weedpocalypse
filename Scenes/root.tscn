@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://cl0ynomap58vy" path="res://Scripts/player_controller.gd" id="1_8pvmw"]
 [ext_resource type="Texture2D" uid="uid://dpaqc3hbhry8h" path="res://Sprites/ScreenTemplate.png" id="1_i04dx"]
 [ext_resource type="Script" uid="uid://dr3p83w7xi033" path="res://Scripts/tool_manager.gd" id="2_vnucn"]
-[ext_resource type="Script" uid="uid://bu5tv0124e1ly" path="res://mouse_controller.gd" id="3_qtxxq"]
+[ext_resource type="Script" path="res://mouse_controller.gd" id="3_qtxxq"]
 [ext_resource type="Texture2D" uid="uid://c3qrx56nve36c" path="res://Sprites/GridLines.png" id="4_4g5cr"]
-[ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://grid_manager.gd" id="4_c3mwy"]
+[ext_resource type="Script" path="res://grid_manager.gd" id="4_c3mwy"]
 [ext_resource type="Texture2D" uid="uid://cens03678fkw6" path="res://Sprites/OpenHand.png" id="4_ogk07"]
 [ext_resource type="Texture2D" uid="uid://c1vv47gtm515n" path="res://Sprites/ClosedHand.png" id="5_j8vvb"]
 [ext_resource type="Texture2D" uid="uid://chmoa5vxgaah8" path="res://Sprites/Scythe.png" id="6_2mc6k"]
-[ext_resource type="Script" uid="uid://cq0vcixxeirbg" path="res://weed_manager.gd" id="6_r3lo5"]
+[ext_resource type="Script" path="res://weed_manager.gd" id="6_r3lo5"]
 [ext_resource type="PackedScene" uid="uid://dfxcw512y58mt" path="res://Scenes/Weeds/Dandelion_Weed.tscn" id="7_dun2r"]
 [ext_resource type="Texture2D" uid="uid://b56xutysxwx5s" path="res://Sprites/ScythePressed.png" id="7_qoxdu"]
 [ext_resource type="Script" uid="uid://bujpxapqvr5nj" path="res://score_manager.gd" id="9_qtxxq"]
@@ -17,7 +17,6 @@
 [ext_resource type="Shader" uid="uid://bodk7iw7a4jtk" path="res://Scenes/scan_line.gdshader" id="10_c7unf"]
 [ext_resource type="Texture2D" uid="uid://cpv4mpdywenjo" path="res://Sprites/HandUI.png" id="11_a6f85"]
 [ext_resource type="FontFile" uid="uid://dxdj2o17lv4f" path="res://Fonts/KiwiSoda.ttf" id="11_lwnbm"]
-[ext_resource type="Texture2D" uid="uid://y80toy4mgi78" path="res://Sprites/ScytheUI.png" id="12_fu36u"]
 [ext_resource type="PackedScene" uid="uid://7xy0hmdpk3m6" path="res://Scenes/Weeds/Thistle_Weed.tscn" id="13_j8vvb"]
 [ext_resource type="PackedScene" uid="uid://e4v3mjrplbwd" path="res://Scenes/Weeds/Tree_Weed.tscn" id="14_2mc6k"]
 [ext_resource type="PackedScene" uid="uid://dtc52d044b462" path="res://Scenes/Weeds/Latus_Weed.tscn" id="14_qoxdu"]
@@ -31,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://mmwk4xrfbjkn" path="res://Sprites/ButtonLatus.png" id="26_vdqvo"]
 [ext_resource type="Texture2D" uid="uid://w3o4hfa3v2m4" path="res://Sprites/ButtonTree.png" id="27_c7unf"]
 [ext_resource type="Texture2D" uid="uid://c5cc1kb22ahpg" path="res://Sprites/ButtonCorn.png" id="28_vdqvo"]
-[ext_resource type="Texture2D" uid="uid://wabmu5p5plqx" path="res://icon.svg" id="30_c7unf"]
+[ext_resource type="Texture2D" uid="uid://xhy2n3xjiabd" path="res://Sprites/HotbarUI1.png" id="30_c7unf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
 radius = 8.0
@@ -193,6 +192,20 @@ offset_bottom = 23.0
 text = "1"
 label_settings = SubResource("LabelSettings_18fmr")
 
+[node name="ButtonBackground" type="TextureRect" parent="UIManager/HandToolButton" unique_id=974032229]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource("30_c7unf")
+
+[node name="HandTexture" type="TextureRect" parent="UIManager/HandToolButton" unique_id=1444432276]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource("4_ogk07")
+
 [node name="ScytheToolButton" type="TextureButton" parent="UIManager" unique_id=189474391]
 z_index = 4
 anchors_preset = 4
@@ -204,7 +217,6 @@ offset_right = 41.0
 offset_bottom = 94.0
 grow_vertical = 2
 scale = Vector2(2, 2)
-texture_normal = ExtResource("12_fu36u")
 stretch_mode = 4
 
 [node name="Outline" type="ColorRect" parent="UIManager/ScytheToolButton" unique_id=1517005566]
@@ -227,6 +239,20 @@ offset_bottom = 23.0
 text = "2"
 label_settings = SubResource("LabelSettings_18fmr")
 
+[node name="ButtonBackground" type="TextureRect" parent="UIManager/ScytheToolButton" unique_id=2103000709]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource("30_c7unf")
+
+[node name="ScytheTexture" type="TextureRect" parent="UIManager/ScytheToolButton" unique_id=1503544855]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource("6_2mc6k")
+
 [node name="ScoreText" type="RichTextLabel" parent="UIManager" unique_id=850819361]
 texture_filter = 1
 clip_contents = false
@@ -247,10 +273,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -168.78494
-offset_top = -147.0
-offset_right = 168.78491
-offset_bottom = 9.639923
+offset_left = -220.0
+offset_top = -123.0
+offset_right = 222.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
@@ -325,6 +351,16 @@ offset_bottom = 28.0
 texture = ExtResource("4_ogk07")
 stretch_mode = 3
 
+[node name="Shadow" type="TextureRect" parent="UIManager/Identifiers/Dandelion" unique_id=392430869]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 71.0
+offset_bottom = 30.5
+texture = ExtResource("23_18fmr")
+
 [node name="Thistle" type="TextureRect" parent="UIManager/Identifiers" unique_id=856797199]
 layout_mode = 1
 anchors_preset = 1
@@ -364,6 +400,16 @@ offset_right = 69.0
 offset_bottom = 28.0
 texture = ExtResource("6_2mc6k")
 stretch_mode = 3
+
+[node name="Shadow" type="TextureRect" parent="UIManager/Identifiers/Thistle" unique_id=829140791]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 71.0
+offset_bottom = 30.5
+texture = ExtResource("25_8p807")
 
 [node name="Latus" type="TextureRect" parent="UIManager/Identifiers" unique_id=398613735]
 layout_mode = 1
@@ -414,6 +460,16 @@ label_settings = SubResource("LabelSettings_dw4fd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Shadow" type="TextureRect" parent="UIManager/Identifiers/Latus" unique_id=98150121]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 71.0
+offset_bottom = 30.5
+texture = ExtResource("26_vdqvo")
+
 [node name="Tree" type="TextureRect" parent="UIManager/Identifiers" unique_id=1709202030]
 clip_children = 2
 layout_mode = 1
@@ -460,6 +516,16 @@ offset_bottom = 30.0
 mouse_filter = 2
 texture = ExtResource("6_2mc6k")
 stretch_mode = 1
+
+[node name="Shadow" type="TextureRect" parent="UIManager/Identifiers/Tree" unique_id=1087791610]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 71.0
+offset_bottom = 30.5
+texture = ExtResource("27_c7unf")
 
 [node name="Corn" type="TextureRect" parent="UIManager/Identifiers" unique_id=2086222311]
 layout_mode = 1
@@ -520,6 +586,16 @@ offset_bottom = 28.0
 texture = ExtResource("6_2mc6k")
 stretch_mode = 3
 
+[node name="Shadow" type="TextureRect" parent="UIManager/Identifiers/Corn" unique_id=1257210954]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 71.0
+offset_bottom = 30.5
+texture = ExtResource("28_vdqvo")
+
 [node name="RetryButton" parent="UIManager" unique_id=738821461 instance=ExtResource("24_s4qac")]
 visible = false
 offset_left = -34.5
@@ -549,22 +625,21 @@ offset_bottom = 119.0
 scale = Vector2(1e-05, 1e-05)
 normal_text = "Quit"
 
-[node name="LeaderboardScore" type="TextureRect" parent="UIManager" unique_id=453899857]
+[node name="LeaderboardScore" type="TextureRect" parent="UIManager" unique_id=653656369]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.5
-offset_top = -98.5
-offset_right = 98.5
-offset_bottom = 98.5
+offset_left = -110.0
+offset_top = -110.0
+offset_right = 110.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("30_c7unf")
-stretch_mode = 4
 
 [node name="TagLine" type="LineEdit" parent="UIManager/LeaderboardScore" unique_id=1878758056]
 layout_mode = 1
@@ -583,19 +658,47 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("11_lwnbm")
 theme_override_font_sizes/font_size = 64
-text = "aaa"
 alignment = 1
 max_length = 3
+select_all_on_focus = true
+caret_blink = true
+caret_force_displayed = true
 
 [node name="EnterTagButton" parent="UIManager/LeaderboardScore" unique_id=1200287393 instance=ExtResource("24_s4qac")]
 layout_mode = 1
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = -34.5
-offset_top = 42.0
+offset_top = -74.0
 offset_right = 34.5
-offset_bottom = 70.0
+offset_bottom = -46.0
+grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 normal_text = "Enter"
 is_positive = true
+
+[node name="Label" type="RichTextLabel" parent="UIManager/LeaderboardScore" unique_id=1880818179]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -107.0
+offset_top = 36.0
+offset_right = 107.0
+offset_bottom = 68.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_colors/font_outline_color = Color(0.34117648, 0.6901961, 0.4117647, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("11_lwnbm")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave amp=70.0 freq=10.0 connected=1]Enter Your Tag![/wave]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TutorialManager" type="CanvasLayer" parent="." unique_id=263966681]
 unique_name_in_owner = true

@@ -97,6 +97,8 @@ offset_right = -7.0
 offset_bottom = -7.409912
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("5_8um5k")
 patch_margin_left = 5
 patch_margin_top = 5
@@ -119,6 +121,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0.34117648, 0.6901961, 0.4117647, 1)
 theme_override_constants/outline_size = 16
 theme_override_fonts/normal_font = ExtResource("2_853f1")
@@ -128,6 +131,32 @@ text = "[rainbow freq=0.2 sat=0.4 val=1speed=1.0][wave amp=50.0 freq=5.0 connect
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="MainMenuUI" unique_id=62177001]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -26.0
+offset_right = 108.0
+offset_bottom = -10.0
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+editable = false
+
+[node name="SFXSlider" type="HSlider" parent="MainMenuUI" unique_id=777218199]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -49.0
+offset_right = 108.0
+offset_bottom = -33.0
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+editable = false
 
 [node name="MenuScreen" type="Sprite2D" parent="." unique_id=2047968324]
 texture = ExtResource("5_df05h")
