@@ -1,0 +1,37 @@
+[gd_resource type="Theme" format=3 uid="uid://crm70xron72in"]
+
+[ext_resource type="Texture2D" uid="uid://bb60e4yenv5j7" path="res://Sprites/Slider.png" id="1_wdqsw"]
+[ext_resource type="Texture2D" uid="uid://cryao4hjcnx5" path="res://Sprites/Line.png" id="2_qwxhf"]
+
+[sub_resource type="DPITexture" id="DPITexture_8e205"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"4\" height=\"8\"><path fill=\"#fff\" fill-opacity=\".25\" d=\"M1 0h2v16H1z\"/></svg>
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rrcx7"]
+texture = ExtResource("2_qwxhf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fh7cp"]
+texture = ExtResource("2_qwxhf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrcx7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.09803922)
+border_blend = true
+corner_radius_top_left = 90
+corner_radius_top_right = 90
+corner_radius_bottom_right = 90
+corner_radius_bottom_left = 90
+
+[resource]
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/constants/tick_offset = 0
+HSlider/icons/grabber = ExtResource("1_wdqsw")
+HSlider/icons/grabber_disabled = ExtResource("1_wdqsw")
+HSlider/icons/grabber_highlight = ExtResource("1_wdqsw")
+HSlider/icons/tick = SubResource("DPITexture_8e205")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_rrcx7")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_fh7cp")
+HSlider/styles/slider = SubResource("StyleBoxFlat_rrcx7")
