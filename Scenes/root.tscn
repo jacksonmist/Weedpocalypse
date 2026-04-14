@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://1ips1634u4wj"]
 
 [ext_resource type="Script" uid="uid://cl0ynomap58vy" path="res://Scripts/player_controller.gd" id="1_8pvmw"]
-[ext_resource type="Texture2D" uid="uid://dpaqc3hbhry8h" path="res://Sprites/ScreenTemplate.png" id="1_i04dx"]
 [ext_resource type="Script" uid="uid://dr3p83w7xi033" path="res://Scripts/tool_manager.gd" id="2_vnucn"]
 [ext_resource type="Script" path="res://mouse_controller.gd" id="3_qtxxq"]
 [ext_resource type="Texture2D" uid="uid://c3qrx56nve36c" path="res://Sprites/GridLines.png" id="4_4g5cr"]
@@ -12,6 +11,7 @@
 [ext_resource type="Script" path="res://weed_manager.gd" id="6_r3lo5"]
 [ext_resource type="PackedScene" uid="uid://dfxcw512y58mt" path="res://Scenes/Weeds/Dandelion_Weed.tscn" id="7_dun2r"]
 [ext_resource type="Texture2D" uid="uid://b56xutysxwx5s" path="res://Sprites/ScythePressed.png" id="7_qoxdu"]
+[ext_resource type="Texture2D" uid="uid://xvrow8bl3kw1" path="res://Sprites/GameplayBackground.png" id="8_vdqvo"]
 [ext_resource type="Script" uid="uid://bujpxapqvr5nj" path="res://score_manager.gd" id="9_qtxxq"]
 [ext_resource type="Script" uid="uid://dco3lrc7lyjdp" path="res://ui_manager.gd" id="10_8fnbn"]
 [ext_resource type="Shader" uid="uid://bodk7iw7a4jtk" path="res://Scenes/scan_line.gdshader" id="10_c7unf"]
@@ -98,10 +98,10 @@ z_index = 4096
 position = Vector2(80, -115)
 
 [node name="ScreenTemplate" type="Sprite2D" parent="." unique_id=1204207731]
-z_index = 2
+z_index = -2
 texture_filter = 1
 position = Vector2(80, -115)
-texture = ExtResource("1_i04dx")
+texture = ExtResource("8_vdqvo")
 
 [node name="GridLines" type="Sprite2D" parent="ScreenTemplate" unique_id=210329844]
 z_index = 1
@@ -256,8 +256,8 @@ texture = ExtResource("6_2mc6k")
 [node name="ScoreText" type="RichTextLabel" parent="UIManager" unique_id=850819361]
 texture_filter = 1
 clip_contents = false
-offset_left = 6.0
-offset_right = 846.0
+offset_left = 11.0
+offset_right = 851.0
 offset_bottom = 194.0
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
@@ -309,6 +309,10 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
+offset_left = -2.0
+offset_top = 6.0
+offset_right = -2.0
+offset_bottom = 6.0
 grow_horizontal = 0
 
 [node name="Dandelion" type="TextureRect" parent="UIManager/Identifiers" unique_id=1168182025]
@@ -321,7 +325,6 @@ offset_top = 2.0
 offset_right = -3.0
 offset_bottom = 30.0
 grow_horizontal = 0
-scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("23_18fmr")
 script = ExtResource("23_dw4fd")
 
@@ -590,9 +593,9 @@ stretch_mode = 3
 self_modulate = Color(0, 0, 0, 0.5882353)
 z_index = -1
 layout_mode = 0
-offset_left = 2.0
+offset_left = 3.0
 offset_top = 2.5
-offset_right = 71.0
+offset_right = 72.0
 offset_bottom = 30.5
 texture = ExtResource("28_vdqvo")
 
