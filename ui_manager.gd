@@ -81,7 +81,7 @@ func load_high_score(value: float):
 	
 func _set_displayed_score(new_score: int, _label: RichTextLabel):
 	text_freq = clamp(score / 100, 0, 20)
-	text_amplitude =clamp(score / 50, 0, 200)
+	text_amplitude = clamp(score / 50, 0, 200)
 	score_prefix = "[font=res://Fonts/KiwiSoda.ttf][left][font_size=48]
 [color=#ca7ef2][outline_color=#4e278c][outline_size=16][wave amp=" + str(text_amplitude) +  "freq=" + str(text_freq) + "connected=0]"
 	score_text.text = score_prefix + str(new_score) + score_postfix
@@ -110,11 +110,13 @@ func _on_tool_changed(tool: Game_Enums.Tool):
 
 func set_hand_tool():
 	var tween = make_tween()
+	tool_manager.switch_tool(Game_Enums.Tool.HAND, false)
 	tween.tween_property(hand_outline, "scale", outline_scale, tween_time)
 	tween.tween_property(scythe_outline, "scale", Vector2(0,0), tween_time)
 	
 func set_scythe_tool():
 	var tween = make_tween()
+	tool_manager.switch_tool(Game_Enums.Tool.SCYTHE, false)
 	tween.tween_property(scythe_outline, "scale", outline_scale, tween_time)
 	tween.tween_property(hand_outline, "scale", Vector2(0,0), tween_time)
 

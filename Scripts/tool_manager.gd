@@ -12,10 +12,11 @@ func _ready() -> void:
 	ui.set_tool_manager(self)
 	current_tool = hand_tool
 	
-func switch_tool(tool_type: Game_Enums.Tool):
+func switch_tool(tool_type: Game_Enums.Tool, is_internal: bool):
 	if(tool_type == current_tool.type):
 		return
-	new_tool.emit(tool_type)
+	if(is_internal):
+		new_tool.emit(tool_type)
 	match tool_type:
 		Game_Enums.Tool.HAND:
 			current_tool = hand_tool

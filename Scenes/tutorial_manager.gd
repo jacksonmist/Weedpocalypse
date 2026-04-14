@@ -79,7 +79,8 @@ func spotlight_controller():
 			)
 			continue_button.visible = false
 			await tween.finished
-			weed_instance.set_physics_process(true)
+			if(weed_instance):
+				weed_instance.set_physics_process(true)
 			%WeedManager.weed_grow(false)
 		5:
 			var tween = create_tween().set_trans(Tween.TRANS_ELASTIC)

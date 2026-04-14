@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cl0ynomap58vy" path="res://Scripts/player_controller.gd" id="1_8pvmw"]
 [ext_resource type="Script" uid="uid://dr3p83w7xi033" path="res://Scripts/tool_manager.gd" id="2_vnucn"]
-[ext_resource type="Script" path="res://mouse_controller.gd" id="3_qtxxq"]
+[ext_resource type="Script" uid="uid://bu5tv0124e1ly" path="res://mouse_controller.gd" id="3_qtxxq"]
 [ext_resource type="Texture2D" uid="uid://c3qrx56nve36c" path="res://Sprites/GridLines.png" id="4_4g5cr"]
-[ext_resource type="Script" path="res://grid_manager.gd" id="4_c3mwy"]
+[ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://grid_manager.gd" id="4_c3mwy"]
 [ext_resource type="Texture2D" uid="uid://cens03678fkw6" path="res://Sprites/OpenHand.png" id="4_ogk07"]
 [ext_resource type="Texture2D" uid="uid://c1vv47gtm515n" path="res://Sprites/ClosedHand.png" id="5_j8vvb"]
 [ext_resource type="Texture2D" uid="uid://chmoa5vxgaah8" path="res://Sprites/Scythe.png" id="6_2mc6k"]
-[ext_resource type="Script" path="res://weed_manager.gd" id="6_r3lo5"]
+[ext_resource type="Script" uid="uid://cq0vcixxeirbg" path="res://weed_manager.gd" id="6_r3lo5"]
 [ext_resource type="PackedScene" uid="uid://dfxcw512y58mt" path="res://Scenes/Weeds/Dandelion_Weed.tscn" id="7_dun2r"]
 [ext_resource type="Texture2D" uid="uid://b56xutysxwx5s" path="res://Sprites/ScythePressed.png" id="7_qoxdu"]
 [ext_resource type="Texture2D" uid="uid://xvrow8bl3kw1" path="res://Sprites/GameplayBackground.png" id="8_vdqvo"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://w3o4hfa3v2m4" path="res://Sprites/ButtonTree.png" id="27_c7unf"]
 [ext_resource type="Texture2D" uid="uid://c5cc1kb22ahpg" path="res://Sprites/ButtonCorn.png" id="28_vdqvo"]
 [ext_resource type="Texture2D" uid="uid://xhy2n3xjiabd" path="res://Sprites/HotbarUI1.png" id="30_c7unf"]
+[ext_resource type="AudioStream" uid="uid://b8vdfb4pty28q" path="res://Sounds/Brainy Grains of Sand - YellowInAHat ft Lemoan.wav" id="32_c7unf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fnbn"]
 radius = 8.0
@@ -150,6 +151,11 @@ initial_velocity_max = 93.97
 scale_amount_max = 4.0
 color = Color(0.48000002, 1, 0.48866665, 1)
 color_ramp = SubResource("Gradient_642p6")
+
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="WeedManager" unique_id=617949922]
+stream = ExtResource("32_c7unf")
+autoplay = true
+bus = &"Music"
 
 [node name="ScoreManager" type="Node" parent="." unique_id=564564763]
 unique_name_in_owner = true

@@ -5,7 +5,6 @@ var sfx_volume: float
 
 func _ready() -> void:
 	_load_volumes()
-	
 
 func _load_volumes():
 	if(!SaveManager.data_ready):

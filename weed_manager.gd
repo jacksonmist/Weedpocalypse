@@ -13,9 +13,9 @@ var difficulty: float = 1
 @export var two_width_weeds: Array[PackedScene]
 @export var three_width_weeds: Array[PackedScene]
 
-@export var one_width_chance: float = 50
+@export var one_width_chance: float = 60
 @export var two_width_chance: float = 30
-@export var three_width_chance: float = 20
+@export var three_width_chance: float = 10
 
 @onready var seen_weeds: Dictionary = {Game_Enums.Weeds.DANDELION: false,
 								Game_Enums.Weeds.THISTLE: false,
@@ -27,18 +27,25 @@ var active_weeds = []
 @onready var grow_particle: CPUParticles2D = $GrowParticle
 
 var e: float
-var max_difficulty: float = 1.7
+var max_difficulty: float = 1.73
 var L: float
 var difficulty_slope: float = 0.1
 var difficulty_midpoint: float = 30
 
 var max_time_between_spawn: float = 5
-var min_time_between_spawn: float = 0.7
+var min_time_between_spawn: float = 0.6
 var L2: float
 var time_decrease_slope: float = 0.1
-var spawn_time_midpoint: float = 30
+var spawn_time_midpoint: float = 60
+
+var additional_weed_chance: float = 25.0
 
 var tutorial_enabled: bool
+
+@onready var gameplay_music: AudioStreamPlayer = $GameplayMusic
+var difficulty_steps = [30, 60, 120]
+var pitch_scales = [1.1, 1.2, 1.3]
+var step = 0
 
 func _ready() -> void:
 	e = exp(1)
@@ -78,7 +85,7 @@ func spawn_weed():
 	var width: int = 1
 	var weed: PackedScene
 	var spawn_amount: int = 1
-	while(randf_range(1, 100) < 30):
+	while(randf_range(1, 100) < (additional_weed_chance * (difficulty * 2))):
 		spawn_amount += 1
 	for i in spawn_amount:
 		if(random_num >= one_width_chance):
@@ -137,7 +144,15 @@ func check_seen(weed_type: Game_Enums.Weeds):
 
 func calculate_difficulty():
 	difficulty = (L / (1 + pow(e, -difficulty_slope * (time - difficulty_midpoint)))) + 1
-
+	increase_pitch_scale()
+	
+func increase_pitch_scale():
+	if(time <= difficulty_steps[step] or step >= 3):
+		return
+	var tween = create_tween()
+	tween.tween_property(gameplay_music, "pitch_scale", pitch_scales[step], 1)
+	step+=1
+		
 func spawn_wait():
 	var wait_time = -(L2 / (1 + pow(e, -time_decrease_slope * (time - spawn_time_midpoint)))) + 5
 	spawn_timer.wait_time = wait_time

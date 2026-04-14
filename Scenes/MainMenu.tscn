@@ -11,13 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://lvpoxdyv1si8" path="res://Sprites/MusicNote.png" id="7_loo7a"]
 [ext_resource type="Texture2D" uid="uid://dogaxcksgjj5u" path="res://Sprites/SoundOn.png" id="8_if7li"]
 [ext_resource type="Theme" uid="uid://crm70xron72in" path="res://Themes/SliderTheme.tres" id="9_if7li"]
+[ext_resource type="AudioStream" uid="uid://byxke4ybc2wg" path="res://Sounds/Green Cat Song - aylamo.wav" id="12_rrcx7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_loo7a"]
 font = ExtResource("2_853f1")
 outline_size = 8
-outline_color = Color(0.34117648, 0.6901961, 0.4117647, 1)
-shadow_size = 8
-shadow_color = Color(0, 0, 0, 0.5882353)
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Node2D" unique_id=1555747398]
 
@@ -84,7 +83,7 @@ vertical_alignment = 1
 [node name="Label" type="Label" parent="MainMenuUI/TutButton" unique_id=844000352]
 layout_mode = 0
 offset_left = 35.0
-offset_right = 111.0
+offset_right = 95.0
 offset_bottom = 32.0
 text = "Tutorial?"
 label_settings = SubResource("LabelSettings_loo7a")
@@ -245,3 +244,8 @@ texture = ExtResource("5_df05h")
 
 [node name="MenuCamera" type="Camera2D" parent="." unique_id=849620933]
 zoom = Vector2(1.35, 1.35)
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=186235517]
+stream = ExtResource("12_rrcx7")
+autoplay = true
+bus = &"Music"
