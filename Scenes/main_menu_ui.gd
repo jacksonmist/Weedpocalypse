@@ -22,6 +22,13 @@ var music_value: float
 @onready var sfx_slider: HSlider = $SFXSlider
 var sfx_value: float
 
+@onready var music_note_icon: TextureRect = $MusicSlider/Background/MusicNoteIcon
+@onready var sfx_icon: TextureRect = $SFXSlider/Background/SFXIcon
+
+@export var music_on: Texture
+@export var music_off: Texture
+@export var sfx_on: Texture
+@export var sfx_off: Texture
 
 func _ready() -> void:
 	play_button.pressed.connect(start_game)
@@ -84,6 +91,10 @@ func set_sliders():
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT).set_parallel()
 	tween.tween_property(music_slider, "value", music_value, 0.5)
 	tween.tween_property(sfx_slider, "value", sfx_value, 0.5)
+	if(music_value == 0):
+		music_note_icon.texture = music_off
+	if(sfx_value == 0):
+		sfx_icon.texture = sfx_off
 	await tween.finished
 	music_slider.editable = true
 	sfx_slider.editable = true
@@ -91,13 +102,27 @@ func set_sliders():
 	sfx_slider.value_changed.connect(change_sfx)
 
 func change_music(value: float):
+	if(value <= 0.01):
+		music_note_icon.texture = music_off
+		value = 0
+		music_slider.value = 0
+	else:
+		music_note_icon.texture = music_on
 	AudioManager.change_music_volume(value)
+	
 func change_sfx(value: float):
+	if(value <= 0.01):
+		sfx_icon.texture = sfx_off
+		sfx_slider.value = 0
+		value = 0
+	else:
+		sfx_icon.texture = sfx_on
 	AudioManager.change_sfx_volume(value)
 
 func save_data():
 	SaveManager.data["tutorial_enabled"] = tut_enabled
 	SaveManager.save_data()
+	
 func load_data():
 	tut_enabled = SaveManager.data["tutorial_enabled"]
 	highscore = SaveManager.data["highscore"]

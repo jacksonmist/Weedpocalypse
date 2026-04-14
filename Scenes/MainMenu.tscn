@@ -3,15 +3,30 @@
 [ext_resource type="Script" uid="uid://cqhn0fvobre84" path="res://Scenes/main_menu_ui.gd" id="1_tt5f1"]
 [ext_resource type="FontFile" uid="uid://dxdj2o17lv4f" path="res://Fonts/KiwiSoda.ttf" id="2_853f1"]
 [ext_resource type="PackedScene" uid="uid://can5y4tan7x2j" path="res://Scenes/menu_button.tscn" id="3_8saeu"]
-[ext_resource type="Texture2D" uid="uid://bqvljg6d0si63" path="res://Sprites/HotbarUI.png" id="4_ghw46"]
+[ext_resource type="Texture2D" uid="uid://bva6jcy6kkcwp" path="res://Sprites/MusicNoteMuted.png" id="4_if7li"]
 [ext_resource type="Texture2D" uid="uid://86fjyuqshfe" path="res://Sprites/ButtonMainMenu.png" id="5_8um5k"]
 [ext_resource type="Texture2D" uid="uid://dodmegev4k078" path="res://Sprites/MainMenu.png" id="5_df05h"]
+[ext_resource type="Texture2D" uid="uid://xhy2n3xjiabd" path="res://Sprites/HotbarUI1.png" id="6_cmrfp"]
+[ext_resource type="Texture2D" uid="uid://jdxrk8vrua70" path="res://Sprites/SoundOff.png" id="6_rrcx7"]
+[ext_resource type="Texture2D" uid="uid://lvpoxdyv1si8" path="res://Sprites/MusicNote.png" id="7_loo7a"]
+[ext_resource type="Texture2D" uid="uid://dogaxcksgjj5u" path="res://Sprites/SoundOn.png" id="8_if7li"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_loo7a"]
+font = ExtResource("2_853f1")
+outline_size = 8
+outline_color = Color(0.34117648, 0.6901961, 0.4117647, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.5882353)
 
 [node name="MainMenu" type="Node2D" unique_id=1555747398]
 
 [node name="MainMenuUI" type="CanvasLayer" parent="." unique_id=2086457357]
 script = ExtResource("1_tt5f1")
 font = ExtResource("2_853f1")
+music_on = ExtResource("7_loo7a")
+music_off = ExtResource("4_if7li")
+sfx_on = ExtResource("8_if7li")
+sfx_off = ExtResource("6_rrcx7")
 
 [node name="PlayButton" parent="MainMenuUI" unique_id=738821461 instance=ExtResource("3_8saeu")]
 offset_left = -34.5
@@ -29,19 +44,20 @@ offset_bottom = 112.0
 normal_text = "Quit"
 
 [node name="TutButton" type="TextureButton" parent="MainMenuUI" unique_id=1934257179]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -42.0
-offset_bottom = 42.0
-grow_horizontal = 0
-texture_normal = ExtResource("4_ghw46")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -145.0
+offset_right = 47.99999
+offset_bottom = -113.0
+grow_vertical = 0
 stretch_mode = 4
 
 [node name="TutButtonTexture" type="NinePatchRect" parent="MainMenuUI/TutButton" unique_id=502726812]
 layout_mode = 0
-offset_right = 42.0
-offset_bottom = 42.0
+offset_right = 32.0
+offset_bottom = 32.0
 texture = ExtResource("5_8um5k")
 patch_margin_left = 4
 patch_margin_top = 4
@@ -52,8 +68,8 @@ axis_stretch_vertical = 1
 
 [node name="TutEnabledLabel" type="Label" parent="MainMenuUI/TutButton/TutButtonTexture" unique_id=622720263]
 layout_mode = 0
-offset_right = 42.0
-offset_bottom = 42.0
+offset_right = 32.0
+offset_bottom = 32.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_outline_color = Color(0.34117648, 0.6901961, 0.4117647, 1)
@@ -62,6 +78,15 @@ theme_override_fonts/font = ExtResource("2_853f1")
 theme_override_font_sizes/font_size = 32
 text = "x"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MainMenuUI/TutButton" unique_id=844000352]
+layout_mode = 0
+offset_left = 35.0
+offset_right = 111.0
+offset_bottom = 32.0
+text = "Tutorial?"
+label_settings = SubResource("LabelSettings_loo7a")
 vertical_alignment = 1
 
 [node name="Leaderboard" type="RichTextLabel" parent="MainMenuUI" unique_id=2144068060]
@@ -114,9 +139,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -208.0
-offset_top = -101.0
+offset_top = -130.0
 offset_right = 208.0
-offset_bottom = -21.0
+offset_bottom = -52.350006
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
@@ -136,27 +161,80 @@ vertical_alignment = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -26.0
-offset_right = 108.0
-offset_bottom = -10.0
+offset_left = 61.0
+offset_top = -34.0
+offset_right = 116.0
+offset_bottom = -18.0
 grow_vertical = 0
 max_value = 1.0
 step = 0.01
 editable = false
 
+[node name="Background" type="TextureRect" parent="MainMenuUI/MusicSlider" unique_id=1951171004]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -8.0
+offset_right = -13.0
+offset_bottom = 24.0
+pivot_offset = Vector2(0.5, 0.5)
+texture = ExtResource("6_cmrfp")
+
+[node name="MusicNoteIcon" type="TextureRect" parent="MainMenuUI/MusicSlider/Background" unique_id=409269852]
+z_index = 1
+layout_mode = 0
+offset_left = -1.0
+offset_right = 31.0
+offset_bottom = 32.0
+texture = ExtResource("7_loo7a")
+
+[node name="Shadow" type="TextureRect" parent="MainMenuUI/MusicSlider/Background/MusicNoteIcon" unique_id=1045890232]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 34.0
+offset_bottom = 34.5
+texture = ExtResource("7_loo7a")
+
 [node name="SFXSlider" type="HSlider" parent="MainMenuUI" unique_id=777218199]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -49.0
-offset_right = 108.0
-offset_bottom = -33.0
+offset_left = 61.0
+offset_top = -84.0
+offset_right = 116.0
+offset_bottom = -68.0
 grow_vertical = 0
 max_value = 1.0
 step = 0.01
 editable = false
+
+[node name="Background" type="TextureRect" parent="MainMenuUI/SFXSlider" unique_id=604146236]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -8.0
+offset_right = -13.0
+offset_bottom = 24.0
+texture = ExtResource("6_cmrfp")
+
+[node name="SFXIcon" type="TextureRect" parent="MainMenuUI/SFXSlider/Background" unique_id=1885126568]
+z_index = 2
+layout_mode = 0
+offset_left = -1.0
+offset_right = 31.0
+offset_bottom = 32.0
+texture = ExtResource("8_if7li")
+
+[node name="Shadow" type="TextureRect" parent="MainMenuUI/SFXSlider/Background/SFXIcon" unique_id=783239612]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -2
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 34.0
+offset_bottom = 34.5
+texture = ExtResource("8_if7li")
 
 [node name="MenuScreen" type="Sprite2D" parent="." unique_id=2047968324]
 texture = ExtResource("5_df05h")
