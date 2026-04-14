@@ -164,6 +164,7 @@ func submit_highscore(score_val: float):
 	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(leaderboard_score, "scale", Vector2.ONE, 1)
 	tag_line.text = ""
+	tag_line.grab_focus()
 	while(tag_line.text.is_empty()):
 		await enter_tag_button.pressed
 	var player_tag = tag_line.text.to_upper()

@@ -10,6 +10,11 @@ var tilt: float = deg_to_rad(3)
 @onready var tree_trunk_sound: AudioStreamPlayer = $TreeTrunkSound
 @onready var tree_cracks: Sprite2D = $WeedMask/TreeCracks
 
+func _ready() -> void:
+	super()
+	if(weed_sprite.flip_h == true):
+		tree_cracks.flip_h = true
+
 func cut():
 	current_cuts += 1
 	shake()

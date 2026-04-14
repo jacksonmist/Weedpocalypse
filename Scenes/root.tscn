@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://cl0ynomap58vy" path="res://Scripts/player_controller.gd" id="1_8pvmw"]
 [ext_resource type="Texture2D" uid="uid://dpaqc3hbhry8h" path="res://Sprites/ScreenTemplate.png" id="1_i04dx"]
 [ext_resource type="Script" uid="uid://dr3p83w7xi033" path="res://Scripts/tool_manager.gd" id="2_vnucn"]
-[ext_resource type="Script" uid="uid://bu5tv0124e1ly" path="res://mouse_controller.gd" id="3_qtxxq"]
+[ext_resource type="Script" path="res://mouse_controller.gd" id="3_qtxxq"]
 [ext_resource type="Texture2D" uid="uid://c3qrx56nve36c" path="res://Sprites/GridLines.png" id="4_4g5cr"]
-[ext_resource type="Script" uid="uid://fxgslwu0e5lc" path="res://grid_manager.gd" id="4_c3mwy"]
+[ext_resource type="Script" path="res://grid_manager.gd" id="4_c3mwy"]
 [ext_resource type="Texture2D" uid="uid://cens03678fkw6" path="res://Sprites/OpenHand.png" id="4_ogk07"]
 [ext_resource type="Texture2D" uid="uid://c1vv47gtm515n" path="res://Sprites/ClosedHand.png" id="5_j8vvb"]
 [ext_resource type="Texture2D" uid="uid://chmoa5vxgaah8" path="res://Sprites/Scythe.png" id="6_2mc6k"]
-[ext_resource type="Script" uid="uid://cq0vcixxeirbg" path="res://weed_manager.gd" id="6_r3lo5"]
+[ext_resource type="Script" path="res://weed_manager.gd" id="6_r3lo5"]
 [ext_resource type="PackedScene" uid="uid://dfxcw512y58mt" path="res://Scenes/Weeds/Dandelion_Weed.tscn" id="7_dun2r"]
 [ext_resource type="Texture2D" uid="uid://b56xutysxwx5s" path="res://Sprites/ScythePressed.png" id="7_qoxdu"]
 [ext_resource type="Script" uid="uid://bujpxapqvr5nj" path="res://score_manager.gd" id="9_qtxxq"]
@@ -549,25 +549,21 @@ offset_bottom = 119.0
 scale = Vector2(1e-05, 1e-05)
 normal_text = "Quit"
 
-[node name="LeaderboardScore" type="NinePatchRect" parent="UIManager" unique_id=1854154597]
+[node name="LeaderboardScore" type="TextureRect" parent="UIManager" unique_id=653656369]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -110.0
-offset_top = -100.0
+offset_top = -110.0
 offset_right = 110.0
-offset_bottom = 100.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("30_c7unf")
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
 
 [node name="TagLine" type="LineEdit" parent="UIManager/LeaderboardScore" unique_id=1878758056]
 layout_mode = 1
@@ -586,10 +582,11 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("11_lwnbm")
 theme_override_font_sizes/font_size = 64
-text = "aaa"
 alignment = 1
 max_length = 3
 select_all_on_focus = true
+caret_blink = true
+caret_force_displayed = true
 
 [node name="EnterTagButton" parent="UIManager/LeaderboardScore" unique_id=1200287393 instance=ExtResource("24_s4qac")]
 layout_mode = 1
@@ -597,9 +594,9 @@ anchors_preset = 7
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = -34.5
-offset_top = -45.0
+offset_top = -74.0
 offset_right = 34.5
-offset_bottom = -17.0
+offset_bottom = -46.0
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 normal_text = "Enter"
@@ -612,9 +609,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -107.0
-offset_top = 11.0
+offset_top = 36.0
 offset_right = 107.0
-offset_bottom = 43.0
+offset_bottom = 68.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_colors/font_outline_color = Color(0.34117648, 0.6901961, 0.4117647, 1)

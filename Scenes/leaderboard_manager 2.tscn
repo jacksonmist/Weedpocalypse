@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://h761iloarl5r"]
+
+[ext_resource type="Script" uid="uid://bf5c0wya5nfyk" path="res://Scripts/Autoloads/leaderboard_manager.gd" id="1_32yc4"]
+
+[node name="LeaderboardManager" type="Node" unique_id=2123441628]
+script = ExtResource("1_32yc4")
