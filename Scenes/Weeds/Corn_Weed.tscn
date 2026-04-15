@@ -88,6 +88,7 @@ bus = &"SFX"
 
 [node name="GrabSound" type="AudioStreamPlayer" parent="." unique_id=4130750]
 stream = SubResource("AudioStreamRandomizer_t1sdp")
+volume_db = 4.0
 bus = &"SFX"
 
 [node name="BoingSound" type="AudioStreamPlayer" parent="." unique_id=293836281]

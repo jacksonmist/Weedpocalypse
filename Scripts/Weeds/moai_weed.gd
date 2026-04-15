@@ -12,19 +12,23 @@ var is_chiseled: bool = false
 
 func _ready() -> void:
 	super()
+	cut_sound = chisel_sound
+	cut_sound.stream = chisel_sound.stream
 	if(weed_sprite.flip_h == true):
 		cracks.flip_h = true
 		
 func cut():
 	current_cuts += 1
 	cracks.self_modulate.a = float(current_cuts)/float(cuts_needed)
-	chisel_sound.play()
+	cut_sound.play()
 	if(current_cuts>=cuts_needed):
-		super()
-		check_kill(false)
 		is_chiseled = true
 		weed_sprite.texture = statue_texture
 		cracks.self_modulate.a = 0
+	if(current_cuts > cuts_needed):
+		is_chiseled = true
+		weed_sprite.texture = statue_texture
+		super()
 
 func fully_stretched():
 	if(is_chiseled):
