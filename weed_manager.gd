@@ -37,14 +37,14 @@ var max_time_between_spawn: float = 5
 var min_time_between_spawn: float = 0.6
 var L2: float
 var time_decrease_slope: float = 0.1
-var spawn_time_midpoint: float = 60
+var spawn_time_midpoint: float = 90
 
 var additional_weed_chance: float = 25.0
 
 var tutorial_enabled: bool
 
 @onready var gameplay_music: AudioStreamPlayer = $GameplayMusic
-var difficulty_steps = [30, 60, 120]
+var difficulty_steps = [30, 60, 180]
 var pitch_scales = [1.1, 1.2, 1.3]
 var step = 0
 
