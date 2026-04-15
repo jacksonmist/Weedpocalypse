@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://e4v3mjrplbwd" path="res://Scenes/Weeds/Tree_Weed.tscn" id="14_2mc6k"]
 [ext_resource type="PackedScene" uid="uid://dtc52d044b462" path="res://Scenes/Weeds/Latus_Weed.tscn" id="14_qoxdu"]
 [ext_resource type="PackedScene" uid="uid://c2ijn065p3jxr" path="res://Scenes/Weeds/Corn_Weed.tscn" id="15_teq3f"]
+[ext_resource type="PackedScene" uid="uid://cwmfleh0a7dhx" path="res://Scenes/Weeds/Moai_Weed.tscn" id="17_51qfo"]
 [ext_resource type="Texture2D" uid="uid://ba4cxxldubblx" path="res://Sprites/ButtonDandelion.png" id="23_18fmr"]
 [ext_resource type="Script" uid="uid://4hrbh5cu5arr" path="res://Scenes/tutorial_manager.gd" id="23_capts"]
 [ext_resource type="Script" uid="uid://bv4s1g1ojqsm7" path="res://Scenes/Identifier.gd" id="23_dw4fd"]
@@ -130,7 +131,7 @@ grid_height = 15
 unique_name_in_owner = true
 script = ExtResource("6_r3lo5")
 one_width_weeds = Array[PackedScene]([ExtResource("7_dun2r"), ExtResource("13_j8vvb"), ExtResource("14_qoxdu")])
-two_width_weeds = Array[PackedScene]([ExtResource("15_teq3f")])
+two_width_weeds = Array[PackedScene]([ExtResource("15_teq3f"), ExtResource("17_51qfo")])
 three_width_weeds = Array[PackedScene]([ExtResource("14_2mc6k")])
 
 [node name="SpawnTimer" type="Timer" parent="WeedManager" unique_id=1202271330]

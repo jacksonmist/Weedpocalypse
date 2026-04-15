@@ -21,7 +21,8 @@ var difficulty: float = 1
 								Game_Enums.Weeds.THISTLE: false,
 								Game_Enums.Weeds.LATUS: false,
 								Game_Enums.Weeds.TREE: false,
-								Game_Enums.Weeds.CORN: false}
+								Game_Enums.Weeds.CORN: false,
+								Game_Enums.Weeds.MOAI: false}
 
 var active_weeds = []
 @onready var grow_particle: CPUParticles2D = $GrowParticle

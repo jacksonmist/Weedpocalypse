@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cel3ni2cd31sp" path="res://Sprites/StoneStalk.png" id="2_nt5h1"]
 [ext_resource type="PackedScene" uid="uid://yuamtnxa0oek" path="res://Scenes/ParticleEffects/cut_particle.tscn" id="3_nt5h1"]
 [ext_resource type="PackedScene" uid="uid://c3im616by8cs5" path="res://Scenes/ParticleEffects/grab_particle.tscn" id="4_gqjka"]
+[ext_resource type="Texture2D" uid="uid://babih8gwgetsb" path="res://Sprites/StoneCracks.png" id="5_gqjka"]
 [ext_resource type="AudioStream" uid="uid://pm3qfsv805g8" path="res://Sounds/cut1.wav" id="5_m0jcq"]
 [ext_resource type="AudioStream" uid="uid://diiuijar3lnue" path="res://Sounds/stretch_sound.wav" id="6_04nut"]
 [ext_resource type="AudioStream" uid="uid://ck0rbjiyws73x" path="res://Sounds/boing1.wav" id="7_hkboy"]
@@ -14,6 +15,9 @@
 [ext_resource type="AudioStream" uid="uid://ct2gjy7fyil3u" path="res://Sounds/boing4.wav" id="10_wjksy"]
 [ext_resource type="AudioStream" uid="uid://3sm4gc3a5em3" path="res://Sounds/boing5.wav" id="11_ojsum"]
 [ext_resource type="AudioStream" uid="uid://djbojykragex5" path="res://Sounds/boing6.wav" id="12_3adhv"]
+[ext_resource type="AudioStream" uid="uid://0cifkraowlwd" path="res://Sounds/chisel1.wav" id="16_hkboy"]
+[ext_resource type="AudioStream" uid="uid://dosvjvl4048ki" path="res://Sounds/chisel2.wav" id="17_hyyxm"]
+[ext_resource type="AudioStream" uid="uid://cx0yykkwbbn3o" path="res://Sounds/chisel3.wav" id="18_wxuqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
 size = Vector2(16, 240)
@@ -41,6 +45,14 @@ stream_3/stream = ExtResource("10_wjksy")
 stream_4/stream = ExtResource("11_ojsum")
 stream_5/stream = ExtResource("12_3adhv")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wjksy"]
+random_pitch = 1.1892071
+random_volume_offset_db = 3.0
+streams_count = 3
+stream_0/stream = ExtResource("16_hkboy")
+stream_1/stream = ExtResource("17_hyyxm")
+stream_2/stream = ExtResource("18_wxuqu")
+
 [node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
 top_level = true
 script = ExtResource("1_ak31x")
@@ -59,6 +71,11 @@ position = Vector2(0, -120)
 texture = ExtResource("2_2ht80")
 
 [node name="WeedSprite" type="Sprite2D" parent="WeedMask" unique_id=515589144]
+texture = ExtResource("2_nt5h1")
+
+[node name="Cracks" type="Sprite2D" parent="WeedMask" unique_id=1208084440]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("5_gqjka")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=942955904]
 position = Vector2(0, -120)
@@ -88,4 +105,8 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_6l2a2")
 volume_db = -1.0
 max_polyphony = 5
+bus = &"SFX"
+
+[node name="ChiselSound" type="AudioStreamPlayer" parent="." unique_id=1293960622]
+stream = SubResource("AudioStreamRandomizer_wjksy")
 bus = &"SFX"
