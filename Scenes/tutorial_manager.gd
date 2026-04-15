@@ -55,7 +55,7 @@ func spotlight_controller():
 			)
 			tween.tween_method(
 				func(value): spotlight.material.set_shader_parameter("circle_position", value),
-				Vector2(0.5, 0.5), Vector2(0.88, 0.07), 1
+				Vector2(0.5, 0.5), Vector2(0.88, 0.17), 1
 			)
 		3:
 			var tween = create_tween().set_parallel().set_trans(Tween.TRANS_ELASTIC)
