@@ -26,7 +26,9 @@
 [ext_resource type="Script" uid="uid://4hrbh5cu5arr" path="res://Scenes/tutorial_manager.gd" id="23_capts"]
 [ext_resource type="Script" uid="uid://bv4s1g1ojqsm7" path="res://Scenes/Identifier.gd" id="23_dw4fd"]
 [ext_resource type="PackedScene" uid="uid://can5y4tan7x2j" path="res://Scenes/menu_button.tscn" id="24_s4qac"]
+[ext_resource type="Texture2D" uid="uid://b0qin714lt3fe" path="res://Sprites/POWIcon.png" id="25_5k7ik"]
 [ext_resource type="Texture2D" uid="uid://cx10b7qfqibym" path="res://Sprites/ButtonThistle.png" id="25_8p807"]
+[ext_resource type="Script" uid="uid://d3to74wpakoyo" path="res://Scenes/sine_rotate.gd" id="26_207an"]
 [ext_resource type="Shader" uid="uid://fbkufwqubv5d" path="res://Shaders/spotlight.gdshader" id="26_642p6"]
 [ext_resource type="Texture2D" uid="uid://mmwk4xrfbjkn" path="res://Sprites/ButtonLatus.png" id="26_vdqvo"]
 [ext_resource type="Texture2D" uid="uid://w3o4hfa3v2m4" path="res://Sprites/ButtonTree.png" id="27_c7unf"]
@@ -304,13 +306,19 @@ anchor_right = 0.041
 anchor_bottom = 0.128
 offset_left = 0.47999954
 offset_top = 24.799995
-offset_right = 79.52
-offset_bottom = 34.119995
+offset_right = 20.519997
+offset_bottom = 28.119995
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(21, 21)
 bbcode_enabled = true
 text = "10"
 fit_content = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UIManager/ComboText" unique_id=397200866]
+z_index = -1
+position = Vector2(15, 47)
+texture = ExtResource("25_5k7ik")
+script = ExtResource("26_207an")
 
 [node name="Identifiers" type="Control" parent="UIManager" unique_id=837029160]
 layout_mode = 3
