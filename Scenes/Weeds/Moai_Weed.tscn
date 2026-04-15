@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bml8g077d5qtn" path="res://Scripts/Weeds/moai_weed.gd" id="1_ak31x"]
 [ext_resource type="Texture2D" uid="uid://dlyj0ge2h5q16" path="res://Sprites/WeedMask.png" id="2_2ht80"]
-[ext_resource type="Texture2D" uid="uid://c0xo2lty2dhuu" path="res://Sprites/EasterIslandStatuteStalk.png" id="2_gqjka"]
+[ext_resource type="Texture2D" uid="uid://c4355mfsyodny" path="res://Sprites/EasterIslandStatuteStalk1.png" id="2_hkboy"]
 [ext_resource type="Texture2D" uid="uid://cel3ni2cd31sp" path="res://Sprites/StoneStalk.png" id="2_nt5h1"]
 [ext_resource type="PackedScene" uid="uid://yuamtnxa0oek" path="res://Scenes/ParticleEffects/cut_particle.tscn" id="3_nt5h1"]
 [ext_resource type="PackedScene" uid="uid://c3im616by8cs5" path="res://Scenes/ParticleEffects/grab_particle.tscn" id="4_gqjka"]
@@ -56,7 +56,7 @@ stream_2/stream = ExtResource("18_wxuqu")
 [node name="WeedPivot" type="CharacterBody2D" unique_id=1606507166]
 top_level = true
 script = ExtResource("1_ak31x")
-statue_texture = ExtResource("2_gqjka")
+statue_texture = ExtResource("2_hkboy")
 base_score = 15.0
 width = 2
 sprite_array = Array[Texture]([ExtResource("2_nt5h1")])
