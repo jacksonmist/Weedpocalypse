@@ -147,7 +147,7 @@ func calculate_difficulty():
 	increase_pitch_scale()
 	
 func increase_pitch_scale():
-	if(time <= difficulty_steps[step] or step >= 3):
+	if(time <= difficulty_steps[step] or step >= 2):
 		return
 	var tween = create_tween()
 	tween.tween_property(gameplay_music, "pitch_scale", pitch_scales[step], 1)

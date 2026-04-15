@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://mmwk4xrfbjkn" path="res://Sprites/ButtonLatus.png" id="26_vdqvo"]
 [ext_resource type="Texture2D" uid="uid://w3o4hfa3v2m4" path="res://Sprites/ButtonTree.png" id="27_c7unf"]
 [ext_resource type="Texture2D" uid="uid://c5cc1kb22ahpg" path="res://Sprites/ButtonCorn.png" id="28_vdqvo"]
+[ext_resource type="Texture2D" uid="uid://uq7hs4k7mdi4" path="res://Sprites/ButtonEasterIsland.png" id="30_64fwa"]
 [ext_resource type="Texture2D" uid="uid://xhy2n3xjiabd" path="res://Sprites/HotbarUI1.png" id="30_c7unf"]
 [ext_resource type="AudioStream" uid="uid://b8vdfb4pty28q" path="res://Sounds/Brainy Grains of Sand - YellowInAHat ft Lemoan.wav" id="32_c7unf"]
 
@@ -331,6 +332,7 @@ offset_top = 2.0
 offset_right = -3.0
 offset_bottom = 30.0
 grow_horizontal = 0
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("23_18fmr")
 script = ExtResource("23_dw4fd")
 
@@ -604,6 +606,83 @@ offset_top = 2.5
 offset_right = 72.0
 offset_bottom = 30.5
 texture = ExtResource("28_vdqvo")
+
+[node name="Moai" type="TextureRect" parent="UIManager/Identifiers" unique_id=1136506765]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 152.0
+offset_right = -3.0
+offset_bottom = 180.0
+grow_horizontal = 0
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("30_64fwa")
+script = ExtResource("23_dw4fd")
+
+[node name="WeedName" type="Label" parent="UIManager/Identifiers/Moai" unique_id=1747070313]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99000007
+anchor_bottom = 1.0
+offset_right = 0.6899948
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Moai"
+label_settings = SubResource("LabelSettings_s4qac")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="ColorRect" parent="UIManager/Identifiers/Moai" unique_id=1227251491]
+clip_children = 1
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+mouse_filter = 2
+
+[node name="Scythe" type="TextureRect" parent="UIManager/Identifiers/Moai/Hint" unique_id=1485669851]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 21.0
+offset_bottom = 28.0
+texture = ExtResource("6_2mc6k")
+stretch_mode = 3
+
+[node name="Scythe2" type="TextureRect" parent="UIManager/Identifiers/Moai/Hint" unique_id=234575791]
+layout_mode = 0
+offset_left = 17.0
+offset_right = 33.00001
+offset_bottom = 28.0
+texture = ExtResource("6_2mc6k")
+stretch_mode = 3
+
+[node name="Scythe3" type="TextureRect" parent="UIManager/Identifiers/Moai/Hint" unique_id=1428058838]
+layout_mode = 0
+offset_left = 29.0
+offset_right = 45.00003
+offset_bottom = 28.0
+texture = ExtResource("6_2mc6k")
+stretch_mode = 3
+
+[node name="Hand" type="TextureRect" parent="UIManager/Identifiers/Moai/Hint" unique_id=1740375331]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 6.0
+offset_right = 60.000015
+offset_bottom = 22.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_ogk07")
+stretch_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="UIManager/Identifiers/Moai" unique_id=1140962363]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.5
+offset_right = 71.0
+offset_bottom = 30.5
+texture = ExtResource("30_64fwa")
 
 [node name="RetryButton" parent="UIManager" unique_id=738821461 instance=ExtResource("24_s4qac")]
 visible = false

@@ -42,11 +42,14 @@ var menu_path: String = "uid://c4xl7tgvfo3e8"
 @onready var latus_id: TextureRect = $Identifiers/Latus
 @onready var tree_id: TextureRect = $Identifiers/Tree
 @onready var corn_id: TextureRect = $Identifiers/Corn
+@onready var moai_id: TextureRect = $Identifiers/Moai
+
 @onready var identifiers: Dictionary = {Game_Enums.Weeds.DANDELION: dandelion_id,
 								Game_Enums.Weeds.THISTLE: thistle_id,
 								Game_Enums.Weeds.LATUS: latus_id,
 								Game_Enums.Weeds.TREE: tree_id,
-								Game_Enums.Weeds.CORN: corn_id}
+								Game_Enums.Weeds.CORN: corn_id,
+								Game_Enums.Weeds.MOAI: moai_id}
 @onready var white: Color = Color(1, 1, 1, 1)
 @onready var transparent: Color = Color(1, 1, 1, 0)
 

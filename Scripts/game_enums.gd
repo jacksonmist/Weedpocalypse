@@ -11,5 +11,6 @@ enum Weeds {
 	THISTLE,
 	LATUS,
 	TREE,
-	CORN
+	CORN,
+	MOAI
 }
